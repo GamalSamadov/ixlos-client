@@ -1,0 +1,13 @@
+.or {
+	@apply text-gray font-josefin_sans uppercase relative;
+
+	&::before {
+		content: '';
+		@apply absolute right-[150%] top-[40%] w-[4rem] h-[2px] bg-gray border-none;
+	}
+
+	&::after {
+		content: '';
+		@apply absolute left-[150%] top-[40%] w-[4rem] h-[2px] bg-gray border-none;
+	}
+}

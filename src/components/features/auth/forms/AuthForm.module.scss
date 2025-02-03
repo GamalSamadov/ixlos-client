@@ -1,0 +1,45 @@
+.container {
+  @apply w-full h-screen flex flex-col justify-center items-center gap-3 md:gap-4;
+}
+
+.form {
+  @apply w-full md:w-[60vw] lg:w-[30vw] flex flex-col relative gap-3 md:gap-4;
+}
+
+.input_container {
+  @apply relative;
+}
+
+.label {
+  @apply absolute left-4 top-[0.6rem] text-gray text-[0.7rem];
+  z-index: 1;
+}
+
+.input {
+  @apply border-[0.7px] border-sky_blue-light_border rounded-xl px-4 pb-3 pt-7 w-full bg-gray-blur;
+
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--white); /* Your text color */
+    box-shadow: 0 0 0 1000px var(--gray-blur) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &::placeholder,
+  &::-webkit-input-placeholder {
+    @apply text-gray opacity-[0.3];
+  }
+
+  &:focus {
+    @apply outline-none border-sky_blue-light transition duration-300 ease-in-out bg-gray-blur;
+  }
+}
+
+.password_icon_container {
+  @apply cursor-pointer;
+}

@@ -1,0 +1,13 @@
+.ellipsis_one,
+.ellipsis_two {
+	@apply fixed w-[80vw] h-[80vw] md:w-[35vw] md:h-[35vw] blur-[30px] md:blur-[70px];
+	z-index: -9;
+}
+
+.ellipsis_one {
+	@apply left-[-20%] top-[-20%] md:left-[-13%] md:top-[-9%];
+}
+
+.ellipsis_two {
+	@apply right-[-30vw] top-[35vw] bottom-0 md:right-[10%] md:top-[20%];
+}

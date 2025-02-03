@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #ffffffe7;
+  --gray: #ffffff5c;
+  --gray-hover: #ffffff19;
+  --gray-blur: #ffffff11;
+  --blue: #09245a;
+  --blue-light: #112095;
+  --sky-blue: #0dc7d2;
+  --sky-blue-light: #65d6fc;
+  --sky-blue-light-border: #65d6fc67;
+  --sky-blue-gradient: #65d6fc27;
+  --purple: #5e17eb;
+}
+
+@layer utilities {
+  .btn_primary_full {
+    @apply w-full px-6 uppercase text-[1.2rem] py-2 font-josefin_sans font-semibold text-white rounded-xl bg-sky_blue-light border border-sky_blue-light transition duration-300 ease-in-out hover:bg-sky_blue hover:text-white hover:border-sky_blue;
+
+    box-shadow: 0 0 12px 10px var(--sky-blue-gradient);
+
+    &:disabled {
+      @apply opacity-75 cursor-not-allowed;
+    }
+
+    &:hover {
+      @apply transform scale-[1.02];
+
+      box-shadow: 0 0 20px 15px var(--sky-blue-gradient);
+    }
+  }
+
+  .google_button {
+    @apply w-full bg-gray-blur px-6 py-3 text-[1.1rem] text-white rounded-xl transition duration-300 ease-in-out flex justify-center items-center gap-3;
+
+    &:disabled {
+      @apply opacity-75 cursor-not-allowed;
+    }
+
+    &:hover {
+      @apply transform scale-105 bg-gray-hover;
+
+      box-shadow: 0 0 12px 10px var(--gray-blur);
+    }
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--white);
+  background: var(--blue);
+  font-family: var(--poppins) sans-serif;
+}
+
+main {
+  @apply px-5 md:px-12;
+}
+
+main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: linear-gradient(
+    330deg,
+    var(--blue) 0%,
+    var(--blue) 20%,
+    var(--blue-light) 100%
+  );
+}
