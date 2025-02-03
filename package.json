@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@graphql-codegen/cli": "^5.0.4",
     "eslint-config-import": "^0.13.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-config-standard": "^17.1.0",
@@ -20,12 +21,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@parcel/watcher": "^2.5.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "eslint-plugin-import": "^2.31.0",
+    "graphql": "^16.10.0",
     "postcss": "^8",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.1",
