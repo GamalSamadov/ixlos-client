@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 
+import { AnimateDownOnClickLeft } from '@/components/ui/buttons/AnimateDownOnClick/AnimateDownOnClick'
+
 import styles from './GoogleButton.module.scss'
-import { AnimateDownOnClickLeft } from '../../AnimateDownOnClick/AnimateDownOnClick'
 
 interface Props {
   isLoading: boolean

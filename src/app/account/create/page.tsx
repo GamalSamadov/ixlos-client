@@ -1,7 +1,7 @@
-import AuthWrapper from '@/components/features/auth/AuthWrapper'
+import { RegisterForm } from '@/components/screens/auth/forms/RegisterForm'
 
 const CreateAccountPage = () => {
-  return <AuthWrapper />
+  return <RegisterForm />
 }
 
 export default CreateAccountPage

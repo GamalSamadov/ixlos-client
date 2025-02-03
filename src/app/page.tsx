@@ -1,8 +1,7 @@
-import { useTranslations } from 'next-intl'
+import Home from '@/components/screens/home/Home'
 
-const Home = () => {
-  const t = useTranslations('home')
-  return <h1>{t('title')}</h1>
+const HomePage = () => {
+  return <Home />
 }
 
-export default Home
+export default HomePage

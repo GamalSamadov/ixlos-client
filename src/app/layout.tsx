@@ -3,7 +3,7 @@ import { Poppins, Josefin_Sans as JosefinSans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
-import { BackgroundEllipsis } from '@/components/ui/BackgroundEllipsis/BackgroundEllipsis'
+import { BackgroundEllipsis } from '@/components/ui/backgrounds/BackgroundEllipsis/BackgroundEllipsis'
 import ApolloClientProvider from '@/providers/ApolloClientProvider'
 
 import '@/styles/globals.scss'

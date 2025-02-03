@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 import styles from './EyeIcon.module.scss'
-import { Icon } from '../../Icon/Icon'
+import { Icon } from '../../icons/Icon/Icon'
 
 export const EyeIcon = () => {
   // TODO:

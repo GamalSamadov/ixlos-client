@@ -1,7 +1,7 @@
-import AuthWrapper from '@/components/features/auth/AuthWrapper'
+import { LoginForm } from '@/components/screens/auth/forms/LoginForm'
 
 const LoginPage = () => {
-  return <AuthWrapper isLogin />
+  return <LoginForm />
 }
 
 export default LoginPage
