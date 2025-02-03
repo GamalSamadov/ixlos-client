@@ -1,5 +1,8 @@
+import { useTranslations } from 'next-intl'
+
 const Home = () => {
-  return <h1>Hello world!</h1>
+  const t = useTranslations('home')
+  return <h1>{t('title')}</h1>
 }
 
 export default Home
