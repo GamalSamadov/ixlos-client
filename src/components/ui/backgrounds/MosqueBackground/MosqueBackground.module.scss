@@ -1,3 +1,4 @@
 .bg-mosque {
-  @apply bg-cover bg-center bg-no-repeat;
+  @apply bg-cover bg-center bg-no-repeat absolute bottom-0;
+  z-index: -9;
 }

@@ -18,8 +18,8 @@
 .input {
   @apply border-[0.7px] border-sky_blue-light_border rounded-xl px-4 pb-3 pt-7 w-full bg-gray-blur;
 
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
