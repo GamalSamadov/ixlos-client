@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 
 import { BackgroundEllipsis } from '@/components/ui/backgrounds/BackgroundEllipsis/BackgroundEllipsis'
 import ApolloClientProvider from '@/providers/ApolloClientProvider'
+import { ToastProvider } from '@/providers/ToastProvider'
 
 import '@/styles/globals.scss'
 
@@ -38,6 +39,7 @@ const RootLayout = async ({
         className={`${poppins.variable} ${josefinSans.variable} antialiased`}
       >
         <BackgroundEllipsis />
+        <ToastProvider />
         <NextIntlClientProvider messages={messages}>
           <ApolloClientProvider>{children}</ApolloClientProvider>
         </NextIntlClientProvider>

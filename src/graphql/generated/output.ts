@@ -24,6 +24,21 @@ export type CreateUserInput = {
   username: Scalars['String']['input'];
 };
 
+export type DeviceModel = {
+  __typename?: 'DeviceModel';
+  browser: Scalars['String']['output'];
+  os: Scalars['String']['output'];
+  type: Scalars['String']['output'];
+};
+
+export type LocationModel = {
+  __typename?: 'LocationModel';
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  latitude: Scalars['Float']['output'];
+  longitude: Scalars['Float']['output'];
+};
+
 export type LoginInput = {
   login: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -31,9 +46,11 @@ export type LoginInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  clearSessionCookie: Scalars['Boolean']['output'];
   createUser: Scalars['Boolean']['output'];
   loginUser: UserModel;
   logoutUser: Scalars['Boolean']['output'];
+  removeSession: Scalars['Boolean']['output'];
 };
 
 
@@ -46,9 +63,36 @@ export type MutationLoginUserArgs = {
   data: LoginInput;
 };
 
+
+export type MutationRemoveSessionArgs = {
+  id: Scalars['String']['input'];
+};
+
 export type Query = {
   __typename?: 'Query';
+  findCurrentSession: SessionModel;
   findProfile: UserModel;
+  findSessionsByUser: Array<SessionModel>;
+};
+
+export enum Role {
+  Admin = 'ADMIN',
+  User = 'USER'
+}
+
+export type SessionMetadataModel = {
+  __typename?: 'SessionMetadataModel';
+  device: DeviceModel;
+  ip: Scalars['String']['output'];
+  location: LocationModel;
+};
+
+export type SessionModel = {
+  __typename?: 'SessionModel';
+  createdAt: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  metadata: SessionMetadataModel;
+  userId: Scalars['String']['output'];
 };
 
 export type UserModel = {
@@ -60,6 +104,7 @@ export type UserModel = {
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   password: Scalars['String']['output'];
+  rights: Array<Role>;
   updatedAt: Scalars['DateTime']['output'];
   username: Scalars['String']['output'];
 };
@@ -86,7 +131,7 @@ export type LogoutUserMutation = { __typename?: 'Mutation', logoutUser: boolean 
 export type FindProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FindProfileQuery = { __typename?: 'Query', findProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string } };
+export type FindProfileQuery = { __typename?: 'Query', findProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role> } };
 
 
 export const CreateUserDocument = gql`
@@ -191,6 +236,7 @@ export const FindProfileDocument = gql`
     avatar
     displayName
     username
+    rights
   }
 }
     `;

@@ -1,5 +1,10 @@
+'use client'
+
+import { useProfile } from '@/hooks/user/useProfile'
+
 const Home = () => {
-  return <div>Home</div>
+  const { user, isLoading } = useProfile()
+  return <div>{isLoading ? 'Loading... ' : JSON.stringify(user)}</div>
 }
 
 export default Home

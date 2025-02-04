@@ -47,6 +47,8 @@ const eslintConfig = [
           },
         },
       ],
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-unused-vars': 'off',
     },
     ignorePatterns: ['components/ui/**'],
     overrides: [

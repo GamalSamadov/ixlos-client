@@ -1,26 +1,19 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 
 import { AuthToggle } from '@/components/shared/auth/AuthToggle/AuthToggle'
 import { FormTitle } from '@/components/shared/auth/FormTitle/FormTitle'
 import { MediaButtons } from '@/components/shared/auth/MediaButtons/MediaButtons'
 import { SubmitButton } from '@/components/shared/auth/SubmitButton/SubmitButton'
 import { Icon } from '@/components/ui/icons/icon/Icon'
+import { useLogin } from '@/hooks/auth/useLogin'
 
 import styles from './AuthForm.module.scss'
 
 export const LoginForm = () => {
   const [isVisible, setIsVisible] = useState(false)
-
-  const isLoading = false
-
-  const { register, handleSubmit } = useForm()
-
-  const onSubmit = () => {
-    console.log('Submit')
-  }
+  const { register, onSubmit, isLoading, handleSubmit } = useLogin()
 
   return (
     <div className={styles.container}>
@@ -29,7 +22,7 @@ export const LoginForm = () => {
         <div className={styles.input_container}>
           <span className={styles.label}>Email or Username</span>
           <input
-            {...register('email', {
+            {...register('login', {
               required: 'This field is required',
             })}
             className={styles.input}
