@@ -1,7 +1,7 @@
-import Home from '@/components/screens/home/Home'
+import Landing from '@/components/screens/landing/Landing'
 
-const HomePage = () => {
-  return <Home />
+const LandingPage = () => {
+  return <Landing />
 }
 
-export default HomePage
+export default LandingPage

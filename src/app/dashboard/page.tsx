@@ -1,19 +1,7 @@
-import {
-  FindProfileDocument,
-  FindProfileQuery,
-} from '@/graphql/generated/output'
-import { apolloClientServer } from '@/libs/apollo-client/apollo-client-server'
+import Home from '@/components/screens/home/Home'
 
-const DashboardPage = async () => {
-  const { query } = await apolloClientServer()
-
-  const { data } = await query<FindProfileQuery>({
-    query: FindProfileDocument,
-  })
-
-  console.log(data.findProfile)
-
-  return <div>DashboardPage</div>
+const DashboardPage = () => {
+  return <Home />
 }
 
 export default DashboardPage

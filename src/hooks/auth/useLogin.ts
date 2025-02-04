@@ -3,6 +3,7 @@ import { useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
+import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import { useLoginUserMutation } from '@/graphql/generated/output'
 import { ILoginFormData } from '@/types/user/user.types'
 
@@ -16,7 +17,7 @@ export const useLogin = () => {
     onCompleted() {
       startTransition(() => {
         reset()
-        router.push('/')
+        router.push(PUBLIC_PAGES.HOME)
       })
     },
     onError(err) {
