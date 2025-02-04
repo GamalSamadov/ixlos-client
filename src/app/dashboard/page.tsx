@@ -2,7 +2,7 @@ import {
   FindProfileDocument,
   FindProfileQuery,
 } from '@/graphql/generated/output'
-import { apolloClientServer } from '@/libs/apollo-client'
+import { apolloClientServer } from '@/libs/apollo-client/apollo-client-server'
 
 const DashboardPage = async () => {
   const { query } = await apolloClientServer()
