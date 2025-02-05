@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 
-import Button from '@/shared/ui/buttons/Button'
 import { AnimateDownOnClickLeft } from '@/shared/ui/buttons/animate-down-on-click/AnimateDownOnClick'
+import Button from '@/shared/ui/buttons/Button'
 import GoogleIcon from '@/shared/ui/icons/Google'
 
 interface Props {
@@ -16,7 +16,7 @@ export const GoogleButton = ({ isLoading }: Props) => {
       <Button
         type="submit"
         className=""
-        isLoading={isLoading}
+        disabled={isLoading}
         size="full"
         variant="transparent"
       >

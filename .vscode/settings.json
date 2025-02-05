@@ -25,5 +25,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["codegen", "ixlos", "samadov", "sonner", "turbopack"]
+  "cSpell.words": [
+    "codegen",
+    "ixlos",
+    "leftside",
+    "samadov",
+    "sonner",
+    "turbopack"
+  ]
 }

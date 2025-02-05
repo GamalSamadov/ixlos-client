@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { AuthToggle } from '@/entities/auth/ui/auth-toggle/AuthToggle'
 import { FormTitle } from '@/entities/auth/ui/form-title/FormTitle'
 import { Icon } from '@/entities/auth/ui/icon/Icon'
-import { MediaButtons } from '@/entities/auth/ui/media-buttons/MediaButtons'
 import { SubmitButton } from '@/entities/auth/ui/submit-button/SubmitButton'
 import { useRegister } from '@/widgets/auth/hooks/useRegister'
 
@@ -105,7 +104,8 @@ export const RegisterForm = () => {
         confirmText={t('form.confirm')}
       />
 
-      <MediaButtons isLoading={isLoading} />
+      {/* TODO: implement google auth and apple auth */}
+      {/* <MediaButtons isLoading={isLoading} /> */}
     </form>
   )
 }

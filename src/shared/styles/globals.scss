@@ -51,3 +51,7 @@ main::before {
     var(--blue-light) 100%
   );
 }
+
+main {
+  @apply px-2 md:px-4;
+}
