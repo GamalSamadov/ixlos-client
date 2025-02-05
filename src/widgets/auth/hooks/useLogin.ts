@@ -16,7 +16,7 @@ export const useLogin = () => {
       login: '',
       password: '',
     },
-    mode: 'onSubmit',
+    mode: 'onChange',
   })
 
   const router = useRouter()

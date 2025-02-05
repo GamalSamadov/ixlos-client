@@ -51,6 +51,10 @@ export const LoginForm = () => {
         <input
           {...register('password', {
             required: tError('required'),
+            minLength: {
+              value: 8,
+              message: tError('passwordMinLength'),
+            },
           })}
           className={styles.input}
           name="password"
