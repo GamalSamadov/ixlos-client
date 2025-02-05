@@ -19,7 +19,11 @@ export default {
           light_border: 'var(--sky-blue-light-border)',
         },
         purple: 'var(--purple)',
-        white: 'var(--white)',
+        white: {
+          DEFAULT: 'var(--white)',
+          hover: 'var(--white-hover)',
+          blur: 'var(--white-blur)',
+        },
         gray: {
           DEFAULT: 'var(--gray)',
           blur: 'var(--gray-blur)',

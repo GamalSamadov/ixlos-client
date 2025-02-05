@@ -1,5 +1,55 @@
 {
-  "home": {
-    "title": "Home page"
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "form": {
+        "login": {
+          "label": "Email or Username",
+          "placeholder": "info@samadov.dev"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********"
+        },
+        "confirm": "Sign in"
+      },
+      "loading": "Signing in..."
+    },
+    "register": {
+      "title": "Sign Up",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "info@samadov.dev"
+        },
+        "username": {
+          "label": "Username",
+          "placeholder": "samadov"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********"
+        },
+        "confirm": "Sign up"
+      },
+      "loading": "Signing up..."
+    },
+    "errors": {
+      "required": "This field is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "invalidEmail": "Invalid email address"
+    },
+    "toggle": {
+      "login": "No account?",
+      "register": "Already have an account?"
+    },
+    "mediaButtons": {
+      "google": {
+        "label": "Sign in with Google"
+      }
+    }
+  },
+  "loading": {
+    "title": "Loading..."
   }
 }

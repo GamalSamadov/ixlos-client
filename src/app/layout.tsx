@@ -3,11 +3,11 @@ import { Poppins, Josefin_Sans as JosefinSans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
-import { BackgroundEllipsis } from '@/components/ui/backgrounds/BackgroundEllipsis/BackgroundEllipsis'
-import ApolloClientProvider from '@/providers/ApolloClientProvider'
-import { ToastProvider } from '@/providers/ToastProvider'
+import ApolloClientProvider from '@/app/providers/ApolloClientProvider'
+import { ToastProvider } from '@/app/providers/ToastProvider'
+import { BackgroundEllipsis } from '@/shared/ui/backgrounds/background-ellipsis/BackgroundEllipsis'
 
-import '@/styles/globals.scss'
+import '@/shared/styles/globals.scss'
 
 const poppins = Poppins({
   variable: '--poppins',
@@ -41,7 +41,9 @@ const RootLayout = async ({
         <BackgroundEllipsis />
         <ToastProvider />
         <NextIntlClientProvider messages={messages}>
-          <ApolloClientProvider>{children}</ApolloClientProvider>
+          <ApolloClientProvider>
+            <main>{children}</main>
+          </ApolloClientProvider>
         </NextIntlClientProvider>
       </body>
     </html>

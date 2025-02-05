@@ -1,7 +1,5 @@
-import Landing from '@/components/screens/landing/Landing'
-
 const LandingPage = () => {
-  return <Landing />
+  return <div>Landing page</div>
 }
 
 export default LandingPage

@@ -1,7 +1,5 @@
-import Home from '@/components/screens/home/Home'
-
 const DashboardPage = () => {
-  return <Home />
+  return <div>Dashboard</div>
 }
 
 export default DashboardPage

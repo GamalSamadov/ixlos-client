@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
-import { MosqueBackground } from '@/components/ui/backgrounds/MosqueBackground/MosqueBackground'
-import { ADMIN_PAGES } from '@/config/pages/admin.config'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import { getServerAuth } from '@/utils/server/get-server-auth'
+import { ADMIN_PAGES } from '@/app/config/pages/admin.config'
+import { PUBLIC_PAGES } from '@/app/config/pages/public.config'
+import { MosqueBackground } from '@/shared/ui/backgrounds/mosque-background/MosqueBackground'
+import { getServerAuth } from '@/shared/utils/server/get-server-auth'
 
 import styles from './Auth.module.scss'
 

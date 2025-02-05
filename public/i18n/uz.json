@@ -1,5 +1,55 @@
 {
-  "home": {
-    "title": "Asosiy sahifa"
+  "auth": {
+    "login": {
+      "title": "Kirish",
+      "form": {
+        "login": {
+          "label": "E-pochta / foydalanuvchi nomi",
+          "placeholder": "info@samadov.dev"
+        },
+        "password": {
+          "label": "Parol",
+          "placeholder": "********"
+        },
+        "confirm": "Kirish"
+      },
+      "loading": "Kirish jarayoni..."
+    },
+    "register": {
+      "title": "Ro'yxatdan o'tish",
+      "form": {
+        "email": {
+          "label": "E-pochta",
+          "placeholder": "info@samadov.dev"
+        },
+        "username": {
+          "label": "Foydalanuvchi nomi",
+          "placeholder": "samadov"
+        },
+        "password": {
+          "label": "Parol",
+          "placeholder": "********"
+        },
+        "confirm": "Ro'yxatdan o'tish"
+      },
+      "loading": "Ro'yxatdan o'tish jarayoni..."
+    },
+    "errors": {
+      "required": "Bu joy majburiy",
+      "passwordMinLength": "Parol kamida 8 belgidan iborat bo'lishi kerak",
+      "invalidEmail": "Noto'g'ri e-pochta manzili"
+    },
+    "toggle": {
+      "login": "Hisobingiz yo'qmi?",
+      "register": "Hisobingiz bormi?"
+    },
+    "mediaButtons": {
+      "google": {
+        "label": "Google bilan kirish"
+      }
+    }
+  },
+  "loading": {
+    "title": "Yuklanmoqda..."
   }
 }

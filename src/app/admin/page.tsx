@@ -1,9 +1,5 @@
-import React from 'react'
-
-import Admin from '@/components/screens/admin/Admin'
-
 const AdminPage = () => {
-  return <Admin />
+  return <div>Admin</div>
 }
 
 export default AdminPage
