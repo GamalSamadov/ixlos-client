@@ -4,9 +4,9 @@ import ToggleIcon from '@/shared/ui/icons/Toggle'
 
 const LeftSideBar = () => {
   return (
-    <div>
+    <>
       <ToggleIcon />
-    </div>
+    </>
   )
 }
 

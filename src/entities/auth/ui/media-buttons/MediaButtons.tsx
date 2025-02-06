@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 import styles from './MediaButtons.module.scss'
 import { GoogleButton } from '../google-button/GoogleButton'
@@ -11,12 +11,10 @@ interface Props {
 }
 
 export const MediaButtons = ({ isLoading }: Props) => {
-  const router = useRouter()
-
   return (
-    <div className={styles.media} onClick={() => router.push('/auth/google')}>
+    <Link href="/auth/google" className={styles.media}>
       <HrWithTitle title="Or" />
       <GoogleButton isLoading={isLoading} />
-    </div>
+    </Link>
   )
 }

@@ -28,7 +28,7 @@ const UserLogo = ({ width, height }: Props) => {
       ) : (
         <div className={styles.avatar} style={{ width, height }}>
           {!avatar && firstLetter ? (
-            <span className={styles.letter}>{firstLetter}</span>
+            <h1 className={styles.letter}>{firstLetter}</h1>
           ) : avatar && username ? (
             <Image
               src={avatar}

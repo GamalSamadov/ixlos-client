@@ -34,9 +34,10 @@ const RootLayout = async ({
   const locale = await getLocale()
   const messages = await getMessages()
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale}>
       <body
         className={`${poppins.variable} ${josefinSans.variable} antialiased`}
+        suppressHydrationWarning
       >
         <BackgroundEllipsis />
         <ToastProvider />

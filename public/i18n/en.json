@@ -47,6 +47,16 @@
       "google": {
         "label": "Sign in with Google"
       }
+    },
+    "continue": {
+      "hr": "Or",
+      "title": "Continue without Signing in",
+      "confirm": {
+        "title": "Are you sure you want to continue?",
+        "message": "If you continue, you will loose cool features on the website. So we recommend you to sign in to the platform",
+        "close": "Close",
+        "continue": "Continue"
+      }
     }
   },
   "loading": {

@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { AuthToggle } from '@/entities/auth/ui/auth-toggle/AuthToggle'
+import ContinueWithoutSignin from '@/entities/auth/ui/continue-without-singnin/ContinueWithoutSignin'
 import { FormTitle } from '@/entities/auth/ui/form-title/FormTitle'
 import { Icon } from '@/entities/auth/ui/icon/Icon'
 import { SubmitButton } from '@/entities/auth/ui/submit-button/SubmitButton'
@@ -76,6 +77,8 @@ export const LoginForm = () => {
         isLoading={isLoading}
         confirmText={t('form.confirm')}
       />
+
+      <ContinueWithoutSignin />
 
       {/* TODO: implement google auth and apple auth */}
       {/* <MediaButtons isLoading={isLoading} /> */}

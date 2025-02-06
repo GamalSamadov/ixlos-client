@@ -47,6 +47,16 @@
       "google": {
         "label": "Google bilan kirish"
       }
+    },
+    "continue": {
+      "hr": "Yoki",
+      "title": "Kirishsiz davom etish",
+      "confirm": {
+        "title": "Haqiqatan ham davom etishni xohlaysizmi?",
+        "message": "Agar davom etsangiz, veb-saytdagi ajoyib funksiyalarni yo‘qotasiz. Shuning uchun platformaga kirishingizni tavsiya qilamiz.",
+        "close": "Yopish",
+        "continue": "Davon etish"
+      }
     }
   },
   "loading": {

@@ -1,12 +1,12 @@
 .button {
-  @apply flex items-center justify-center gap-x-3 px-6 uppercase text-[1.1rem] py-2 font-josefin_sans font-semibold rounded-xl transition duration-300 ease-in-out;
+  @apply flex items-center justify-center gap-x-3 px-6 uppercase py-2 font-josefin_sans font-semibold rounded-xl transition duration-300 ease-in-out;
 
   &:disabled {
     @apply opacity-75 cursor-not-allowed;
   }
 
   &:hover {
-    @apply transform scale-[1.02];
+    @apply transform scale-[1.01];
   }
 }
 
@@ -26,12 +26,16 @@
   }
 }
 
-.light {
+.white {
   @apply text-black bg-white hover:bg-white-hover;
   box-shadow: 0 0 12px 10px var(--sky-blue-gradient);
   &:hover {
     box-shadow: 0 0 20px 15px var(--white-blur);
   }
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .standard {

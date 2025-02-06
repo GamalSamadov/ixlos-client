@@ -1,0 +1,28 @@
+.overlay {
+  @apply bg-slate-900/30 absolute top-0 left-0 z-40 h-screen w-screen overflow-auto flex;
+  backdrop-filter: blur(10px);
+}
+
+.dialog_container {
+  @apply w-full;
+}
+
+.heading {
+  @apply text-white text-3xl font-bold text-center;
+}
+
+.message {
+  @apply text-gray-300 text-center;
+}
+
+.dialog {
+  @apply bg-slate-900 w-[400px] lg:w-[500px] py-10 px-8 absolute z-50 overflow-auto flex flex-col justify-center items-center gap-8 rounded-lg;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttons {
+  @apply flex gap-2;
+}
