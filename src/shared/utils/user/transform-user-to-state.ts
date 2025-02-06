@@ -2,7 +2,7 @@ import { Role } from '@/graphql/generated/output'
 import { TProtectUserData } from '@/widgets/user/types/user.types'
 
 export type TUserDataState = {
-  id: string
+  userId: string
   rights: Role[]
   isLoggedIn: boolean
   isAdmin: boolean

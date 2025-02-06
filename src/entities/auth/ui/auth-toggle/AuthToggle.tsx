@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { PUBLIC_PAGES } from '@/app/config/pages/public.config'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 
 import styles from './AuthToggle.module.scss'
 

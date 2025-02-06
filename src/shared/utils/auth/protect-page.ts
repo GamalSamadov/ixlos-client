@@ -1,9 +1,9 @@
 import { notFound, redirect } from 'next/navigation'
 
-import { PUBLIC_PAGES } from '@/app/config/pages/public.config'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { Role } from '@/graphql/generated/output'
 
-import { getServerAuth } from './get-server-auth'
+import { getAuth } from './get-auth'
 import { TUserDataState } from '../user/transform-user-to-state'
 
 type RoleCheckFunction = (user: TUserDataState) => boolean
@@ -17,7 +17,7 @@ type TRoles = Role[] | Role
 export const protectPage = async (roles: TRoles = Role.User) => {
   const rolesArray = Array.isArray(roles) ? roles : [roles]
 
-  const user = await getServerAuth()
+  const user = await getAuth()
 
   if (!user) {
     return rolesArray.includes(Role.Admin)

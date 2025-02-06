@@ -1,0 +1,6 @@
+query FindCurrentSession {
+  findCurrentSession {
+    userId
+    rights
+  }
+}

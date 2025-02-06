@@ -1,6 +1,6 @@
 import {
-  FindProfileQuery,
-  FindProfileDocument,
+  FindCurrentSessionQuery,
+  FindCurrentSessionDocument,
 } from '@/graphql/generated/output'
 import { apolloClientServer } from '@/shared/libs/apollo-client/apollo-client-server'
 
@@ -9,21 +9,21 @@ import {
   TUserDataState,
 } from '../user/transform-user-to-state'
 
-export const getServerAuth = async (): Promise<TUserDataState | null> => {
+export const getAuth = async (): Promise<TUserDataState | null> => {
   const { query } = await apolloClientServer()
 
   try {
-    const { data } = await query<FindProfileQuery>({
-      query: FindProfileDocument,
+    const { data } = await query<FindCurrentSessionQuery>({
+      query: FindCurrentSessionDocument,
     })
 
-    const user = data?.findProfile
+    const session = data?.findCurrentSession
 
-    if (!user) {
+    if (!session) {
       return null
     }
 
-    return transformUserToState(user)
+    return transformUserToState(session)
   } catch {
     return null
   }

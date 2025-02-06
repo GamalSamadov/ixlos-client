@@ -5,7 +5,7 @@ import { useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { PUBLIC_PAGES } from '@/app/config/pages/public.config'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { useLoginUserMutation } from '@/graphql/generated/output'
 
 import { ILoginFormData } from '../types/auth.types'
