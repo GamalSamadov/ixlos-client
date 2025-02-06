@@ -7,7 +7,7 @@ import { apolloClientServer } from '@/shared/libs/apollo-client/apollo-client-se
 import {
   transformUserToState,
   TUserDataState,
-} from '../transform-user-to-state'
+} from '../user/transform-user-to-state'
 
 export const getServerAuth = async (): Promise<TUserDataState | null> => {
   const { query } = await apolloClientServer()

@@ -133,6 +133,11 @@ export type FindProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type FindProfileQuery = { __typename?: 'Query', findProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role> } };
 
+export type FindProfileAvatarQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FindProfileAvatarQuery = { __typename?: 'Query', findProfile: { __typename?: 'UserModel', avatar?: string | null, username: string, displayName: string } };
+
 
 export const CreateUserDocument = gql`
     mutation CreateUser($data: CreateUserInput!) {
@@ -272,3 +277,44 @@ export type FindProfileQueryHookResult = ReturnType<typeof useFindProfileQuery>;
 export type FindProfileLazyQueryHookResult = ReturnType<typeof useFindProfileLazyQuery>;
 export type FindProfileSuspenseQueryHookResult = ReturnType<typeof useFindProfileSuspenseQuery>;
 export type FindProfileQueryResult = Apollo.QueryResult<FindProfileQuery, FindProfileQueryVariables>;
+export const FindProfileAvatarDocument = gql`
+    query FindProfileAvatar {
+  findProfile {
+    avatar
+    username
+    displayName
+  }
+}
+    `;
+
+/**
+ * __useFindProfileAvatarQuery__
+ *
+ * To run a query within a React component, call `useFindProfileAvatarQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindProfileAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindProfileAvatarQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFindProfileAvatarQuery(baseOptions?: Apollo.QueryHookOptions<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>(FindProfileAvatarDocument, options);
+      }
+export function useFindProfileAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>(FindProfileAvatarDocument, options);
+        }
+export function useFindProfileAvatarSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>(FindProfileAvatarDocument, options);
+        }
+export type FindProfileAvatarQueryHookResult = ReturnType<typeof useFindProfileAvatarQuery>;
+export type FindProfileAvatarLazyQueryHookResult = ReturnType<typeof useFindProfileAvatarLazyQuery>;
+export type FindProfileAvatarSuspenseQueryHookResult = ReturnType<typeof useFindProfileAvatarSuspenseQuery>;
+export type FindProfileAvatarQueryResult = Apollo.QueryResult<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>;

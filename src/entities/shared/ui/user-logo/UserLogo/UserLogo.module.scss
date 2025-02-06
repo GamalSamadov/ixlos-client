@@ -1,0 +1,11 @@
+.avatar_container {
+  @apply mt-2;
+}
+
+.avatar {
+  @apply rounded-full border border-sky_blue bg-sky_blue-light flex items-center justify-center overflow-hidden cursor-pointer;
+}
+
+.letter {
+  @apply text-white font-josefin_sans text-2xl;
+}
