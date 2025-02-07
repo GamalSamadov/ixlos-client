@@ -1,12 +1,12 @@
 import Header from '@/widgets/shared/ui/header/Header/Header'
 
-const DashboardPage = () => {
+const ProfilePage = () => {
   return (
     <>
       <Header />
-      <h1>Dashboard</h1>
+      <h1>Profile</h1>
     </>
   )
 }
 
-export default DashboardPage
+export default ProfilePage

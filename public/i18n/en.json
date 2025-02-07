@@ -34,6 +34,9 @@
       },
       "loading": "Signing up..."
     },
+    "logout": {
+      "loading": "Logging out..."
+    },
     "errors": {
       "required": "This field is required",
       "passwordMinLength": "Password must be at least 8 characters",
@@ -61,5 +64,12 @@
   },
   "loading": {
     "title": "Loading..."
+  },
+  "leftside": {
+    "links": {
+      "profile": "Profile",
+      "books": "Books",
+      "logout": "Logout"
+    }
   }
 }

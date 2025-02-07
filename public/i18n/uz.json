@@ -34,6 +34,9 @@
       },
       "loading": "Ro'yxatdan o'tish jarayoni..."
     },
+    "logout": {
+      "loading": "Chiqilmoqda..."
+    },
     "errors": {
       "required": "Bu joy majburiy",
       "passwordMinLength": "Parol kamida 8 belgidan iborat bo'lishi kerak",
@@ -61,5 +64,12 @@
   },
   "loading": {
     "title": "Yuklanmoqda..."
+  },
+  "leftside": {
+    "links": {
+      "profile": "Profil",
+      "books": "Kitoblar",
+      "logout": "Chiqish"
+    }
   }
 }

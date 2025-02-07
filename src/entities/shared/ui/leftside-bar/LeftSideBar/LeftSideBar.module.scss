@@ -1,0 +1,45 @@
+.leftside {
+  @apply fixed top-0 left-0;
+  @apply flex flex-col justify-start items-start gap-6 p-4;
+}
+
+.toggleIcon {
+  @apply cursor-pointer z-50;
+}
+
+.items {
+  @apply z-40 md:ml-3;
+}
+
+.bg {
+  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-r 
+    from-gray-800/50 to-transparent backdrop-blur-lg z-30;
+}
+
+.logo {
+  @apply my-4 mb-6;
+}
+
+.links {
+  @apply flex flex-col justify-start items-start gap-6;
+}
+
+.link {
+  @apply flex items-center gap-5;
+
+  .label {
+    @apply text-white text-xl;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.link_loading {
+  @apply flex items-center gap-5;
+
+  .label {
+    @apply text-gray-400 text-xl;
+  }
+}
