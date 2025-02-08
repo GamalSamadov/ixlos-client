@@ -17,7 +17,9 @@ const AuthLayout = async ({ children }: PropsWithChildren<unknown>) => {
 
   return (
     <MosqueBackground>
-      <div className={styles['auth-wrapper']}>{children}</div>
+      <div className={styles['auth-wrapper']}>
+        <div className={styles.container}>{children}</div>
+      </div>
     </MosqueBackground>
   )
 }

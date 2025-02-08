@@ -68,12 +68,12 @@
   "leftside": {
     "links": {
       "books": "Kitoblar",
-      "tafseer": "Tafsir"
+      "tafseer": "Tafsir",
+      "settings": "Sozlamalar"
     }
   },
   "avatar": {
     "profile": "Profil",
-    "settings": "Sozlamalar",
     "logout": "Chiqish"
   }
 }

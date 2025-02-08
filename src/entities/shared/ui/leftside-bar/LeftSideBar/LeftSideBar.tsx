@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { TAdminLinks } from '@/shared/data/leftside/admin-links.data'
 import { TMemberLinks } from '@/shared/data/leftside/member-links.data'
 import { TUserLinks } from '@/shared/data/leftside/user-links.data'
-import ToggleIcon from '@/shared/ui/icons/Toggle'
+import Icon from '@/shared/ui/icons/Icon'
 import Logo from '@/shared/ui/vectors/Logo'
 
 import styles from './LeftSideBar.module.scss'
@@ -22,17 +22,16 @@ const LeftSideBar = ({ links }: Props) => {
 
   const router = useRouter()
   const pathName = usePathname()
-  console.log('Current path:', pathName)
 
   const t = useTranslations()
 
   return (
-    <div className={styles.leftside}>
+    <aside className={styles.leftside}>
       <div
         className={styles.toggleIcon}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <ToggleIcon />
+        <Icon size={35} variant="toggle" />
       </div>
       <AnimatePresence mode="wait">
         {isOpen && (
@@ -82,7 +81,7 @@ const LeftSideBar = ({ links }: Props) => {
           </>
         )}
       </AnimatePresence>
-    </div>
+    </aside>
   )
 }
 
