@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { ReactNode, useState } from 'react'
 
 import styles from './Dialog.module.scss'
@@ -34,15 +34,15 @@ const Dialog = ({
       <AnimatePresence>
         {isDialogOpen && (
           <>
-            <motion.div
+            <m.div
               className={styles.overlay}
               onClick={() => setIsDialogOpen(false)}
               key="modal"
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-            ></motion.div>
-            <motion.div
+            ></m.div>
+            <m.div
               className={styles.dialog}
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
@@ -63,7 +63,7 @@ const Dialog = ({
                   {continueText}
                 </Button>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

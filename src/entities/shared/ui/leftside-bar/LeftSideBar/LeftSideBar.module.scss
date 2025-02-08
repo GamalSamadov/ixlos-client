@@ -21,25 +21,24 @@
 }
 
 .links {
-  @apply flex flex-col justify-start items-start gap-6;
+  @apply flex flex-col justify-start items-start gap-1;
 }
 
 .link {
-  @apply flex items-center gap-5;
+  @apply flex items-center justify-start w-[200px] gap-5 px-4 py-2 rounded-xl;
 
   .label {
     @apply text-white text-xl;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  }
+  &:hover {
+    @apply bg-slate-600/50;
   }
 }
 
-.link_loading {
-  @apply flex items-center gap-5;
+.active-link {
+  @apply flex items-center justify-start w-[200px] gap-5 bg-slate-600/50 px-4 py-2 rounded-xl;
 
   .label {
-    @apply text-gray-400 text-xl;
+    @apply text-white text-xl;
   }
 }

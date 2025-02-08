@@ -1,0 +1,28 @@
+.menu-item {
+  @apply relative;
+}
+
+.sub-menu {
+  @apply w-[150px] absolute top-[60px] right-0 rounded-[6px] origin-[50%_-30px] bg-slate-900 shadow-md z-50;
+}
+
+.sub-menu-background {
+  @apply absolute top-0 right-0 bottom-0 left-0 origin-top-left shadow-lg pointer-events-none;
+}
+
+.sub-menu-item {
+  @apply flex items-center justify-start gap-4 w-full;
+  @apply cursor-pointer hover:bg-slate-800 px-4 py-2 rounded-md transition-colors;
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+.active-sub-menu-item {
+  @apply flex items-center justify-start gap-4 w-full;
+  @apply cursor-pointer bg-slate-800 px-4 py-2 rounded-md transition-colors;
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+.sub-menu-item-loading {
+  @apply flex items-center justify-start gap-4 w-full;
+  @apply px-4 py-2 rounded-md;
+}

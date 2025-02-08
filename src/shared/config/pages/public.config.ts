@@ -1,8 +1,10 @@
 class PublicPages {
+  LANDING_PAGE = '/'
   LOGIN = '/login'
   REGISTER = '/register'
-  HOME = '/dashboard'
-  LANDING_PAGE = '/'
+  SETTINGS = '/settings'
+
+  HOME = '/tafseer'
   BOOKS = '/books'
 }
 

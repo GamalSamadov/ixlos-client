@@ -58,7 +58,7 @@
         "title": "Haqiqatan ham davom etishni xohlaysizmi?",
         "message": "Agar davom etsangiz, veb-saytdagi ajoyib funksiyalarni yo‘qotasiz. Shuning uchun platformaga kirishingizni tavsiya qilamiz.",
         "close": "Yopish",
-        "continue": "Davon etish"
+        "continue": "Davom etish"
       }
     }
   },
@@ -67,9 +67,13 @@
   },
   "leftside": {
     "links": {
-      "profile": "Profil",
       "books": "Kitoblar",
-      "logout": "Chiqish"
+      "tafseer": "Tafsir"
     }
+  },
+  "avatar": {
+    "profile": "Profil",
+    "settings": "Sozlamalar",
+    "logout": "Chiqish"
   }
 }

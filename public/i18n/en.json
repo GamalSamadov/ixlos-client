@@ -67,9 +67,13 @@
   },
   "leftside": {
     "links": {
-      "profile": "Profile",
       "books": "Books",
-      "logout": "Logout"
+      "tafseer": "Tafseer"
     }
+  },
+  "avatar": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
   }
 }

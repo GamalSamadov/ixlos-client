@@ -1,7 +1,7 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
-import { useRouter } from 'next/navigation'
+import { AnimatePresence, m } from 'framer-motion'
+import { useRouter, usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
@@ -10,7 +10,6 @@ import { TMemberLinks } from '@/shared/data/leftside/member-links.data'
 import { TUserLinks } from '@/shared/data/leftside/user-links.data'
 import ToggleIcon from '@/shared/ui/icons/Toggle'
 import Logo from '@/shared/ui/vectors/Logo'
-import useLogout from '@/widgets/shared/hooks/useLogout'
 
 import styles from './LeftSideBar.module.scss'
 
@@ -21,9 +20,9 @@ interface Props {
 const LeftSideBar = ({ links }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const { logout, isLoading } = useLogout()
-
   const router = useRouter()
+  const pathName = usePathname()
+  console.log('Current path:', pathName)
 
   const t = useTranslations()
 
@@ -38,7 +37,7 @@ const LeftSideBar = ({ links }: Props) => {
       <AnimatePresence mode="wait">
         {isOpen && (
           <>
-            <motion.div
+            <m.div
               className={styles.items}
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
@@ -51,37 +50,25 @@ const LeftSideBar = ({ links }: Props) => {
               <ul className={styles.links}>
                 {links.map((item) => (
                   <li key={item.id}>
-                    {item.id === 'logout' ? (
-                      <button
-                        className={
-                          isLoading ? styles.link_loading : styles.link
-                        }
-                        onClick={() => logout()}
-                        disabled={isLoading}
-                      >
-                        <span>{item.icon}</span>
-                        <span className={styles.label}>
-                          {isLoading ? t('auth.logout.loading') : t(item.label)}
-                        </span>
-                      </button>
-                    ) : (
-                      <>
-                        <button
-                          className={
-                            isLoading ? styles.link_loading : styles.link
-                          }
-                          onClick={() => router.push(item.href)}
-                        >
-                          <span>{item.icon}</span>
-                          <span className={styles.label}>{t(item.label)}</span>
-                        </button>
-                      </>
-                    )}
+                    <button
+                      className={
+                        item.href === pathName
+                          ? styles['active-link']
+                          : styles.link
+                      }
+                      onClick={() => {
+                        router.push(item.href)
+                        setIsOpen(false)
+                      }}
+                    >
+                      <span>{item.icon}</span>
+                      <span className={styles.label}>{t(item.label)}</span>
+                    </button>
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div
+            </m.div>
+            <m.div
               style={{
                 width: isOpen ? '100vw' : 0,
                 height: isOpen ? '100vh' : 0,
