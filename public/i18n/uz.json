@@ -1,4 +1,20 @@
 {
+  "landing": {
+    "hero": {
+      "platformName": "Ixlos Nashriyoti",
+      "title": "Islomiy bilimlar manbayi",
+      "subtitle": "Qur'on va Sunnatdan ishonchli bilim berish uchun tuzulgan bepul Islomiy ta'lim va ma'lumotnoma ilovasi",
+      "button": "Kashf eting"
+    },
+    "footer": {
+      "title": "Barcha huquqlar himoyalangan | IXLOS",
+      "links": {
+        "instagram": "Instagram",
+        "telegram": "Telegram",
+        "youtube": "Youtube"
+      }
+    }
+  },
   "auth": {
     "login": {
       "title": "Kirish",

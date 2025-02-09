@@ -1,0 +1,41 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
+import Button from '@/shared/ui/buttons/Button'
+
+import styles from './Hero.module.scss'
+
+const Hero = () => {
+  const t = useTranslations('landing.hero')
+  return (
+    <section className={styles.hero}>
+      {/* TODO: add header section */}
+      <div className={styles.content}>
+        <h1 className={styles.title}>{t('platformName')}</h1>
+        <p className={styles.subtitle}>{t('subtitle')}</p>
+        <Link href={PUBLIC_PAGES.LOGIN} className={styles.link}>
+          <Button variant="white" size="full">
+            {t('button')}
+          </Button>
+        </Link>
+      </div>
+
+      <div className={styles.logo}>
+        <Image
+          src="/assets/vectors/quran.png"
+          width={500}
+          height={500}
+          alt="Quran"
+          draggable={false}
+        />
+      </div>
+      {/* TODO: add about section */}
+    </section>
+  )
+}
+
+export default Hero

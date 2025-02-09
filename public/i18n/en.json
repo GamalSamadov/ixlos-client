@@ -1,4 +1,20 @@
 {
+  "landing": {
+    "hero": {
+      "platformName": "Ixlos",
+      "title": "Your Gateway to Authentic Islamic Knowledge",
+      "subtitle": "A free Islamic education and reference app designed to provide you with reliable knowledge from the Quran and Sunnah",
+      "button": "Explore Now"
+    },
+    "footer": {
+      "title": "All Rights Reserved | IXLOS",
+      "links": {
+        "instagram": "Instagram",
+        "telegram": "Telegram",
+        "youtube": "Youtube"
+      }
+    }
+  },
   "auth": {
     "login": {
       "title": "Sign In",
