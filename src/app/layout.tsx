@@ -21,8 +21,28 @@ const josefinSans = JosefinSans({
 })
 
 export const metadata: Metadata = {
-  title: 'Ixlos sahifasi',
-  description: 'Ixlos sahifasi',
+  title: 'Ixlos nashriyoti | Islomiy bilimlar manbayi',
+  description:
+    "Qur'on va Sunnatdan ishonchli bilim berish uchun tuzulgan bepul Islomiy ta'lim va ma'lumotnoma ilovasi",
+  icons: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      url: '/assets/logo/32x32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      url: '/assets/logo/16x16.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      url: '/assets/logo/apple-touch-icon.png',
+    },
+  ],
 }
 
 const RootLayout = async ({

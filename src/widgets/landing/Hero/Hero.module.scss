@@ -1,5 +1,5 @@
 .hero {
-  @apply flex flex-col-reverse md:flex-row justify-center md:justify-between items-center col-span-2 row-span-9;
+  @apply flex flex-col-reverse md:flex-row justify-center md:justify-between items-center col-span-2 row-span-9 relative;
 }
 
 .content {
@@ -20,4 +20,8 @@
 
 .logo {
   @apply ml-6 mb-6 md:mb-0 md:ml-0;
+}
+
+.stars {
+  @apply absolute top-0 left-0 md:top-[15%] md:left-[50%] z-[-1] rotate-12;
 }

@@ -24,6 +24,16 @@ const Hero = () => {
         </Link>
       </div>
 
+      <div className={styles.stars}>
+        <Image
+          src="/assets/vectors/stars.svg"
+          width={300}
+          height={300}
+          alt="Stars"
+          draggable={false}
+        />
+      </div>
+
       <div className={styles.logo}>
         <Image
           src="/assets/vectors/quran.png"
