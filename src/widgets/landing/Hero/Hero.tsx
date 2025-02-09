@@ -37,8 +37,8 @@ const Hero = () => {
       <div className={styles.logo}>
         <Image
           src="/assets/vectors/quran.png"
-          width={500}
-          height={500}
+          width={550}
+          height={550}
           alt="Quran"
           draggable={false}
         />
