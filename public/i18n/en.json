@@ -83,6 +83,8 @@
   },
   "leftside": {
     "links": {
+      "authors": "Authors",
+      "users": "Users",
       "books": "Books",
       "tafseer": "Tafseer",
       "settings": "Settings"
@@ -92,5 +94,17 @@
     "profile": "Profile",
 
     "logout": "Logout"
+  },
+  "errors": {
+    "404": {
+      "title": "404",
+      "message": "Page not found.",
+      "subtitle": "Please check the URL in the address bar and try again."
+    },
+    "500": {
+      "title": "500",
+      "message": "Internal server error",
+      "subtitle": "Please try again later."
+    }
   }
 }

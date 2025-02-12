@@ -72,8 +72,8 @@ const DropDown = ({ children }: PropsWithChildren) => {
                   setIsOpen(false)
                 }}
               >
-                <Icon variant={menu.icon} size={15} />
-                <span>{t(menu.title)}</span>
+                <Icon variant={menu.icon} size={20} />
+                <span className={styles.title}>{t(menu.title)}</span>
               </button>
             )
           )}

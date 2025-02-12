@@ -1,6 +1,6 @@
 import {
-  FindCurrentSessionQuery,
-  FindCurrentSessionDocument,
+  GetCurrentSessionDocument,
+  GetCurrentSessionQuery,
 } from '@/graphql/generated/output'
 import { apolloClientServer } from '@/shared/libs/apollo-client/apollo-client-server'
 
@@ -13,11 +13,11 @@ export const getAuth = async (): Promise<TUserDataState | null> => {
   const { query } = await apolloClientServer()
 
   try {
-    const { data } = await query<FindCurrentSessionQuery>({
-      query: FindCurrentSessionDocument,
+    const { data } = await query<GetCurrentSessionQuery>({
+      query: GetCurrentSessionDocument,
     })
 
-    const session = data?.findCurrentSession
+    const session = data?.getCurrentSession
 
     if (!session) {
       return null

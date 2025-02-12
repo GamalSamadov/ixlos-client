@@ -1,7 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { Role } from '@/graphql/generated/output'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 
 import { getAuth } from './get-auth'
 import { TUserDataState } from '../user/transform-user-to-state'

@@ -1,5 +1,5 @@
-query FindProfileAvatar {
-  findProfile {
+query GetProfileAvatar {
+  getProfile {
     avatar
     username
     displayName

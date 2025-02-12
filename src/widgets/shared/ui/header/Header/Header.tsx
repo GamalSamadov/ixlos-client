@@ -12,6 +12,7 @@ const Header = async () => {
   const user = await getAuth()
   return (
     <header className={styles.header}>
+      {user?.isLoggedIn ? <UserLogo width={50} height={50} /> : <LogoutTop />}
       <LeftSideBar
         links={
           !user?.isLoggedIn
@@ -21,7 +22,6 @@ const Header = async () => {
               : USER_LINKS
         }
       />
-      {user?.isLoggedIn ? <UserLogo width={50} height={50} /> : <LogoutTop />}
     </header>
   )
 }

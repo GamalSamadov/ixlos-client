@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { useFindProfileAvatarQuery } from '@/graphql/generated/output'
+import { useGetProfileAvatarQuery } from '@/graphql/generated/output'
 import Skeleton from '@/shared/ui/skeleton/Skeleton'
 import { getFirstLetter } from '@/shared/utils/user/get-first-letter'
 
@@ -15,11 +15,11 @@ interface Props {
 }
 
 const UserLogo = ({ width, height }: Props) => {
-  const { data, loading } = useFindProfileAvatarQuery()
+  const { data, loading } = useGetProfileAvatarQuery()
 
-  const avatar = data?.findProfile.avatar
-  const username = data?.findProfile.username
-  const displayName = data?.findProfile.displayName
+  const avatar = data?.getProfile.avatar
+  const username = data?.getProfile.username
+  const displayName = data?.getProfile.displayName
   const firstLetter = getFirstLetter(displayName)
 
   return (

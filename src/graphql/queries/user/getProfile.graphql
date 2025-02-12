@@ -1,5 +1,5 @@
-query FindProfile {
-  findProfile {
+query GetProfile {
+  getProfile {
     id
     email
     avatar

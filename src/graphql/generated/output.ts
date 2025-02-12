@@ -18,7 +18,67 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
 };
 
+export type AuthorModel = {
+  __typename?: 'AuthorModel';
+  country: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['ID']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+  user: UserModel;
+  userId: Scalars['String']['output'];
+};
+
+export type AyahModel = {
+  __typename?: 'AyahModel';
+  arabicText: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['ID']['output'];
+  number: Scalars['Float']['output'];
+  surah: SurahModel;
+  surahId: Scalars['String']['output'];
+  tafseers: Array<TafseerAyahModel>;
+  updatedAt: Scalars['DateTime']['output'];
+  uzbekText: Scalars['String']['output'];
+};
+
+export type CreateAuthorInput = {
+  bio: Scalars['String']['input'];
+  country?: InputMaybe<Scalars['String']['input']>;
+  displayName?: InputMaybe<Scalars['String']['input']>;
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  username: Scalars['String']['input'];
+};
+
+export type CreateAyahInput = {
+  arabicText: Scalars['String']['input'];
+  number: Scalars['Float']['input'];
+  uzbekText: Scalars['String']['input'];
+};
+
+export type CreateSurahInput = {
+  arabicName: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  number: Scalars['Float']['input'];
+  revelationType: SurahRevelationType;
+  totalAyahs: Scalars['Float']['input'];
+};
+
+export type CreateTafseerAyahInput = {
+  text: Scalars['String']['input'];
+};
+
+export type CreateTafseerInput = {
+  arabicName: Scalars['String']['input'];
+  filePath?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<TafseerLanguage>;
+  name: Scalars['String']['input'];
+  text: Scalars['String']['input'];
+};
+
 export type CreateUserInput = {
+  bio?: InputMaybe<Scalars['String']['input']>;
+  displayName?: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
   username: Scalars['String']['input'];
@@ -47,15 +107,84 @@ export type LoginInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   clearSessionCookie: Scalars['Boolean']['output'];
+  createAuthor: Scalars['Boolean']['output'];
+  createAyah: Scalars['Boolean']['output'];
+  createSurah: Scalars['Boolean']['output'];
+  createTafseer: Scalars['Boolean']['output'];
+  createTafseerAyah: Scalars['Boolean']['output'];
   createUser: Scalars['Boolean']['output'];
+  deleteAuthor: Scalars['Boolean']['output'];
+  deleteAyah: Scalars['Boolean']['output'];
+  deleteSurah: Scalars['Boolean']['output'];
+  deleteTafseer: Scalars['Boolean']['output'];
+  deleteTafseerAyah: Scalars['Boolean']['output'];
   loginUser: UserModel;
   logoutUser: Scalars['Boolean']['output'];
   removeSession: Scalars['Boolean']['output'];
+  updateAuthor: Scalars['Boolean']['output'];
+  updateAyah: Scalars['Boolean']['output'];
+  updateSurah: Scalars['Boolean']['output'];
+  updateTafseer: Scalars['Boolean']['output'];
+  updateTafseerAyah: Scalars['Boolean']['output'];
+};
+
+
+export type MutationCreateAuthorArgs = {
+  data: CreateAuthorInput;
+};
+
+
+export type MutationCreateAyahArgs = {
+  data: CreateAyahInput;
+  surahId: Scalars['String']['input'];
+};
+
+
+export type MutationCreateSurahArgs = {
+  data: CreateSurahInput;
+};
+
+
+export type MutationCreateTafseerArgs = {
+  authorId: Scalars['String']['input'];
+  data: CreateTafseerInput;
+};
+
+
+export type MutationCreateTafseerAyahArgs = {
+  ayahId: Scalars['String']['input'];
+  data: CreateTafseerAyahInput;
+  tafseerId: Scalars['String']['input'];
 };
 
 
 export type MutationCreateUserArgs = {
   data: CreateUserInput;
+};
+
+
+export type MutationDeleteAuthorArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteAyahArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteSurahArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteTafseerArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteTafseerAyahArgs = {
+  id: Scalars['String']['input'];
 };
 
 
@@ -68,15 +197,113 @@ export type MutationRemoveSessionArgs = {
   id: Scalars['String']['input'];
 };
 
+
+export type MutationUpdateAuthorArgs = {
+  data: UpdateAuthorInput;
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateAyahArgs = {
+  data: UpdateAyahInput;
+  id: Scalars['String']['input'];
+  surahId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateSurahArgs = {
+  data: UpdateSurahInput;
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateTafseerArgs = {
+  authorId: Scalars['String']['input'];
+  data: UpdateTafseerInput;
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateTafseerAyahArgs = {
+  ayahId: Scalars['String']['input'];
+  data: UpdateTafseerAyahInput;
+  id: Scalars['String']['input'];
+  tafseerId: Scalars['String']['input'];
+};
+
+export type PaginationInput = {
+  page?: InputMaybe<Scalars['Float']['input']>;
+  take?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type Query = {
   __typename?: 'Query';
-  findCurrentSession: SessionModel;
-  findProfile: UserModel;
-  findSessionsByUser: Array<SessionModel>;
+  getAllAuthors: Array<AuthorModel>;
+  getAllAyahs: Array<AyahModel>;
+  getAllSurahs: Array<SurahModel>;
+  getAllTafseers: Array<TafseerModel>;
+  getAllUsers: Array<UserModel>;
+  getAuthorById: AuthorModel;
+  getAyahById: AyahModel;
+  getCurrentSession: SessionModel;
+  getProfile: UserModel;
+  getSessionsByUser: Array<SessionModel>;
+  getSurahById: SurahModel;
+  getTafseerAyahById: TafseerAyahModel;
+  getTafseerById: TafseerModel;
+  searchAyahByText: Array<AyahModel>;
+};
+
+
+export type QueryGetAllAuthorsArgs = {
+  pagination: PaginationInput;
+};
+
+
+export type QueryGetAllAyahsArgs = {
+  pagination: PaginationInput;
+  surahId: Scalars['String']['input'];
+};
+
+
+export type QueryGetAllSurahsArgs = {
+  pagination: PaginationInput;
+};
+
+
+export type QueryGetAllUsersArgs = {
+  pagination: PaginationInput;
+};
+
+
+export type QueryGetAuthorByIdArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryGetAyahByIdArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryGetSurahByIdArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryGetTafseerByIdArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QuerySearchAyahByTextArgs = {
+  pagination: PaginationInput;
+  searchTerm: Scalars['String']['input'];
 };
 
 export enum Role {
   Admin = 'ADMIN',
+  Author = 'AUTHOR',
   User = 'USER'
 }
 
@@ -94,6 +321,90 @@ export type SessionModel = {
   metadata: SessionMetadataModel;
   rights: Array<Role>;
   userId: Scalars['String']['output'];
+};
+
+export type SurahModel = {
+  __typename?: 'SurahModel';
+  arabicName: Scalars['String']['output'];
+  ayahs: Array<AyahModel>;
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  number: Scalars['Float']['output'];
+  revelationType: SurahRevelationType;
+  totalAyahs: Scalars['Float']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+};
+
+export enum SurahRevelationType {
+  Meccan = 'MECCAN',
+  Medinan = 'MEDINAN'
+}
+
+export type TafseerAyahModel = {
+  __typename?: 'TafseerAyahModel';
+  ayah: AyahModel;
+  ayahId: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['ID']['output'];
+  tafseer: TafseerModel;
+  tafseerId: Scalars['String']['output'];
+  text: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+};
+
+export enum TafseerLanguage {
+  Arabic = 'ARABIC',
+  Uzbek = 'UZBEK'
+}
+
+export type TafseerModel = {
+  __typename?: 'TafseerModel';
+  arabicName: Scalars['String']['output'];
+  author: AuthorModel;
+  authorId: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  filePath: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  language: TafseerLanguage;
+  name: Scalars['String']['output'];
+  surahs: Array<SurahModel>;
+  text: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+};
+
+export type UpdateAuthorInput = {
+  bio?: InputMaybe<Scalars['String']['input']>;
+  country?: InputMaybe<Scalars['String']['input']>;
+  displayName?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  username?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateAyahInput = {
+  arabicText?: InputMaybe<Scalars['String']['input']>;
+  number?: InputMaybe<Scalars['Float']['input']>;
+  uzbekText?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateSurahInput = {
+  arabicName?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  number?: InputMaybe<Scalars['Float']['input']>;
+  revelationType?: InputMaybe<SurahRevelationType>;
+  totalAyahs?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type UpdateTafseerAyahInput = {
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateTafseerInput = {
+  arabicName?: InputMaybe<Scalars['String']['input']>;
+  filePath?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<TafseerLanguage>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserModel = {
@@ -129,20 +440,20 @@ export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type LogoutUserMutation = { __typename?: 'Mutation', logoutUser: boolean };
 
-export type FindCurrentSessionQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetCurrentSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FindCurrentSessionQuery = { __typename?: 'Query', findCurrentSession: { __typename?: 'SessionModel', userId: string, rights: Array<Role> } };
+export type GetCurrentSessionQuery = { __typename?: 'Query', getCurrentSession: { __typename?: 'SessionModel', userId: string, rights: Array<Role> } };
 
-export type FindProfileQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type FindProfileQuery = { __typename?: 'Query', findProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role> } };
-
-export type FindProfileAvatarQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FindProfileAvatarQuery = { __typename?: 'Query', findProfile: { __typename?: 'UserModel', avatar?: string | null, username: string, displayName: string } };
+export type GetProfileQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role> } };
+
+export type GetProfileAvatarQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetProfileAvatarQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', avatar?: string | null, username: string, displayName: string } };
 
 
 export const CreateUserDocument = gql`
@@ -239,9 +550,9 @@ export function useLogoutUserMutation(baseOptions?: Apollo.MutationHookOptions<L
 export type LogoutUserMutationHookResult = ReturnType<typeof useLogoutUserMutation>;
 export type LogoutUserMutationResult = Apollo.MutationResult<LogoutUserMutation>;
 export type LogoutUserMutationOptions = Apollo.BaseMutationOptions<LogoutUserMutation, LogoutUserMutationVariables>;
-export const FindCurrentSessionDocument = gql`
-    query FindCurrentSession {
-  findCurrentSession {
+export const GetCurrentSessionDocument = gql`
+    query GetCurrentSession {
+  getCurrentSession {
     userId
     rights
   }
@@ -249,39 +560,39 @@ export const FindCurrentSessionDocument = gql`
     `;
 
 /**
- * __useFindCurrentSessionQuery__
+ * __useGetCurrentSessionQuery__
  *
- * To run a query within a React component, call `useFindCurrentSessionQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindCurrentSessionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCurrentSessionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCurrentSessionQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useFindCurrentSessionQuery({
+ * const { data, loading, error } = useGetCurrentSessionQuery({
  *   variables: {
  *   },
  * });
  */
-export function useFindCurrentSessionQuery(baseOptions?: Apollo.QueryHookOptions<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>) {
+export function useGetCurrentSessionQuery(baseOptions?: Apollo.QueryHookOptions<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>(FindCurrentSessionDocument, options);
+        return Apollo.useQuery<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>(GetCurrentSessionDocument, options);
       }
-export function useFindCurrentSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>) {
+export function useGetCurrentSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>(FindCurrentSessionDocument, options);
+          return Apollo.useLazyQuery<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>(GetCurrentSessionDocument, options);
         }
-export function useFindCurrentSessionSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>) {
+export function useGetCurrentSessionSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>(FindCurrentSessionDocument, options);
+          return Apollo.useSuspenseQuery<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>(GetCurrentSessionDocument, options);
         }
-export type FindCurrentSessionQueryHookResult = ReturnType<typeof useFindCurrentSessionQuery>;
-export type FindCurrentSessionLazyQueryHookResult = ReturnType<typeof useFindCurrentSessionLazyQuery>;
-export type FindCurrentSessionSuspenseQueryHookResult = ReturnType<typeof useFindCurrentSessionSuspenseQuery>;
-export type FindCurrentSessionQueryResult = Apollo.QueryResult<FindCurrentSessionQuery, FindCurrentSessionQueryVariables>;
-export const FindProfileDocument = gql`
-    query FindProfile {
-  findProfile {
+export type GetCurrentSessionQueryHookResult = ReturnType<typeof useGetCurrentSessionQuery>;
+export type GetCurrentSessionLazyQueryHookResult = ReturnType<typeof useGetCurrentSessionLazyQuery>;
+export type GetCurrentSessionSuspenseQueryHookResult = ReturnType<typeof useGetCurrentSessionSuspenseQuery>;
+export type GetCurrentSessionQueryResult = Apollo.QueryResult<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>;
+export const GetProfileDocument = gql`
+    query GetProfile {
+  getProfile {
     id
     email
     avatar
@@ -293,39 +604,39 @@ export const FindProfileDocument = gql`
     `;
 
 /**
- * __useFindProfileQuery__
+ * __useGetProfileQuery__
  *
- * To run a query within a React component, call `useFindProfileQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useFindProfileQuery({
+ * const { data, loading, error } = useGetProfileQuery({
  *   variables: {
  *   },
  * });
  */
-export function useFindProfileQuery(baseOptions?: Apollo.QueryHookOptions<FindProfileQuery, FindProfileQueryVariables>) {
+export function useGetProfileQuery(baseOptions?: Apollo.QueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FindProfileQuery, FindProfileQueryVariables>(FindProfileDocument, options);
+        return Apollo.useQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
       }
-export function useFindProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindProfileQuery, FindProfileQueryVariables>) {
+export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FindProfileQuery, FindProfileQueryVariables>(FindProfileDocument, options);
+          return Apollo.useLazyQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
         }
-export function useFindProfileSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FindProfileQuery, FindProfileQueryVariables>) {
+export function useGetProfileSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<FindProfileQuery, FindProfileQueryVariables>(FindProfileDocument, options);
+          return Apollo.useSuspenseQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
         }
-export type FindProfileQueryHookResult = ReturnType<typeof useFindProfileQuery>;
-export type FindProfileLazyQueryHookResult = ReturnType<typeof useFindProfileLazyQuery>;
-export type FindProfileSuspenseQueryHookResult = ReturnType<typeof useFindProfileSuspenseQuery>;
-export type FindProfileQueryResult = Apollo.QueryResult<FindProfileQuery, FindProfileQueryVariables>;
-export const FindProfileAvatarDocument = gql`
-    query FindProfileAvatar {
-  findProfile {
+export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
+export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
+export type GetProfileSuspenseQueryHookResult = ReturnType<typeof useGetProfileSuspenseQuery>;
+export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const GetProfileAvatarDocument = gql`
+    query GetProfileAvatar {
+  getProfile {
     avatar
     username
     displayName
@@ -334,33 +645,33 @@ export const FindProfileAvatarDocument = gql`
     `;
 
 /**
- * __useFindProfileAvatarQuery__
+ * __useGetProfileAvatarQuery__
  *
- * To run a query within a React component, call `useFindProfileAvatarQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindProfileAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetProfileAvatarQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProfileAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useFindProfileAvatarQuery({
+ * const { data, loading, error } = useGetProfileAvatarQuery({
  *   variables: {
  *   },
  * });
  */
-export function useFindProfileAvatarQuery(baseOptions?: Apollo.QueryHookOptions<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>) {
+export function useGetProfileAvatarQuery(baseOptions?: Apollo.QueryHookOptions<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>(FindProfileAvatarDocument, options);
+        return Apollo.useQuery<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>(GetProfileAvatarDocument, options);
       }
-export function useFindProfileAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>) {
+export function useGetProfileAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>(FindProfileAvatarDocument, options);
+          return Apollo.useLazyQuery<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>(GetProfileAvatarDocument, options);
         }
-export function useFindProfileAvatarSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>) {
+export function useGetProfileAvatarSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>(FindProfileAvatarDocument, options);
+          return Apollo.useSuspenseQuery<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>(GetProfileAvatarDocument, options);
         }
-export type FindProfileAvatarQueryHookResult = ReturnType<typeof useFindProfileAvatarQuery>;
-export type FindProfileAvatarLazyQueryHookResult = ReturnType<typeof useFindProfileAvatarLazyQuery>;
-export type FindProfileAvatarSuspenseQueryHookResult = ReturnType<typeof useFindProfileAvatarSuspenseQuery>;
-export type FindProfileAvatarQueryResult = Apollo.QueryResult<FindProfileAvatarQuery, FindProfileAvatarQueryVariables>;
+export type GetProfileAvatarQueryHookResult = ReturnType<typeof useGetProfileAvatarQuery>;
+export type GetProfileAvatarLazyQueryHookResult = ReturnType<typeof useGetProfileAvatarLazyQuery>;
+export type GetProfileAvatarSuspenseQueryHookResult = ReturnType<typeof useGetProfileAvatarSuspenseQuery>;
+export type GetProfileAvatarQueryResult = Apollo.QueryResult<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>;

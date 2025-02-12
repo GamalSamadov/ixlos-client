@@ -1,9 +1,9 @@
 .avatar_container {
-  @apply mt-2;
+  @apply mt-2 z-0;
 }
 
 .avatar {
-  @apply rounded-full border border-sky_blue bg-sky_blue-light flex items-center justify-center overflow-hidden cursor-pointer;
+  @apply rounded-full border border-sky_blue bg-sky_blue-light flex items-center justify-center cursor-pointer;
 }
 
 .letter {

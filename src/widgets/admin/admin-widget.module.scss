@@ -1,0 +1,11 @@
+.container {
+  @apply h-screen-with_header grid grid-cols-1 grid-rows-10;
+}
+
+.top {
+  @apply col-span-1 row-span-1 flex items-center justify-between;
+}
+
+.bottom {
+  @apply col-span-1 row-span-9 bg-gray-custom;
+}

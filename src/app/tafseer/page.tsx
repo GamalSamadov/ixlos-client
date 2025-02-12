@@ -1,12 +1,21 @@
 import Header from '@/widgets/shared/ui/header/Header/Header'
 
-const DashboardPage = () => {
+import styles from './TafseerPage.module.scss'
+
+const TafseerPage = () => {
   return (
     <>
       <Header />
-      <h1>Dashboard</h1>
+      <section className={styles.container}>
+        <div className={styles['top-left']}>search</div>
+        <div className={styles['top-right']}>quran</div>
+
+        <div className={styles.body}>
+          <div className={styles['body-left']}>right</div>
+        </div>
+      </section>
     </>
   )
 }
 
-export default DashboardPage
+export default TafseerPage

@@ -83,6 +83,8 @@
   },
   "leftside": {
     "links": {
+      "authors": "Aftorlar",
+      "users": "Foidalanuvchilar",
       "books": "Kitoblar",
       "tafseer": "Tafsir",
       "settings": "Sozlamalar"
@@ -91,5 +93,17 @@
   "avatar": {
     "profile": "Profil",
     "logout": "Chiqish"
+  },
+  "errors": {
+    "404": {
+      "title": "404",
+      "message": "Sahifa topilmadi.",
+      "subtitle": "Iltimos, to'g'ri sahifaga kirganingizga amin bo'ling va qayta urunib ko'ring."
+    },
+    "500": {
+      "title": "500",
+      "message": "Serverda xatolik yuz berdi. Iltimos, qayta urunib ko'ring.",
+      "subtitle": "Iltimos, birozdan keyin qayta urunib ko'ring."
+    }
   }
 }

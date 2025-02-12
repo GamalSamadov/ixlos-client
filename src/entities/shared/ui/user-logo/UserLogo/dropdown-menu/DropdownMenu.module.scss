@@ -3,7 +3,7 @@
 }
 
 .sub-menu {
-  @apply w-[150px] absolute top-[60px] right-0 rounded-[6px] origin-[50%_-30px] bg-slate-900 shadow-md z-50;
+  @apply w-[150px] absolute top-[60px] right-0 rounded-[6px] origin-[50%_-30px] bg-slate-900 shadow-md;
 }
 
 .sub-menu-background {
@@ -25,4 +25,8 @@
 .sub-menu-item-loading {
   @apply flex items-center justify-start gap-4 w-full;
   @apply px-4 py-2 rounded-md;
+}
+
+.title {
+  @apply text-white text-xl;
 }
