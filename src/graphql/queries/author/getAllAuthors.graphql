@@ -1,0 +1,14 @@
+query GetAllAuthors($searchTerm: String!, $pagination: PaginationInput!) {
+  getAllAuthors(searchTerm: $searchTerm, pagination: $pagination) {
+    hasMore
+    authors {
+      country
+      user {
+        id
+        displayName
+        avatar
+        email
+      }
+    }
+  }
+}

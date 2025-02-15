@@ -6,7 +6,7 @@ import styles from './Button.module.scss'
 interface IButtonProps {
   children: ReactNode
   className?: string
-  variant?: 'primary' | 'transparent' | 'white' | 'link'
+  variant?: 'primary' | 'transparent' | 'white' | 'link' | 'link-active'
   size?: 'standard' | 'full'
   type?: 'button' | 'submit' | 'reset' | undefined
   disabled?: boolean

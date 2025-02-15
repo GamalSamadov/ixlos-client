@@ -94,6 +94,25 @@
     "profile": "Profil",
     "logout": "Chiqish"
   },
+  "admin": {
+    "authors": {
+      "addButton": "Aftor kiritish",
+      "table": {
+        "avatar": "Surat",
+        "email": "E-pochta",
+        "name": "Ism",
+        "edit": "Tahrirlash"
+      },
+      "search": {
+        "placeholder": "Ism yoki e-pochta ila qidiring..."
+      },
+      "loadMore": "Yana ko'rsatish",
+      "collapse": "Yopish"
+    },
+    "addAuthor": {
+      "back": "Ortga"
+    }
+  },
   "errors": {
     "404": {
       "title": "404",

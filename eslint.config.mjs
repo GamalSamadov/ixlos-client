@@ -50,6 +50,8 @@ const eslintConfig = [
       '@typescript-eslint/no-require-imports': 'off',
       'no-unused-vars': 'off',
       'tailwindcss/no-custom-classname': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      'no-use-before-define': 'off',
     },
     ignorePatterns: ['components/ui/**'],
     overrides: [

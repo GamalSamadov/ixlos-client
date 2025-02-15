@@ -1,53 +1,29 @@
-'use client'
-
-import Image from 'next/image'
-
-import { useGetProfileAvatarQuery } from '@/graphql/generated/output'
+import getProfileAvatar from '@/shared/actions/get-profile-avatar'
+import Avatar from '@/shared/ui/avatar/Avatar'
 import Skeleton from '@/shared/ui/skeleton/Skeleton'
-import { getFirstLetter } from '@/shared/utils/user/get-first-letter'
 
 import DropDown from './dropdown-menu/DropDownMenu'
 import styles from './UserLogo.module.scss'
 
 interface Props {
-  width?: number | undefined
-  height?: number | undefined
+  size: number
 }
 
-const UserLogo = ({ width, height }: Props) => {
-  const { data, loading } = useGetProfileAvatarQuery()
-
-  const avatar = data?.getProfile.avatar
-  const username = data?.getProfile.username
-  const displayName = data?.getProfile.displayName
-  const firstLetter = getFirstLetter(displayName)
+const UserLogo = async ({ size }: Props) => {
+  const { loading, avatar, username, displayName } = await getProfileAvatar()
 
   return (
     <div className={styles.avatar_container}>
       {loading ? (
-        <Skeleton width={width} height={width} />
+        <Skeleton width={size} height={size} />
       ) : (
         <DropDown>
-          <div className={styles.avatar} style={{ width, height }}>
-            {!avatar && firstLetter ? (
-              <h1 className={styles.letter}>{firstLetter}</h1>
-            ) : avatar && username ? (
-              <Image
-                src={avatar}
-                width={width && width - 15}
-                height={height && height - 15}
-                alt={username}
-              />
-            ) : (
-              <Image
-                src="/assets/icons/person.svg"
-                width={width && width - 15}
-                height={height && height - 15}
-                alt="User"
-                className={styles.person_icon}
-              />
-            )}
-          </div>
+          <Avatar
+            size={size}
+            avatar={avatar}
+            username={username}
+            displayName={displayName}
+          />
         </DropDown>
       )}
     </div>

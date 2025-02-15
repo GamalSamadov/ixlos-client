@@ -34,13 +34,15 @@
   }
 }
 
-.link:hover {
+.link:hover,
+.link-active:hover {
   text-decoration: underline;
-}
-
-.standard {
 }
 
 .full {
   @apply w-full;
+}
+
+.link-active {
+  @apply text-sky_blue-light;
 }

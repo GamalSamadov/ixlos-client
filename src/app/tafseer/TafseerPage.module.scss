@@ -1,5 +1,5 @@
 .container {
-  @apply h-screen-with_header  grid grid-cols-1 grid-rows-8 gap-2 md:grid-cols-2 lg:grid-cols-3;
+  @apply grid grid-cols-1 grid-rows-8 gap-2 md:grid-cols-2 lg:grid-cols-3;
 }
 
 .top-left {
@@ -11,7 +11,7 @@
 }
 
 .body {
-  @apply col-span-2 row-span-7 bg-gray-custom;
+  @apply col-span-2 row-span-7;
 }
 
 .body-left {

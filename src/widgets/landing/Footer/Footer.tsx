@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import Icon from '@/shared/ui/icons/Icon'
+import CustomIcon from '@/shared/ui/icons/CustomIcon'
 
 import styles from './Footer.module.scss'
 import { LINKS } from './links'
@@ -21,7 +21,7 @@ const Footer = () => {
         {LINKS.map((link) => (
           <li key={link.id} className={styles.link}>
             <Link href={link.href} target="_blank">
-              <Icon size={25} variant={link.icon} />
+              <CustomIcon size={25} variant={link.icon} />
             </Link>
           </li>
         ))}

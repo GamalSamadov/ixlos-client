@@ -1,0 +1,37 @@
+.input_container {
+  @apply relative mx-2;
+}
+
+.icon {
+  @apply absolute left-4 top-0 text-gray text-[0.7rem];
+  transform: translate(-10%, 40%);
+  z-index: 1;
+}
+
+.input {
+  @apply border-[0.7px] border-sky_blue-light_border rounded-xl pl-12 pr-4 py-2 w-full bg-gray-blur;
+
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+
+  color: var(--white);
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--white);
+    color: var(--white);
+    box-shadow: 0 0 0 1000px var(--gray-blur) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &::placeholder,
+  &::-webkit-input-placeholder {
+    @apply text-gray opacity-[0.3];
+  }
+
+  &:focus {
+    @apply outline-none border-sky_blue-light transition duration-300 ease-in-out bg-gray-blur;
+  }
+}

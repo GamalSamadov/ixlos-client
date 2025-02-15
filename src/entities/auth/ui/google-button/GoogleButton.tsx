@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { AnimateDownOnClickLeft } from '@/shared/ui/buttons/animate-down-on-click/AnimateDownOnClick'
 import Button from '@/shared/ui/buttons/Button'
-import Icon from '@/shared/ui/icons/Icon'
+import CustomIcon from '@/shared/ui/icons/CustomIcon'
 
 interface Props {
   isLoading: boolean
@@ -21,7 +21,7 @@ export const GoogleButton = ({ isLoading }: Props) => {
         variant="transparent"
       >
         {isLoading ? tLoading('title') : t('google.label')}
-        <Icon variant="google" size={20} />
+        <CustomIcon variant="google" size={20} />
       </Button>
     </AnimateDownOnClickLeft>
   )

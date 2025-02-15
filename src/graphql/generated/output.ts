@@ -28,6 +28,12 @@ export type AuthorModel = {
   userId: Scalars['String']['output'];
 };
 
+export type AuthorsPaginatedModel = {
+  __typename?: 'AuthorsPaginatedModel';
+  authors: Array<AuthorModel>;
+  hasMore: Scalars['Boolean']['output'];
+};
+
 export type AyahModel = {
   __typename?: 'AyahModel';
   arabicText: Scalars['String']['output'];
@@ -232,13 +238,12 @@ export type MutationUpdateTafseerAyahArgs = {
 };
 
 export type PaginationInput = {
-  page?: InputMaybe<Scalars['Float']['input']>;
   take?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  getAllAuthors: Array<AuthorModel>;
+  getAllAuthors: AuthorsPaginatedModel;
   getAllAyahs: Array<AyahModel>;
   getAllSurahs: Array<SurahModel>;
   getAllTafseers: Array<TafseerModel>;
@@ -257,6 +262,7 @@ export type Query = {
 
 export type QueryGetAllAuthorsArgs = {
   pagination: PaginationInput;
+  searchTerm: Scalars['String']['input'];
 };
 
 
@@ -445,6 +451,14 @@ export type GetCurrentSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetCurrentSessionQuery = { __typename?: 'Query', getCurrentSession: { __typename?: 'SessionModel', userId: string, rights: Array<Role> } };
 
+export type GetAllAuthorsQueryVariables = Exact<{
+  searchTerm: Scalars['String']['input'];
+  pagination: PaginationInput;
+}>;
+
+
+export type GetAllAuthorsQuery = { __typename?: 'Query', getAllAuthors: { __typename?: 'AuthorsPaginatedModel', hasMore: boolean, authors: Array<{ __typename?: 'AuthorModel', country: string, user: { __typename?: 'UserModel', id: string, displayName: string, avatar?: string | null, email: string } }> } };
+
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -590,6 +604,56 @@ export type GetCurrentSessionQueryHookResult = ReturnType<typeof useGetCurrentSe
 export type GetCurrentSessionLazyQueryHookResult = ReturnType<typeof useGetCurrentSessionLazyQuery>;
 export type GetCurrentSessionSuspenseQueryHookResult = ReturnType<typeof useGetCurrentSessionSuspenseQuery>;
 export type GetCurrentSessionQueryResult = Apollo.QueryResult<GetCurrentSessionQuery, GetCurrentSessionQueryVariables>;
+export const GetAllAuthorsDocument = gql`
+    query GetAllAuthors($searchTerm: String!, $pagination: PaginationInput!) {
+  getAllAuthors(searchTerm: $searchTerm, pagination: $pagination) {
+    hasMore
+    authors {
+      country
+      user {
+        id
+        displayName
+        avatar
+        email
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllAuthorsQuery__
+ *
+ * To run a query within a React component, call `useGetAllAuthorsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllAuthorsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllAuthorsQuery({
+ *   variables: {
+ *      searchTerm: // value for 'searchTerm'
+ *      pagination: // value for 'pagination'
+ *   },
+ * });
+ */
+export function useGetAllAuthorsQuery(baseOptions: Apollo.QueryHookOptions<GetAllAuthorsQuery, GetAllAuthorsQueryVariables> & ({ variables: GetAllAuthorsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>(GetAllAuthorsDocument, options);
+      }
+export function useGetAllAuthorsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>(GetAllAuthorsDocument, options);
+        }
+export function useGetAllAuthorsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>(GetAllAuthorsDocument, options);
+        }
+export type GetAllAuthorsQueryHookResult = ReturnType<typeof useGetAllAuthorsQuery>;
+export type GetAllAuthorsLazyQueryHookResult = ReturnType<typeof useGetAllAuthorsLazyQuery>;
+export type GetAllAuthorsSuspenseQueryHookResult = ReturnType<typeof useGetAllAuthorsSuspenseQuery>;
+export type GetAllAuthorsQueryResult = Apollo.QueryResult<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>;
 export const GetProfileDocument = gql`
     query GetProfile {
   getProfile {

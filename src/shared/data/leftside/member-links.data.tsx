@@ -1,7 +1,7 @@
 import { BookText } from 'lucide-react'
 
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import Icon from '@/shared/ui/icons/Icon'
+import CustomIcon from '@/shared/ui/icons/CustomIcon'
 
 export const MEMBER_LINKS = [
   {
@@ -14,13 +14,13 @@ export const MEMBER_LINKS = [
     id: 1,
     label: 'leftside.links.books',
     href: PUBLIC_PAGES.BOOKS,
-    icon: <Icon variant="book-open-gray" size={30} />,
+    icon: <CustomIcon variant="book-open-gray" size={30} />,
   },
   {
     id: 2,
     label: 'leftside.links.settings',
     href: PUBLIC_PAGES.SETTINGS,
-    icon: <Icon variant="settings" size={30} />,
+    icon: <CustomIcon variant="settings" size={30} />,
   },
 ]
 

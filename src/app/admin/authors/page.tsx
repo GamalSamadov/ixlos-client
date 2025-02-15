@@ -1,11 +1,15 @@
-import AddAuthor from '@/widgets/admin/add-author/AddAuthor'
+import { ISearchParams } from '@/shared/types/search-params'
+import AuthorsWidget from '@/widgets/admin/authors/Authors'
 import Header from '@/widgets/shared/ui/header/Header/Header'
 
-const AdminAuthorsPage = () => {
+import getAllAuthors from './actions/get-authors'
+
+const AdminAuthorsPage = async ({ searchParams }: ISearchParams) => {
+  const { authors, hasMore, loading } = await getAllAuthors({ searchParams })
   return (
     <>
       <Header />
-      <AddAuthor />
+      <AuthorsWidget authors={authors} hasMore={hasMore} loading={loading} />
     </>
   )
 }

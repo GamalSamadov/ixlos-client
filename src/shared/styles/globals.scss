@@ -52,30 +52,32 @@ main::before {
   );
 }
 
-main {
-  @apply px-2 md:px-4;
-}
-
-.error-page {
-  .error-section {
-    @apply h-screen-with_header bg-gray-custom flex flex-col justify-center items-center gap-5 text-center;
-  }
-
-  .error-title {
-    @apply text-sky-300 font-josefin_sans text-4xl md:text-5xl lg:text-6xl;
-  }
-
-  .error-subtitle {
-    @apply text-lg md:text-xl lg:text-2xl;
-  }
-}
-
 @layer utilities {
-  .h-screen-with_header {
-    height: calc(100vh - 6rem);
+  .h_screen_with_header {
+    @apply min-h-[calc(100vh-6rem)];
   }
 
-  .bg-gray-custom {
-    @apply p-4 rounded-lg border border-sky_blue-light_border bg-gradient-to-r from-slate-900/90 to-slate-900/60;
+  .bg_gray_custom {
+    @apply rounded-lg border border-sky_blue-light_border bg-gradient-to-r from-slate-900/90 to-slate-900/60;
+  }
+}
+
+@layer base {
+  main {
+    @apply px-2 md:px-4;
+  }
+
+  .error-page {
+    .error-section {
+      @apply h_screen_with_header bg_gray_custom flex flex-col justify-center items-center gap-5 text-center;
+    }
+
+    .error-title {
+      @apply text-sky-300 font-josefin_sans text-4xl md:text-5xl lg:text-6xl;
+    }
+
+    .error-subtitle {
+      @apply text-lg md:text-xl lg:text-2xl;
+    }
   }
 }

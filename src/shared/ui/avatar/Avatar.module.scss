@@ -1,0 +1,7 @@
+.avatar {
+  @apply rounded-full border border-sky_blue bg-sky_blue-light flex items-center justify-center cursor-pointer;
+}
+
+.letter {
+  @apply text-white font-mono text-2xl;
+}

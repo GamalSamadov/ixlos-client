@@ -6,8 +6,8 @@ import { useState } from 'react'
 import { AuthToggle } from '@/entities/auth/ui/auth-toggle/AuthToggle'
 import ContinueWithoutSignin from '@/entities/auth/ui/continue-without-singnin/ContinueWithoutSignin'
 import { FormTitle } from '@/entities/auth/ui/form-title/FormTitle'
-import { Icon } from '@/entities/auth/ui/icon/Icon'
 import { SubmitButton } from '@/entities/auth/ui/submit-button/SubmitButton'
+import CustomIcon from '@/shared/ui/icons/CustomIcon'
 
 import styles from './AuthForm.module.scss'
 import { useLogin } from '../hooks/useLogin'
@@ -38,12 +38,9 @@ export const LoginForm = () => {
           placeholder={t('form.login.placeholder')}
         />
 
-        <Icon
-          src="/assets/icons/email.svg"
-          width={25}
-          height={25}
-          alt="email"
-        />
+        <div className={styles.icon_container}>
+          <CustomIcon size={25} variant="email" />
+        </div>
       </div>
       <p className={styles.error}>{loginError}</p>
       <div className={styles.input_container}>
@@ -66,7 +63,13 @@ export const LoginForm = () => {
           className={styles.password_icon_container}
           onClick={() => setIsVisible(!isVisible)}
         >
-          <Icon isEye isVisibleEye={isVisible} width={30} height={30} />
+          <div className={styles.icon_container}>
+            {isVisible ? (
+              <CustomIcon size={25} variant="eye-closed" />
+            ) : (
+              <CustomIcon size={25} variant="eye-opened" />
+            )}
+          </div>
         </div>
       </div>
       <p className={styles.error}>{passwordError}</p>

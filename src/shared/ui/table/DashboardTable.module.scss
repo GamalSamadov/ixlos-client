@@ -1,0 +1,30 @@
+table.table_admin {
+  width: 100%;
+  text-align: left;
+
+  tbody,
+  thead {
+    width: 100%;
+
+    > tr {
+      > th,
+      > td {
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  thead > tr {
+    > th {
+      font-weight: 700;
+    }
+  }
+
+  tbody tr {
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+}

@@ -95,6 +95,25 @@
 
     "logout": "Logout"
   },
+  "admin": {
+    "authors": {
+      "addButton": "Add Author",
+      "table": {
+        "avatar": "Avatar",
+        "email": "Email",
+        "name": "Name",
+        "edit": "Edit"
+      },
+      "search": {
+        "placeholder": "Search by name or email..."
+      },
+      "loadMore": "Show More",
+      "collapse": "Collapse"
+    },
+    "addAuthor": {
+      "back": "Back"
+    }
+  },
   "errors": {
     "404": {
       "title": "404",

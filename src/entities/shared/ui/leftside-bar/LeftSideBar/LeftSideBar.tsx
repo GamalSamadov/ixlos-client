@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { TAdminLinks } from '@/shared/data/leftside/admin-links.data'
 import { TMemberLinks } from '@/shared/data/leftside/member-links.data'
 import { TUserLinks } from '@/shared/data/leftside/user-links.data'
-import Icon from '@/shared/ui/icons/Icon'
+import CustomIcon from '@/shared/ui/icons/CustomIcon'
 import Logo from '@/shared/ui/vectors/Logo'
 
 import styles from './LeftSideBar.module.scss'
@@ -28,10 +28,10 @@ const LeftSideBar = ({ links }: Props) => {
   return (
     <aside className={styles.leftside}>
       <div
-        className={styles.toggleIcon}
+        className={styles.toggleCustomIcon}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <Icon size={35} variant="toggle" />
+        <CustomIcon size={35} variant="toggle" />
       </div>
       <AnimatePresence mode="wait">
         {isOpen && (

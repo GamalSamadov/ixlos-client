@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { PropsWithChildren, useState, useRef, useEffect } from 'react'
 
-import Icon from '@/shared/ui/icons/Icon'
+import CustomIcon from '@/shared/ui/icons/CustomIcon'
 import useLogout from '@/widgets/shared/hooks/useLogout'
 
 import { MENUS } from './data/avatar-menu-items.data'
@@ -52,7 +52,7 @@ const DropDown = ({ children }: PropsWithChildren) => {
           {MENUS.map((menu) =>
             isLoading ? (
               <button className={styles['sub-menu-item-loading']} key={menu.id}>
-                <Icon variant={menu.icon} size={15} />
+                <CustomIcon variant={menu.icon} size={15} />
                 <span>{t(menu.title)}</span>
               </button>
             ) : (
@@ -72,7 +72,7 @@ const DropDown = ({ children }: PropsWithChildren) => {
                   setIsOpen(false)
                 }}
               >
-                <Icon variant={menu.icon} size={20} />
+                <CustomIcon variant={menu.icon} size={20} />
                 <span className={styles.title}>{t(menu.title)}</span>
               </button>
             )
