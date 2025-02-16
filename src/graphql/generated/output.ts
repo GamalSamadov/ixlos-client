@@ -48,7 +48,7 @@ export type AyahModel = {
 };
 
 export type CreateAuthorInput = {
-  bio: Scalars['String']['input'];
+  bio?: InputMaybe<Scalars['String']['input']>;
   country?: InputMaybe<Scalars['String']['input']>;
   displayName?: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
@@ -113,7 +113,7 @@ export type LoginInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   clearSessionCookie: Scalars['Boolean']['output'];
-  createAuthor: Scalars['Boolean']['output'];
+  createAuthor: AuthorModel;
   createAyah: Scalars['Boolean']['output'];
   createSurah: Scalars['Boolean']['output'];
   createTafseer: Scalars['Boolean']['output'];
@@ -251,11 +251,13 @@ export type Query = {
   getAuthorById: AuthorModel;
   getAyahById: AyahModel;
   getCurrentSession: SessionModel;
+  getEmailByEmail: Scalars['String']['output'];
   getProfile: UserModel;
   getSessionsByUser: Array<SessionModel>;
   getSurahById: SurahModel;
   getTafseerAyahById: TafseerAyahModel;
   getTafseerById: TafseerModel;
+  getUsernameByUsername: Scalars['String']['output'];
   searchAyahByText: Array<AyahModel>;
 };
 
@@ -292,6 +294,11 @@ export type QueryGetAyahByIdArgs = {
 };
 
 
+export type QueryGetEmailByEmailArgs = {
+  email: Scalars['String']['input'];
+};
+
+
 export type QueryGetSurahByIdArgs = {
   id: Scalars['String']['input'];
 };
@@ -299,6 +306,11 @@ export type QueryGetSurahByIdArgs = {
 
 export type QueryGetTafseerByIdArgs = {
   id: Scalars['String']['input'];
+};
+
+
+export type QueryGetUsernameByUsernameArgs = {
+  username: Scalars['String']['input'];
 };
 
 
@@ -427,6 +439,13 @@ export type UserModel = {
   username: Scalars['String']['output'];
 };
 
+export type CreateAuthorMutationVariables = Exact<{
+  data: CreateAuthorInput;
+}>;
+
+
+export type CreateAuthorMutation = { __typename?: 'Mutation', createAuthor: { __typename?: 'AuthorModel', id: string } };
+
 export type CreateUserMutationVariables = Exact<{
   data: CreateUserInput;
 }>;
@@ -459,6 +478,13 @@ export type GetAllAuthorsQueryVariables = Exact<{
 
 export type GetAllAuthorsQuery = { __typename?: 'Query', getAllAuthors: { __typename?: 'AuthorsPaginatedModel', hasMore: boolean, authors: Array<{ __typename?: 'AuthorModel', country: string, user: { __typename?: 'UserModel', id: string, displayName: string, avatar?: string | null, email: string } }> } };
 
+export type GetEmailByEmailQueryVariables = Exact<{
+  email: Scalars['String']['input'];
+}>;
+
+
+export type GetEmailByEmailQuery = { __typename?: 'Query', getEmailByEmail: string };
+
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -469,7 +495,47 @@ export type GetProfileAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetProfileAvatarQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', avatar?: string | null, username: string, displayName: string } };
 
+export type GetUsernameByUsernameQueryVariables = Exact<{
+  username: Scalars['String']['input'];
+}>;
 
+
+export type GetUsernameByUsernameQuery = { __typename?: 'Query', getUsernameByUsername: string };
+
+
+export const CreateAuthorDocument = gql`
+    mutation CreateAuthor($data: CreateAuthorInput!) {
+  createAuthor(data: $data) {
+    id
+  }
+}
+    `;
+export type CreateAuthorMutationFn = Apollo.MutationFunction<CreateAuthorMutation, CreateAuthorMutationVariables>;
+
+/**
+ * __useCreateAuthorMutation__
+ *
+ * To run a mutation, you first call `useCreateAuthorMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateAuthorMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createAuthorMutation, { data, loading, error }] = useCreateAuthorMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateAuthorMutation(baseOptions?: Apollo.MutationHookOptions<CreateAuthorMutation, CreateAuthorMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateAuthorMutation, CreateAuthorMutationVariables>(CreateAuthorDocument, options);
+      }
+export type CreateAuthorMutationHookResult = ReturnType<typeof useCreateAuthorMutation>;
+export type CreateAuthorMutationResult = Apollo.MutationResult<CreateAuthorMutation>;
+export type CreateAuthorMutationOptions = Apollo.BaseMutationOptions<CreateAuthorMutation, CreateAuthorMutationVariables>;
 export const CreateUserDocument = gql`
     mutation CreateUser($data: CreateUserInput!) {
   createUser(data: $data)
@@ -654,6 +720,44 @@ export type GetAllAuthorsQueryHookResult = ReturnType<typeof useGetAllAuthorsQue
 export type GetAllAuthorsLazyQueryHookResult = ReturnType<typeof useGetAllAuthorsLazyQuery>;
 export type GetAllAuthorsSuspenseQueryHookResult = ReturnType<typeof useGetAllAuthorsSuspenseQuery>;
 export type GetAllAuthorsQueryResult = Apollo.QueryResult<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>;
+export const GetEmailByEmailDocument = gql`
+    query getEmailByEmail($email: String!) {
+  getEmailByEmail(email: $email)
+}
+    `;
+
+/**
+ * __useGetEmailByEmailQuery__
+ *
+ * To run a query within a React component, call `useGetEmailByEmailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetEmailByEmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetEmailByEmailQuery({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useGetEmailByEmailQuery(baseOptions: Apollo.QueryHookOptions<GetEmailByEmailQuery, GetEmailByEmailQueryVariables> & ({ variables: GetEmailByEmailQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>(GetEmailByEmailDocument, options);
+      }
+export function useGetEmailByEmailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>(GetEmailByEmailDocument, options);
+        }
+export function useGetEmailByEmailSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>(GetEmailByEmailDocument, options);
+        }
+export type GetEmailByEmailQueryHookResult = ReturnType<typeof useGetEmailByEmailQuery>;
+export type GetEmailByEmailLazyQueryHookResult = ReturnType<typeof useGetEmailByEmailLazyQuery>;
+export type GetEmailByEmailSuspenseQueryHookResult = ReturnType<typeof useGetEmailByEmailSuspenseQuery>;
+export type GetEmailByEmailQueryResult = Apollo.QueryResult<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>;
 export const GetProfileDocument = gql`
     query GetProfile {
   getProfile {
@@ -739,3 +843,41 @@ export type GetProfileAvatarQueryHookResult = ReturnType<typeof useGetProfileAva
 export type GetProfileAvatarLazyQueryHookResult = ReturnType<typeof useGetProfileAvatarLazyQuery>;
 export type GetProfileAvatarSuspenseQueryHookResult = ReturnType<typeof useGetProfileAvatarSuspenseQuery>;
 export type GetProfileAvatarQueryResult = Apollo.QueryResult<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>;
+export const GetUsernameByUsernameDocument = gql`
+    query getUsernameByUsername($username: String!) {
+  getUsernameByUsername(username: $username)
+}
+    `;
+
+/**
+ * __useGetUsernameByUsernameQuery__
+ *
+ * To run a query within a React component, call `useGetUsernameByUsernameQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUsernameByUsernameQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUsernameByUsernameQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *   },
+ * });
+ */
+export function useGetUsernameByUsernameQuery(baseOptions: Apollo.QueryHookOptions<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables> & ({ variables: GetUsernameByUsernameQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables>(GetUsernameByUsernameDocument, options);
+      }
+export function useGetUsernameByUsernameLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables>(GetUsernameByUsernameDocument, options);
+        }
+export function useGetUsernameByUsernameSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables>(GetUsernameByUsernameDocument, options);
+        }
+export type GetUsernameByUsernameQueryHookResult = ReturnType<typeof useGetUsernameByUsernameQuery>;
+export type GetUsernameByUsernameLazyQueryHookResult = ReturnType<typeof useGetUsernameByUsernameLazyQuery>;
+export type GetUsernameByUsernameSuspenseQueryHookResult = ReturnType<typeof useGetUsernameByUsernameSuspenseQuery>;
+export type GetUsernameByUsernameQueryResult = Apollo.QueryResult<GetUsernameByUsernameQuery, GetUsernameByUsernameQueryVariables>;

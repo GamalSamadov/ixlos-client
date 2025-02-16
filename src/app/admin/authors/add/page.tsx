@@ -1,10 +1,8 @@
-import AddAuthorForm from '@/widgets/admin/add-author-form/AddAuthorForm'
-import Header from '@/widgets/shared/ui/header/Header/Header'
+import AddAuthorForm from '@/widgets/admin/ui/add-author-form/AddAuthorForm'
 
 const AddAuthorPage = () => {
   return (
     <>
-      <Header />
       <AddAuthorForm />
     </>
   )

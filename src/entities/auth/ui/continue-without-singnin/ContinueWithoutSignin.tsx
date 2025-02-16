@@ -8,7 +8,7 @@ import Button from '@/shared/ui/buttons/Button'
 import Dialog from '@/shared/ui/dialog/Dialog'
 
 import styles from './ContinueWithoutSignin.module.scss'
-import { HrWithTitle } from '../hr-with-title/HrWithTitle'
+import { HrWithTitle } from '../../../shared/ui/from/hr-with-title/HrWithTitle'
 
 const ContinueWithoutSignin = () => {
   const router = useRouter()

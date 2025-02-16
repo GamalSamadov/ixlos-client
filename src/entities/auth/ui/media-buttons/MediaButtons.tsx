@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import styles from './MediaButtons.module.scss'
 import { GoogleButton } from '../google-button/GoogleButton'
-import { HrWithTitle } from '../hr-with-title/HrWithTitle'
+import { HrWithTitle } from '../../../shared/ui/from/hr-with-title/HrWithTitle'
 
 interface Props {
   isLoading: boolean

@@ -53,11 +53,7 @@
     "logout": {
       "loading": "Logging out..."
     },
-    "errors": {
-      "required": "This field is required",
-      "passwordMinLength": "Password must be at least 8 characters",
-      "invalidEmail": "Invalid email address"
-    },
+
     "toggle": {
       "login": "No account?",
       "register": "Already have an account?"
@@ -112,14 +108,49 @@
       "collapse": "Collapse"
     },
     "addAuthor": {
-      "back": "Back"
+      "back": "Back",
+      "title": "Add author",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "info@samadov.dev"
+        },
+        "username": {
+          "label": "Username",
+          "placeholder": "samadov-2001"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********"
+        },
+        "name": {
+          "label": "Name",
+          "placeholder": "Jamoliddin Samadov"
+        },
+        "country": {
+          "label": "Country"
+        },
+        "confirm": "Add Author",
+        "loading": "Adding author..."
+      }
     }
   },
   "errors": {
+    "required": "This field is required",
+    "passwordMinLength": "Must be at least 8 characters",
+    "invalidEmail": "Invalid email address",
+    "emailExists": "Email already exists",
+    "invalidUsername": "Must start with letter/underscore and only contain letters, numbers, -_",
+    "usernameExists": "Username already exists",
+    "usernameMinLength": "Password must be at least 3 characters",
+    "bioMinLength": "Bio must be at least 10 characters",
+    "bioMaxLength": "Bio must be at most 255 characters",
+
     "404": {
       "title": "404",
       "message": "Page not found.",
-      "subtitle": "Please check the URL in the address bar and try again."
+      "subtitle": "Please check the URL in the address bar and try again.",
+      "back": "Back to Tafseer"
     },
     "500": {
       "title": "500",

@@ -1,0 +1,3 @@
+query getEmailByEmail($email: String!) {
+  getEmailByEmail(email: $email)
+}

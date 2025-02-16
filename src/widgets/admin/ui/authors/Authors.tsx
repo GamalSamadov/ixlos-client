@@ -86,7 +86,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
               avatar: user.avatar,
               email: user.email,
               displayName: user.displayName,
-              editUrl: `/admin/authors/edit/${user.id}`,
+              editUrl: ADMIN_PAGES.AUTHOR_EDIT(user.id),
             })) || []
           }
         />

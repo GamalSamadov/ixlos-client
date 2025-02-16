@@ -5,18 +5,18 @@ import { useState } from 'react'
 
 import { AuthToggle } from '@/entities/auth/ui/auth-toggle/AuthToggle'
 import ContinueWithoutSignin from '@/entities/auth/ui/continue-without-singnin/ContinueWithoutSignin'
-import { FormTitle } from '@/entities/auth/ui/form-title/FormTitle'
-import { SubmitButton } from '@/entities/auth/ui/submit-button/SubmitButton'
+import { FormTitle } from '@/entities/shared/ui/from/form-title/FormTitle'
+import { SubmitButton } from '@/entities/shared/ui/from/submit-button/SubmitButton'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import styles from '@/widgets/shared/styles/Form.module.scss'
 
-import styles from './AuthForm.module.scss'
 import { useLogin } from '../hooks/useLogin'
 
 export const LoginForm = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const t = useTranslations('auth.login')
-  const tError = useTranslations('auth.errors')
+  const tError = useTranslations('errors')
 
   const { register, onSubmit, isLoading, handleSubmit, formState } = useLogin()
 
@@ -27,7 +27,9 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <FormTitle title={t('title')} />
       <div className={styles.input_container}>
-        <span className={styles.label}>{t('form.login.label')}</span>
+        <label className={styles.label} htmlFor="login">
+          {t('form.login.label')}
+        </label>
         <input
           {...register('login', {
             required: tError('required'),
@@ -35,6 +37,7 @@ export const LoginForm = () => {
           className={styles.input}
           name="login"
           type="text"
+          id="login"
           placeholder={t('form.login.placeholder')}
         />
 
@@ -44,7 +47,9 @@ export const LoginForm = () => {
       </div>
       <p className={styles.error}>{loginError}</p>
       <div className={styles.input_container}>
-        <span className={styles.label}>{t('form.password.label')}</span>
+        <label htmlFor="password" className={styles.label}>
+          {t('form.password.label')}
+        </label>
         <input
           {...register('password', {
             required: tError('required'),
@@ -55,6 +60,7 @@ export const LoginForm = () => {
           })}
           className={styles.input}
           name="password"
+          id="password"
           type={isVisible ? 'text' : 'password'}
           placeholder={t('form.password.placeholder')}
         />

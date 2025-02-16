@@ -68,8 +68,9 @@ main::before {
   }
 
   .error-page {
+    @apply flex justify-center items-center h-screen;
     .error-section {
-      @apply h_screen_with_header bg_gray_custom flex flex-col justify-center items-center gap-5 text-center;
+      @apply px-10 md:px-20 h_screen_with_header bg_gray_custom flex flex-col justify-center items-center gap-5 text-center;
     }
 
     .error-title {

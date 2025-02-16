@@ -1,9 +1,17 @@
+.top_link {
+  @apply w-full pt-4 flex justify-start items-center;
+}
+
+.form_container {
+  @apply py-10 px-4 w-full h-full flex justify-center items-center;
+}
+
 .form {
-  @apply w-full md:w-[60vw] lg:w-[30vw] flex flex-col gap-3 md:gap-4;
+  @apply w-full md:w-[60vw] lg:w-[30vw] flex flex-col gap-2 md:gap-2;
 }
 
 .input_container {
-  @apply relative;
+  @apply relative text-sky_blue-light;
 }
 
 .label {

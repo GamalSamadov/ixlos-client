@@ -53,11 +53,7 @@
     "logout": {
       "loading": "Chiqilmoqda..."
     },
-    "errors": {
-      "required": "Bu joy majburiy",
-      "passwordMinLength": "Parol kamida 8 belgidan iborat bo'lishi kerak",
-      "invalidEmail": "Noto'g'ri e-pochta manzili"
-    },
+
     "toggle": {
       "login": "Hisobingiz yo'qmi?",
       "register": "Hisobingiz bormi?"
@@ -111,14 +107,49 @@
       "collapse": "Yopish"
     },
     "addAuthor": {
-      "back": "Ortga"
+      "back": "Ortga",
+      "title": "Aftor kiritish",
+      "form": {
+        "email": {
+          "label": "E-pochta",
+          "placeholder": "info@samadov.dev"
+        },
+        "username": {
+          "label": "Foydalanuvchi nomi",
+          "placeholder": "samadov-2001"
+        },
+        "password": {
+          "label": "Parol",
+          "placeholder": "********"
+        },
+        "name": {
+          "label": "Ism sharf",
+          "placeholder": "Jamoliddin Samadov"
+        },
+        "country": {
+          "label": "Davlat"
+        },
+        "confirm": "Aftorni qo'shish",
+        "loading": "Aftor qo'shilmoqda..."
+      }
     }
   },
   "errors": {
+    "required": "Bu joy majburiy",
+    "passwordMinLength": "Kamida 8 belgi bo'lishi shart",
+    "invalidEmail": "Noto'g'ri e-pochta",
+    "emailExists": "E-pochta mavjud",
+    "invalidUsername": "Lotin harflari yoki (_) bilan boshlanishi, raqamlar va (-,_)dan iborat bo'lishi kerak",
+    "usernameExists": "Foydalanuvchi nomi mavjud",
+    "usernameMinLength": "Kamida 3 belgi bo'lishi shart",
+    "bioMinLength": "Kamida 10 belgi bo'lishi shart",
+    "bioMaxLength": "Ko'pi bilan 255 belgi bo'lishi shart",
+
     "404": {
       "title": "404",
       "message": "Sahifa topilmadi.",
-      "subtitle": "Iltimos, to'g'ri sahifaga kirganingizga amin bo'ling va qayta urunib ko'ring."
+      "subtitle": "Iltimos, to'g'ri sahifaga kirganingizga amin bo'ling va qayta urunib ko'ring.",
+      "back": "Tafsirga qaytish"
     },
     "500": {
       "title": "500",

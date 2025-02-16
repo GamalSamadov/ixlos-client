@@ -6,10 +6,11 @@ import { useTranslations } from 'next-intl'
 
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import Button from '@/shared/ui/buttons/Button'
+import { TUserDataState } from '@/shared/utils/user/transform-user-to-state'
 
 import styles from './Hero.module.scss'
 
-const Hero = () => {
+const Hero = ({ user }: { user: TUserDataState | null }) => {
   const t = useTranslations('landing.hero')
   return (
     <section className={styles.hero}>
@@ -17,7 +18,10 @@ const Hero = () => {
       <div className={styles.content}>
         <h1 className={styles.title}>{t('platformName')}</h1>
         <p className={styles.subtitle}>{t('subtitle')}</p>
-        <Link href={PUBLIC_PAGES.LOGIN} className={styles.link}>
+        <Link
+          href={user ? PUBLIC_PAGES.HOME : PUBLIC_PAGES.LOGIN}
+          className={styles.link}
+        >
           <Button variant="white" size="full">
             {t('button')}
           </Button>

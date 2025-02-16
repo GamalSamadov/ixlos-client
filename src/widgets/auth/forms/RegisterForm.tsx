@@ -1,21 +1,33 @@
 'use client'
 
+import { User2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { AuthToggle } from '@/entities/auth/ui/auth-toggle/AuthToggle'
 import ContinueWithoutSignin from '@/entities/auth/ui/continue-without-singnin/ContinueWithoutSignin'
-import { FormTitle } from '@/entities/auth/ui/form-title/FormTitle'
-import { SubmitButton } from '@/entities/auth/ui/submit-button/SubmitButton'
+import { FormTitle } from '@/entities/shared/ui/from/form-title/FormTitle'
+import { SubmitButton } from '@/entities/shared/ui/from/submit-button/SubmitButton'
+import {
+  EMAIL_PATTERN,
+  USERNAME_PATTERN,
+} from '@/shared/libs/constants/patterns.constants'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
 import { useRegister } from '@/widgets/auth/hooks/useRegister'
-
-import styles from './AuthForm.module.scss'
+import useCheckEmail from '@/widgets/shared/hooks/useEmailCheck'
+import useCheckUsername from '@/widgets/shared/hooks/useUsernameCheck'
+import styles from '@/widgets/shared/styles/Form.module.scss'
 
 export const RegisterForm = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+
+  const { existingUsername } = useCheckUsername(username)
+  const { existingEmail } = useCheckEmail(email)
+
   const t = useTranslations('auth.register')
-  const tError = useTranslations('auth.errors')
+  const tError = useTranslations('errors')
 
   const { register, onSubmit, handleSubmit, isLoading, formState } =
     useRegister()
@@ -28,19 +40,27 @@ export const RegisterForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <FormTitle title={t('title')} />
       <div className={styles.input_container}>
-        <span className={styles.label}>{t('form.email.label')}</span>
+        <label htmlFor="email" className={styles.label}>
+          {t('form.email.label')}
+        </label>
         <input
           {...register('email', {
             required: tError('required'),
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              value: EMAIL_PATTERN,
               message: tError('invalidEmail'),
+            },
+            validate: {
+              isEmailUnique: (value) =>
+                existingEmail !== value || tError('emailExists'),
             },
           })}
           className={styles.input}
           name="email"
+          id="email"
           type="email"
           placeholder={t('form.email.placeholder')}
+          onKeyUp={(e) => setEmail(e.currentTarget.value)}
         />
         <div className={styles.icon_container}>
           <CustomIcon size={25} variant="email" />
@@ -50,25 +70,43 @@ export const RegisterForm = () => {
       <p className={styles.error}>{emailError}</p>
 
       <div className={styles.input_container}>
-        <span className={styles.label}>{t('form.username.label')}</span>
+        <label htmlFor="username" className={styles.label}>
+          {t('form.username.label')}
+        </label>
         <input
           {...register('username', {
             required: tError('required'),
+            pattern: {
+              value: USERNAME_PATTERN,
+              message: tError('invalidUsername'),
+            },
+            validate: {
+              isUsernameUnique: (value) =>
+                existingUsername !== value || tError('usernameExists'),
+            },
+            minLength: {
+              value: 3,
+              message: tError('usernameMinLength'),
+            },
           })}
           className={styles.input}
           name="username"
+          id="username"
           type="text"
           placeholder={t('form.username.placeholder')}
+          onKeyUp={(e) => setUsername(e.currentTarget.value)}
         />
         <div className={styles.icon_container}>
-          <CustomIcon size={25} variant="email" />
+          <User2 size={25} />
         </div>
       </div>
 
       <p className={styles.error}>{usernameError}</p>
 
       <div className={styles.input_container}>
-        <span className={styles.label}>{t('form.password.label')}</span>
+        <label htmlFor="password" className={styles.label}>
+          {t('form.password.label')}
+        </label>
         <input
           {...register('password', {
             required: tError('required'),
@@ -79,6 +117,7 @@ export const RegisterForm = () => {
           })}
           className={styles.input}
           name="password"
+          id="password"
           type={isVisible ? 'text' : 'password'}
           placeholder={t('form.password.placeholder')}
         />
@@ -97,6 +136,7 @@ export const RegisterForm = () => {
       </div>
 
       <p className={styles.error}>{passwordError}</p>
+
       <AuthToggle />
 
       <SubmitButton
