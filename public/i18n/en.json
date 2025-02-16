@@ -105,6 +105,7 @@
         "edit": "Edit"
       },
       "search": {
+        "title": "All Authors",
         "placeholder": "Search by name or email..."
       },
       "loadMore": "Show More",

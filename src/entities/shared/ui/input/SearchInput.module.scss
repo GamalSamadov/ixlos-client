@@ -1,5 +1,9 @@
+.container {
+  @apply w-full flex items-center justify-center md:justify-between py-1 px-5;
+}
+
 .input_container {
-  @apply relative mx-2;
+  @apply relative w-full md:w-[500px];
 }
 
 .icon {

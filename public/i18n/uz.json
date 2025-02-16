@@ -104,6 +104,7 @@
         "edit": "Tahrirlash"
       },
       "search": {
+        "title": "Barcha aftorlar",
         "placeholder": "Ism yoki e-pochta ila qidiring..."
       },
       "loadMore": "Yana ko'rsatish",

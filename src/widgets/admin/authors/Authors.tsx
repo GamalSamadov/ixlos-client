@@ -49,6 +49,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
       </div>
       <div className={clsx(styles.bottom, 'bg_gray_custom')}>
         <SearchInput
+          title={t('search.title')}
           route={ADMIN_PAGES.AUTHORS}
           name="Authors Search"
           type="text"
@@ -96,11 +97,13 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
             loading={loading}
           />
         ) : (
-          <Collapse
-            onClick={resetTake}
-            title={t('collapse')}
-            loading={loading}
-          />
+          authors.length > 10 && (
+            <Collapse
+              onClick={resetTake}
+              title={t('collapse')}
+              loading={loading}
+            />
+          )
         )}
       </div>
     </section>
