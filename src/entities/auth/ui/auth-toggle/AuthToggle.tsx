@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
@@ -10,16 +10,13 @@ interface Props {
 }
 
 export const AuthToggle = ({ isLogin }: Props) => {
-  const router = useRouter()
   const t = useTranslations('auth.toggle')
   return (
-    <p
+    <Link
       className={styles.auth_toggle}
-      onClick={() => {
-        router.push(isLogin ? PUBLIC_PAGES.REGISTER : PUBLIC_PAGES.LOGIN)
-      }}
+      href={isLogin ? PUBLIC_PAGES.REGISTER : PUBLIC_PAGES.LOGIN}
     >
       {isLogin ? t('login') : t('register')}
-    </p>
+    </Link>
   )
 }

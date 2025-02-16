@@ -73,6 +73,7 @@ export const LoginForm = () => {
         </div>
       </div>
       <p className={styles.error}>{passwordError}</p>
+
       <AuthToggle isLogin />
 
       <SubmitButton

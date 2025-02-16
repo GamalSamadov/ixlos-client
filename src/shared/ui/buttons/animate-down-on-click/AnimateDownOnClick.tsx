@@ -7,22 +7,24 @@ interface Props {
 
 export const AnimateDownOnClickLeft = ({ children }: Props) => {
   return (
-    <m.div
+    <m.span
       className={styles['animate-down']}
       whileTap={{ scale: 0.96, rotate: 0.4 }}
+      tabIndex={-1}
     >
       {children}
-    </m.div>
+    </m.span>
   )
 }
 
 export const AnimateDownOnClickRight = ({ children }: Props) => {
   return (
-    <m.div
+    <m.span
       className={styles['animate-down']}
       whileTap={{ scale: 0.96, rotate: -0.4 }}
+      tabIndex={-1}
     >
       {children}
-    </m.div>
+    </m.span>
   )
 }
