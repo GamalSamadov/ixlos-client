@@ -133,6 +133,15 @@
         "confirm": "Add Author",
         "loading": "Adding author..."
       }
+    },
+    "updateAuthor": {
+      "bio": {
+        "add": {
+          "title": "Add Author Bio",
+          "skip": "Skip",
+          "confirm": "Add Bio"
+        }
+      }
     }
   },
   "errors": {

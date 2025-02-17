@@ -3,7 +3,6 @@ export interface IAddAuthorFormData {
   username: string
   password: string
   displayName: string
-  bio?: string
   avatar?: string
   country?: string
 }

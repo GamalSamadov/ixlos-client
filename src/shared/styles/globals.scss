@@ -81,4 +81,24 @@ main::before {
       @apply text-lg md:text-xl lg:text-2xl;
     }
   }
+
+  h1 {
+    @apply text-3xl font-josefin_sans text-sky-200;
+  }
+
+  h2 {
+    @apply text-2xl font-josefin_sans text-sky-200;
+  }
+
+  h3 {
+    @apply text-lg font-josefin_sans text-sky-200;
+  }
+
+  mark {
+    @apply bg-sky-900 text-sky-200;
+  }
+
+  p {
+    @apply text-base;
+  }
 }

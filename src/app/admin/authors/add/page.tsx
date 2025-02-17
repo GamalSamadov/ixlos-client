@@ -1,4 +1,4 @@
-import AddAuthorForm from '@/widgets/admin/ui/add-author-form/AddAuthorForm'
+import AddAuthorForm from '@/widgets/admin/ui/authors/add-author-form/AddAuthorForm'
 
 const AddAuthorPage = () => {
   return (

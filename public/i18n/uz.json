@@ -132,6 +132,15 @@
         "confirm": "Aftorni qo'shish",
         "loading": "Aftor qo'shilmoqda..."
       }
+    },
+    "updateAuthor": {
+      "bio": {
+        "add": {
+          "title": "Aftor haqida ma'lumot qo'shish",
+          "skip": "O'tkazib yuborish",
+          "confirm": "Ma'lumotni qo'shish"
+        }
+      }
     }
   },
   "errors": {

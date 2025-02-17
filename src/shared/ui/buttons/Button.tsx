@@ -10,6 +10,7 @@ interface IButtonProps {
   size?: 'standard' | 'full'
   type?: 'button' | 'submit' | 'reset' | undefined
   disabled?: boolean
+  isActive?: boolean
   onClick?: () => void
 }
 
@@ -20,6 +21,7 @@ const Button = ({
   size = 'standard',
   type = 'button',
   disabled = false,
+  isActive = false,
   onClick,
 }: IButtonProps) => {
   return (
@@ -33,6 +35,7 @@ const Button = ({
         variant === 'link' && styles.link,
         size === 'standard' && styles.standard,
         size === 'full' && styles.full,
+        isActive && styles.active,
         className
       )}
       disabled={disabled}

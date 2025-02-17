@@ -1,0 +1,15 @@
+.container {
+  @apply h-screen flex flex-col items-center justify-center py-10 gap-10;
+
+  .title {
+    @apply text-white text-3xl font-bold;
+  }
+}
+
+.form {
+  @apply w-[1000px] flex flex-col gap-2;
+}
+
+.buttons {
+  @apply flex justify-between gap-4;
+}

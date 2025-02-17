@@ -15,11 +15,10 @@ import {
 } from '@/shared/libs/constants/patterns.constants'
 import Button from '@/shared/ui/buttons/Button'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import useAddAuthor from '@/widgets/admin/hooks/useAddAuthor'
 import useCheckEmail from '@/widgets/shared/hooks/useEmailCheck'
 import useCheckUsername from '@/widgets/shared/hooks/useUsernameCheck'
 import styles from '@/widgets/shared/styles/Form.module.scss'
-
-import useAddAuthor from '../../hooks/useAddAuthor'
 
 const AddAuthorForm = () => {
   const [username, setUsername] = useState('')

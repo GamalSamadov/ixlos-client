@@ -5,8 +5,12 @@ class AdminPages {
   AUTHORS = '/admin/authors'
   ADD_AUTHORS = '/admin/authors/add'
 
-  AUTHOR_BIO(id: string) {
-    return `/admin/authors/${id}/bio`
+  ADD_AUTHOR_BIO(id: string) {
+    return `/admin/authors/${id}/bio/add`
+  }
+
+  EDIT_AUTHOR_BIO(id: string) {
+    return `/admin/authors/${id}/bio/edit`
   }
 
   AUTHOR_EDIT(id: string) {

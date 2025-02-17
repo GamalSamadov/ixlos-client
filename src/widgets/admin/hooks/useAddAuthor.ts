@@ -31,11 +31,10 @@ const useAddAuthor = () => {
       const id = data.createAuthor.id
       startTransition(() => {
         reset()
-        router.push(ADMIN_PAGES.AUTHOR_BIO(id))
+        router.push(ADMIN_PAGES.ADD_AUTHOR_BIO(id))
       })
     },
     onError(err) {
-      console.error(err)
       toast.error(err.message)
     },
   })
