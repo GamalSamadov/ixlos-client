@@ -49,7 +49,6 @@ export type AyahModel = {
 };
 
 export type CreateAuthorInput = {
-  bio?: InputMaybe<Scalars['String']['input']>;
   country?: InputMaybe<Scalars['String']['input']>;
   displayName?: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
@@ -84,7 +83,6 @@ export type CreateTafseerInput = {
 };
 
 export type CreateUserInput = {
-  bio?: InputMaybe<Scalars['String']['input']>;
   displayName?: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -136,6 +134,7 @@ export type Mutation = {
   updateAuthorBio: Scalars['Boolean']['output'];
   updateAyah: Scalars['Boolean']['output'];
   updateBioByUserId: Scalars['Boolean']['output'];
+  updateProfileInfoByUserId: UserModel;
   updateSurah: Scalars['Boolean']['output'];
   updateTafseer: Scalars['Boolean']['output'];
   updateTafseerAyah: Scalars['Boolean']['output'];
@@ -248,6 +247,12 @@ export type MutationUpdateAyahArgs = {
 
 export type MutationUpdateBioByUserIdArgs = {
   bio: Scalars['String']['input'];
+  userId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateProfileInfoByUserIdArgs = {
+  data: UpdateProfileInfoInput;
   userId: Scalars['String']['input'];
 };
 
@@ -452,6 +457,12 @@ export type UpdateAyahInput = {
   uzbekText?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type UpdateProfileInfoInput = {
+  displayName?: InputMaybe<Scalars['String']['input']>;
+  email: Scalars['String']['input'];
+  username: Scalars['String']['input'];
+};
+
 export type UpdateSurahInput = {
   arabicName?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -527,6 +538,14 @@ export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LogoutUserMutation = { __typename?: 'Mutation', logoutUser: boolean };
+
+export type UpdateProfileInfoByUserIdMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  data: UpdateProfileInfoInput;
+}>;
+
+
+export type UpdateProfileInfoByUserIdMutation = { __typename?: 'Mutation', updateProfileInfoByUserId: { __typename?: 'UserModel', id: string } };
 
 export type GetCurrentSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -771,6 +790,40 @@ export function useLogoutUserMutation(baseOptions?: Apollo.MutationHookOptions<L
 export type LogoutUserMutationHookResult = ReturnType<typeof useLogoutUserMutation>;
 export type LogoutUserMutationResult = Apollo.MutationResult<LogoutUserMutation>;
 export type LogoutUserMutationOptions = Apollo.BaseMutationOptions<LogoutUserMutation, LogoutUserMutationVariables>;
+export const UpdateProfileInfoByUserIdDocument = gql`
+    mutation updateProfileInfoByUserId($userId: String!, $data: UpdateProfileInfoInput!) {
+  updateProfileInfoByUserId(userId: $userId, data: $data) {
+    id
+  }
+}
+    `;
+export type UpdateProfileInfoByUserIdMutationFn = Apollo.MutationFunction<UpdateProfileInfoByUserIdMutation, UpdateProfileInfoByUserIdMutationVariables>;
+
+/**
+ * __useUpdateProfileInfoByUserIdMutation__
+ *
+ * To run a mutation, you first call `useUpdateProfileInfoByUserIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateProfileInfoByUserIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateProfileInfoByUserIdMutation, { data, loading, error }] = useUpdateProfileInfoByUserIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useUpdateProfileInfoByUserIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateProfileInfoByUserIdMutation, UpdateProfileInfoByUserIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateProfileInfoByUserIdMutation, UpdateProfileInfoByUserIdMutationVariables>(UpdateProfileInfoByUserIdDocument, options);
+      }
+export type UpdateProfileInfoByUserIdMutationHookResult = ReturnType<typeof useUpdateProfileInfoByUserIdMutation>;
+export type UpdateProfileInfoByUserIdMutationResult = Apollo.MutationResult<UpdateProfileInfoByUserIdMutation>;
+export type UpdateProfileInfoByUserIdMutationOptions = Apollo.BaseMutationOptions<UpdateProfileInfoByUserIdMutation, UpdateProfileInfoByUserIdMutationVariables>;
 export const GetCurrentSessionDocument = gql`
     query GetCurrentSession {
   getCurrentSession {

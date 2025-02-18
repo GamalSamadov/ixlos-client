@@ -53,9 +53,11 @@ const Profile = async ({ profile }: Props) => {
           </div>
           {hasAccess && (
             <div className={styles.edit_button}>
-              <Button variant="primary" size="full">
-                <Edit2 /> {t('edit')}
-              </Button>
+              <Link href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}>
+                <Button variant="primary" size="full">
+                  <Edit2 /> {t('edit')}
+                </Button>
+              </Link>
             </div>
           )}
         </div>

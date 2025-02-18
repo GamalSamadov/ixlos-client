@@ -1,0 +1,8 @@
+mutation updateProfileInfoByUserId(
+  $userId: String!
+  $data: UpdateProfileInfoInput!
+) {
+  updateProfileInfoByUserId(userId: $userId, data: $data) {
+    id
+  }
+}

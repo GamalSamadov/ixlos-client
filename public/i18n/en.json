@@ -154,6 +154,29 @@
     "addBio": {
       "title": "Add Biography",
       "confirm": "Save"
+    },
+    "updateInfo": {
+      "back": "Back",
+      "title": "Update info",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "info@samadov.dev"
+        },
+        "username": {
+          "label": "Username",
+          "placeholder": "samadov-2001"
+        },
+        "name": {
+          "label": "Name",
+          "placeholder": "Jamoliddin Samadov"
+        },
+        "country": {
+          "label": "Country"
+        },
+        "confirm": "Save",
+        "loading": "Saqlanmoqda..."
+      }
     }
   },
   "errors": {

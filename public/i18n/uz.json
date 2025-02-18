@@ -154,6 +154,29 @@
     "addBio": {
       "title": "Biografiya kiritish",
       "confirm": "Saqlash"
+    },
+    "updateInfo": {
+      "back": "Ortga",
+      "title": "Ma'lumotlar",
+      "form": {
+        "email": {
+          "label": "E-pochta",
+          "placeholder": "info@samadov.dev"
+        },
+        "username": {
+          "label": "Foydalanuvchi nomi",
+          "placeholder": "samadov-2001"
+        },
+        "name": {
+          "label": "Ism sharf",
+          "placeholder": "Jamoliddin Samadov"
+        },
+        "country": {
+          "label": "Davlat"
+        },
+        "confirm": "Saqlash",
+        "loading": "Saqlanmoqda..."
+      }
     }
   },
   "errors": {
