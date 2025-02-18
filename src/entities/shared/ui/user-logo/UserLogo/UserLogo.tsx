@@ -10,14 +10,15 @@ interface Props {
 }
 
 const UserLogo = async ({ size }: Props) => {
-  const { loading, avatar, username, displayName } = await getProfileAvatar()
+  const { id, avatar, username, displayName, loading } =
+    await getProfileAvatar()
 
   return (
     <div className={styles.avatar_container}>
       {loading ? (
         <Skeleton width={size} height={size} />
       ) : (
-        <DropDown>
+        <DropDown id={id}>
           <Avatar
             size={size}
             avatar={avatar}

@@ -17,7 +17,9 @@ const Avatar = ({ size, avatar, username, displayName }: Props) => {
   return (
     <div className={styles.avatar} style={{ width: size, height: size }}>
       {!avatar && firstLetter ? (
-        <h1 className={styles.letter}>{firstLetter}</h1>
+        <h1 className={styles.letter} style={{ fontSize: size - 20 }}>
+          {firstLetter}
+        </h1>
       ) : avatar && username ? (
         <Image
           src={avatar}

@@ -134,14 +134,26 @@
         "loading": "Adding author..."
       }
     },
-    "updateAuthor": {
-      "bio": {
-        "add": {
-          "title": "Add Author Bio",
-          "skip": "Skip",
-          "confirm": "Add Bio"
-        }
-      }
+    "authorAddBio": {
+      "title": "Add Author Bio",
+      "skip": "Skip",
+      "confirm": "Add Bio"
+    }
+  },
+  "profile": {
+    "updateAvatar": "Update",
+    "edit": "Edit",
+    "add": "Add",
+    "updatePassword": "Update Password",
+    "bio": "Biography:",
+    "noBio": "There is no biography added!",
+    "updateBio": {
+      "title": "Update Biography",
+      "confirm": "Save"
+    },
+    "addBio": {
+      "title": "Add Biography",
+      "confirm": "Save"
     }
   },
   "errors": {
@@ -152,8 +164,6 @@
     "invalidUsername": "Must start with letter/underscore and only contain letters, numbers, -_",
     "usernameExists": "Username already exists",
     "usernameMinLength": "Password must be at least 3 characters",
-    "bioMinLength": "Bio must be at least 10 characters",
-    "bioMaxLength": "Bio must be at most 255 characters",
 
     "404": {
       "title": "404",

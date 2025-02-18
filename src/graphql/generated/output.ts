@@ -16,6 +16,7 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   DateTime: { input: any; output: any; }
+  Upload: { input: any; output: any; }
 };
 
 export type AuthorModel = {
@@ -112,6 +113,8 @@ export type LoginInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  changeProfileAvatar: Scalars['Boolean']['output'];
+  changeProfileAvatarByUserId: Scalars['Boolean']['output'];
   clearSessionCookie: Scalars['Boolean']['output'];
   createAuthor: AuthorModel;
   createAyah: Scalars['Boolean']['output'];
@@ -126,13 +129,27 @@ export type Mutation = {
   deleteTafseerAyah: Scalars['Boolean']['output'];
   loginUser: UserModel;
   logoutUser: Scalars['Boolean']['output'];
+  removeProfileAvatar: Scalars['Boolean']['output'];
+  removeProfileAvatarByUserId: Scalars['Boolean']['output'];
   removeSession: Scalars['Boolean']['output'];
   updateAuthor: Scalars['Boolean']['output'];
   updateAuthorBio: Scalars['Boolean']['output'];
   updateAyah: Scalars['Boolean']['output'];
+  updateBioByUserId: Scalars['Boolean']['output'];
   updateSurah: Scalars['Boolean']['output'];
   updateTafseer: Scalars['Boolean']['output'];
   updateTafseerAyah: Scalars['Boolean']['output'];
+};
+
+
+export type MutationChangeProfileAvatarArgs = {
+  avatar: Scalars['Upload']['input'];
+};
+
+
+export type MutationChangeProfileAvatarByUserIdArgs = {
+  avatar: Scalars['Upload']['input'];
+  userId: Scalars['String']['input'];
 };
 
 
@@ -200,6 +217,11 @@ export type MutationLoginUserArgs = {
 };
 
 
+export type MutationRemoveProfileAvatarByUserIdArgs = {
+  userId: Scalars['String']['input'];
+};
+
+
 export type MutationRemoveSessionArgs = {
   id: Scalars['String']['input'];
 };
@@ -221,6 +243,12 @@ export type MutationUpdateAyahArgs = {
   data: UpdateAyahInput;
   id: Scalars['String']['input'];
   surahId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateBioByUserIdArgs = {
+  bio: Scalars['String']['input'];
+  userId: Scalars['String']['input'];
 };
 
 
@@ -257,9 +285,11 @@ export type Query = {
   getAllUsers: Array<UserModel>;
   getAuthorById: AuthorModel;
   getAyahById: AyahModel;
+  getBioByUserId: Scalars['String']['output'];
   getCurrentSession: SessionModel;
   getEmailByEmail: Scalars['String']['output'];
   getProfile: UserModel;
+  getProfileById: UserModel;
   getSessionsByUser: Array<SessionModel>;
   getSurahById: SurahModel;
   getTafseerAyahById: TafseerAyahModel;
@@ -301,8 +331,18 @@ export type QueryGetAyahByIdArgs = {
 };
 
 
+export type QueryGetBioByUserIdArgs = {
+  userId: Scalars['String']['input'];
+};
+
+
 export type QueryGetEmailByEmailArgs = {
   email: Scalars['String']['input'];
+};
+
+
+export type QueryGetProfileByIdArgs = {
+  id: Scalars['String']['input'];
 };
 
 
@@ -461,6 +501,14 @@ export type UpdateAuthorBioMutationVariables = Exact<{
 
 export type UpdateAuthorBioMutation = { __typename?: 'Mutation', updateAuthorBio: boolean };
 
+export type UpdateBioByUserIdMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  bio: Scalars['String']['input'];
+}>;
+
+
+export type UpdateBioByUserIdMutation = { __typename?: 'Mutation', updateBioByUserId: boolean };
+
 export type CreateUserMutationVariables = Exact<{
   data: CreateUserInput;
 }>;
@@ -493,6 +541,13 @@ export type GetAllAuthorsQueryVariables = Exact<{
 
 export type GetAllAuthorsQuery = { __typename?: 'Query', getAllAuthors: { __typename?: 'AuthorsPaginatedModel', hasMore: boolean, authors: Array<{ __typename?: 'AuthorModel', country?: string | null, user: { __typename?: 'UserModel', id: string, displayName: string, avatar?: string | null, email: string } }> } };
 
+export type GetBioByUserIdQueryVariables = Exact<{
+  userId: Scalars['String']['input'];
+}>;
+
+
+export type GetBioByUserIdQuery = { __typename?: 'Query', getBioByUserId: string };
+
 export type GetEmailByEmailQueryVariables = Exact<{
   email: Scalars['String']['input'];
 }>;
@@ -503,12 +558,19 @@ export type GetEmailByEmailQuery = { __typename?: 'Query', getEmailByEmail: stri
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfileQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role> } };
+export type GetProfileQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role>, bio?: string | null } };
+
+export type GetProfileByIdQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+}>;
+
+
+export type GetProfileByIdQuery = { __typename?: 'Query', getProfileById: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role>, bio?: string | null } };
 
 export type GetProfileAvatarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfileAvatarQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', avatar?: string | null, username: string, displayName: string } };
+export type GetProfileAvatarQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, avatar?: string | null, username: string, displayName: string } };
 
 export type GetUsernameByUsernameQueryVariables = Exact<{
   username: Scalars['String']['input'];
@@ -583,6 +645,38 @@ export function useUpdateAuthorBioMutation(baseOptions?: Apollo.MutationHookOpti
 export type UpdateAuthorBioMutationHookResult = ReturnType<typeof useUpdateAuthorBioMutation>;
 export type UpdateAuthorBioMutationResult = Apollo.MutationResult<UpdateAuthorBioMutation>;
 export type UpdateAuthorBioMutationOptions = Apollo.BaseMutationOptions<UpdateAuthorBioMutation, UpdateAuthorBioMutationVariables>;
+export const UpdateBioByUserIdDocument = gql`
+    mutation updateBioByUserId($userId: String!, $bio: String!) {
+  updateBioByUserId(userId: $userId, bio: $bio)
+}
+    `;
+export type UpdateBioByUserIdMutationFn = Apollo.MutationFunction<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>;
+
+/**
+ * __useUpdateBioByUserIdMutation__
+ *
+ * To run a mutation, you first call `useUpdateBioByUserIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateBioByUserIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateBioByUserIdMutation, { data, loading, error }] = useUpdateBioByUserIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      bio: // value for 'bio'
+ *   },
+ * });
+ */
+export function useUpdateBioByUserIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>(UpdateBioByUserIdDocument, options);
+      }
+export type UpdateBioByUserIdMutationHookResult = ReturnType<typeof useUpdateBioByUserIdMutation>;
+export type UpdateBioByUserIdMutationResult = Apollo.MutationResult<UpdateBioByUserIdMutation>;
+export type UpdateBioByUserIdMutationOptions = Apollo.BaseMutationOptions<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>;
 export const CreateUserDocument = gql`
     mutation CreateUser($data: CreateUserInput!) {
   createUser(data: $data)
@@ -767,6 +861,44 @@ export type GetAllAuthorsQueryHookResult = ReturnType<typeof useGetAllAuthorsQue
 export type GetAllAuthorsLazyQueryHookResult = ReturnType<typeof useGetAllAuthorsLazyQuery>;
 export type GetAllAuthorsSuspenseQueryHookResult = ReturnType<typeof useGetAllAuthorsSuspenseQuery>;
 export type GetAllAuthorsQueryResult = Apollo.QueryResult<GetAllAuthorsQuery, GetAllAuthorsQueryVariables>;
+export const GetBioByUserIdDocument = gql`
+    query getBioByUserId($userId: String!) {
+  getBioByUserId(userId: $userId)
+}
+    `;
+
+/**
+ * __useGetBioByUserIdQuery__
+ *
+ * To run a query within a React component, call `useGetBioByUserIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBioByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBioByUserIdQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetBioByUserIdQuery(baseOptions: Apollo.QueryHookOptions<GetBioByUserIdQuery, GetBioByUserIdQueryVariables> & ({ variables: GetBioByUserIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>(GetBioByUserIdDocument, options);
+      }
+export function useGetBioByUserIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>(GetBioByUserIdDocument, options);
+        }
+export function useGetBioByUserIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>(GetBioByUserIdDocument, options);
+        }
+export type GetBioByUserIdQueryHookResult = ReturnType<typeof useGetBioByUserIdQuery>;
+export type GetBioByUserIdLazyQueryHookResult = ReturnType<typeof useGetBioByUserIdLazyQuery>;
+export type GetBioByUserIdSuspenseQueryHookResult = ReturnType<typeof useGetBioByUserIdSuspenseQuery>;
+export type GetBioByUserIdQueryResult = Apollo.QueryResult<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>;
 export const GetEmailByEmailDocument = gql`
     query getEmailByEmail($email: String!) {
   getEmailByEmail(email: $email)
@@ -814,6 +946,7 @@ export const GetProfileDocument = gql`
     displayName
     username
     rights
+    bio
   }
 }
     `;
@@ -849,9 +982,56 @@ export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
 export type GetProfileSuspenseQueryHookResult = ReturnType<typeof useGetProfileSuspenseQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const GetProfileByIdDocument = gql`
+    query GetProfileById($id: String!) {
+  getProfileById(id: $id) {
+    id
+    email
+    avatar
+    displayName
+    username
+    rights
+    bio
+  }
+}
+    `;
+
+/**
+ * __useGetProfileByIdQuery__
+ *
+ * To run a query within a React component, call `useGetProfileByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProfileByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProfileByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetProfileByIdQuery(baseOptions: Apollo.QueryHookOptions<GetProfileByIdQuery, GetProfileByIdQueryVariables> & ({ variables: GetProfileByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProfileByIdQuery, GetProfileByIdQueryVariables>(GetProfileByIdDocument, options);
+      }
+export function useGetProfileByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileByIdQuery, GetProfileByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProfileByIdQuery, GetProfileByIdQueryVariables>(GetProfileByIdDocument, options);
+        }
+export function useGetProfileByIdSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProfileByIdQuery, GetProfileByIdQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetProfileByIdQuery, GetProfileByIdQueryVariables>(GetProfileByIdDocument, options);
+        }
+export type GetProfileByIdQueryHookResult = ReturnType<typeof useGetProfileByIdQuery>;
+export type GetProfileByIdLazyQueryHookResult = ReturnType<typeof useGetProfileByIdLazyQuery>;
+export type GetProfileByIdSuspenseQueryHookResult = ReturnType<typeof useGetProfileByIdSuspenseQuery>;
+export type GetProfileByIdQueryResult = Apollo.QueryResult<GetProfileByIdQuery, GetProfileByIdQueryVariables>;
 export const GetProfileAvatarDocument = gql`
     query GetProfileAvatar {
   getProfile {
+    id
     avatar
     username
     displayName

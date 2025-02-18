@@ -3,8 +3,9 @@
 import { m } from 'framer-motion'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { PropsWithChildren, useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, ReactNode } from 'react'
 
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
 import useLogout from '@/widgets/shared/hooks/useLogout'
 
@@ -12,7 +13,7 @@ import { MENUS } from './data/avatar-menu-items.data'
 import styles from './DropdownMenu.module.scss'
 import { VARIANTS } from './menuAnimateVariants'
 
-const DropDown = ({ children }: PropsWithChildren) => {
+const DropDown = ({ children, id }: { children: ReactNode; id: string }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -66,6 +67,8 @@ const DropDown = ({ children }: PropsWithChildren) => {
                 onClick={() => {
                   if (menu.id === 'logout') {
                     logout()
+                  } else if (menu.id === 'profile') {
+                    router.push(PUBLIC_PAGES.PROFILE(id))
                   } else {
                     router.push(menu.href)
                   }

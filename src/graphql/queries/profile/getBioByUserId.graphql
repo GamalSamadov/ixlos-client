@@ -1,0 +1,3 @@
+query getBioByUserId($userId: String!) {
+  getBioByUserId(userId: $userId)
+}

@@ -1,0 +1,55 @@
+.container {
+  @apply py-8 px-4 w-full flex flex-col md:flex-row items-start;
+
+  .left {
+    @apply w-full lg:w-[50vw] p-6 pb-6 md:pb-0 flex flex-col justify-center items-center gap-4 border-b-[0.7px] border-r-0 md:border-r-[0.7px] md:border-b-0 border-sky_blue-light_border;
+
+    .info {
+      @apply flex flex-col gap-2 justify-center items-center w-full;
+
+      .item {
+        @apply w-full border-[0.7px] border-sky_blue-light_border rounded-xl p-2 bg-gray-blur flex flex-row items-center gap-3 justify-start;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+
+        white-space: wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        color: var(--white);
+
+        .icon {
+          @apply text-sky_blue-light;
+        }
+
+        .text {
+          @apply text-lg text-gray;
+        }
+      }
+    }
+
+    .edit_button {
+      @apply w-full flex justify-end mt-3;
+    }
+  }
+
+  .right {
+    @apply flex flex-col gap-4 px-4 py-6 justify-between w-full;
+
+    .bio {
+      @apply w-full flex flex-col gap-2;
+
+      .bio_header {
+        @apply w-full flex justify-between items-center;
+
+        .bio_heading {
+          @apply text-lg text-orange-400;
+        }
+      }
+    }
+
+    .no_bio {
+      @apply text-red-400 text-xl;
+    }
+  }
+}

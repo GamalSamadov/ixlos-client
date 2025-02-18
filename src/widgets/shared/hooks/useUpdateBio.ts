@@ -5,28 +5,28 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useUpdateAuthorBioMutation } from '@/graphql/generated/output'
-import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
+import { useUpdateBioByUserIdMutation } from '@/graphql/generated/output'
+import { USER_PAGES } from '@/shared/config/pages/user.config'
 import { IBioFormData } from '@/widgets/shared/types/bio.type'
 
-const useAuthorBioUpdate = (id: string) => {
-  const [content, setContent] = useState('')
+const useUpdateBio = (userId: string, bio: string) => {
+  const [content, setContent] = useState(bio)
 
   const { handleSubmit, register, reset, formState } = useForm<IBioFormData>({
     mode: 'onChange',
     defaultValues: {
-      bio: '',
+      bio,
     },
   })
 
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
 
-  const [update, { loading }] = useUpdateAuthorBioMutation({
+  const [update, { loading }] = useUpdateBioByUserIdMutation({
     onCompleted() {
       startTransition(() => {
         reset()
-        router.push(ADMIN_PAGES.AUTHORS)
+        router.push(USER_PAGES.PROFILE(userId))
       })
     },
     onError(err) {
@@ -36,7 +36,7 @@ const useAuthorBioUpdate = (id: string) => {
 
   const onSubmit = (data: IBioFormData) => {
     data.bio = content
-    update({ variables: { id, bio: data.bio } })
+    update({ variables: { userId, bio: data.bio } })
   }
 
   const isLoading = loading || isPending || !content || content === '<p></p>'
@@ -52,4 +52,4 @@ const useAuthorBioUpdate = (id: string) => {
   }
 }
 
-export default useAuthorBioUpdate
+export default useUpdateBio

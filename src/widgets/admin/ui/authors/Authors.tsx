@@ -11,6 +11,7 @@ import SearchInput from '@/entities/shared/ui/input/SearchInput'
 import { ShowMore } from '@/entities/shared/ui/show-more/ShowMore'
 import { GetAllAuthorsQuery, UserModel } from '@/graphql/generated/output'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { useTake } from '@/shared/hooks/useTake'
 import Avatar from '@/shared/ui/avatar/Avatar'
 import Button from '@/shared/ui/buttons/Button'
@@ -20,7 +21,7 @@ import DashboardTable from '@/shared/ui/table/DashboardTable'
 import styles from '../admin-widget.module.scss'
 
 interface IUsersTable
-  extends Pick<UserModel, 'email' | 'displayName' | 'avatar'>,
+  extends Pick<UserModel, 'email' | 'displayName' | 'avatar' | 'id'>,
     IDashboardTableBaseData {}
 
 interface Props {
@@ -62,12 +63,14 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
               title: t('table.avatar'),
               dataIndex: 'avatar',
               render: (record) => (
-                <Avatar
-                  size={40}
-                  avatar={record.avatar}
-                  displayName={record.displayName}
-                  username={record.email}
-                />
+                <Link href={PUBLIC_PAGES.PROFILE(record.id)}>
+                  <Avatar
+                    size={40}
+                    avatar={record.avatar}
+                    displayName={record.displayName}
+                    username={record.email}
+                  />
+                </Link>
               ),
             },
             {
@@ -83,6 +86,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
           ]}
           data={
             authors?.map(({ user }) => ({
+              id: user.id,
               avatar: user.avatar,
               email: user.email,
               displayName: user.displayName,

@@ -1,16 +1,15 @@
 'use client'
 
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import Button from '@/shared/ui/buttons/Button'
 import TextEditor from '@/shared/ui/text-editor/TextEditor'
+import useUpdateBio from '@/widgets/shared/hooks/useUpdateBio'
 
 import styles from '../Bio.module.scss'
-import useAuthorBioAdd from './useAuthorBioAdd'
 
-const AddAuthorBio = () => {
+const AddBio = () => {
   const { id }: { id: string } = useParams()
   const {
     setContent,
@@ -20,11 +19,9 @@ const AddAuthorBio = () => {
     onSubmit,
     isLoading,
     formState,
-  } = useAuthorBioAdd(id)
+  } = useUpdateBio(id, '')
 
-  const router = useRouter()
-
-  const t = useTranslations('admin.authorAddBio')
+  const t = useTranslations('profile.addBio')
 
   const error = formState.errors.bio?.message
 
@@ -44,12 +41,6 @@ const AddAuthorBio = () => {
         <p className="text-red-600">{error}</p>
 
         <div className={styles.buttons}>
-          <Button
-            variant="link"
-            onClick={() => router.push(ADMIN_PAGES.AUTHORS)}
-          >
-            {t('skip')}
-          </Button>
           <Button type="submit" disabled={isLoading}>
             {t('confirm')}
           </Button>
@@ -59,4 +50,4 @@ const AddAuthorBio = () => {
   )
 }
 
-export default AddAuthorBio
+export default AddBio

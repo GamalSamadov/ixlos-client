@@ -1,6 +1,6 @@
 import AddAuthorBio from '@/widgets/shared/ui/bio/add-author-bio/AddAuthorBio'
 
-const BioAddPage = () => {
+const AuthorBioAddPage = () => {
   return (
     <>
       <AddAuthorBio />
@@ -8,4 +8,4 @@ const BioAddPage = () => {
   )
 }
 
-export default BioAddPage
+export default AuthorBioAddPage

@@ -2,7 +2,7 @@ import { USER_PAGES } from '@/shared/config/pages/user.config'
 
 export const MENUS = [
   {
-    id: 1,
+    id: 'profile',
     title: 'profile',
     icon: 'person',
     href: USER_PAGES.PROFILE,

@@ -1,0 +1,3 @@
+mutation updateBioByUserId($userId: String!, $bio: String!) {
+  updateBioByUserId(userId: $userId, bio: $bio)
+}

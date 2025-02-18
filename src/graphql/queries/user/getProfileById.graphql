@@ -1,5 +1,5 @@
-query GetProfile {
-  getProfile {
+query GetProfileById($id: String!) {
+  getProfileById(id: $id) {
     id
     email
     avatar

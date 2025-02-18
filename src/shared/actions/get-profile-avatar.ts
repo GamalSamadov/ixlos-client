@@ -15,10 +15,11 @@ const getProfileAvatar = async () => {
   })
 
   const avatar = data.getProfile.avatar
+  const id = data.getProfile.id
   const username = data.getProfile.username
   const displayName = data.getProfile.displayName
 
-  return { loading, avatar, username, displayName }
+  return { id, avatar, username, displayName, loading }
 }
 
 export default getProfileAvatar

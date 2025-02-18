@@ -133,14 +133,27 @@
         "loading": "Aftor qo'shilmoqda..."
       }
     },
-    "updateAuthor": {
-      "bio": {
-        "add": {
-          "title": "Aftor haqida ma'lumot qo'shish",
-          "skip": "O'tkazib yuborish",
-          "confirm": "Ma'lumotni qo'shish"
-        }
-      }
+
+    "authorAddBio": {
+      "title": "Aftor haqida ma'lumot qo'shish",
+      "skip": "O'tkazib yuborish",
+      "confirm": "Ma'lumotni qo'shish"
+    }
+  },
+  "profile": {
+    "updateAvatar": "Yangilash",
+    "edit": "Yahrirlash",
+    "add": "Kiritish",
+    "updatePassword": "Parolni yangilash",
+    "bio": "Biografiya:",
+    "noBio": "Biografiya kiritilmagan!",
+    "updateBio": {
+      "title": "Biografiyani yangilash",
+      "confirm": "Saqlash"
+    },
+    "addBio": {
+      "title": "Biografiya kiritish",
+      "confirm": "Saqlash"
     }
   },
   "errors": {
@@ -151,8 +164,6 @@
     "invalidUsername": "Lotin harflari yoki (_) bilan boshlanishi, raqamlar va (-,_)dan iborat bo'lishi kerak",
     "usernameExists": "Foydalanuvchi nomi mavjud",
     "usernameMinLength": "Kamida 3 belgi bo'lishi shart",
-    "bioMinLength": "Kamida 10 belgi bo'lishi shart",
-    "bioMaxLength": "Ko'pi bilan 255 belgi bo'lishi shart",
 
     "404": {
       "title": "404",
