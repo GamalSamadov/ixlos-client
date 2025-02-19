@@ -12,6 +12,7 @@ import { ShowMore } from '@/entities/shared/ui/show-more/ShowMore'
 import { GetAllAuthorsQuery, UserModel } from '@/graphql/generated/output'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
+import { USER_PAGES } from '@/shared/config/pages/user.config'
 import { useTake } from '@/shared/hooks/useTake'
 import Avatar from '@/shared/ui/avatar/Avatar'
 import Button from '@/shared/ui/buttons/Button'
@@ -57,7 +58,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
           placeholder={t('search.placeholder')}
         />
         <DashboardTable<IUsersTable>
-          headerActions={[t('table.edit')]}
+          headerActions={[t('table.action')]}
           columns={[
             {
               title: t('table.avatar'),
@@ -90,7 +91,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
               avatar: user.avatar,
               email: user.email,
               displayName: user.displayName,
-              editUrl: ADMIN_PAGES.AUTHOR_EDIT(user.id),
+              actionUrl: USER_PAGES.PROFILE(user.id),
             })) || []
           }
         />

@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import type {
   IDashboardTable,
   IDashboardTableBaseData,
@@ -12,6 +14,7 @@ function DashboardTable<TData extends IDashboardTableBaseData>({
   data,
   headerActions,
 }: IDashboardTable<TData>) {
+  const t = useTranslations('errors')
   return (
     <div className={styles.body_table_admin}>
       <table className={styles.table_admin}>
@@ -44,7 +47,7 @@ function DashboardTable<TData extends IDashboardTableBaseData>({
             ))
           ) : (
             <tr className="hover:!bg-transparent">
-              <td className="!border-r-0">Not found</td>
+              <td className="!border-r-0">{t('dataNotFound')}</td>
             </tr>
           )}
         </tbody>

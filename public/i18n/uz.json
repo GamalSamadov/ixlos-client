@@ -97,7 +97,7 @@
         "avatar": "Surat",
         "email": "E-pochta",
         "name": "Ism",
-        "edit": "Tahrirlash"
+        "action": "Ochish"
       },
       "search": {
         "title": "Barcha aftorlar",
@@ -148,10 +148,12 @@
     "bio": "Biografiya:",
     "noBio": "Biografiya kiritilmagan!",
     "updateBio": {
+      "back": "Ortga",
       "title": "Biografiyani yangilash",
       "confirm": "Saqlash"
     },
     "addBio": {
+      "back": "Ortga",
       "title": "Biografiya kiritish",
       "confirm": "Saqlash"
     },
@@ -177,9 +179,31 @@
         "confirm": "Saqlash",
         "loading": "Saqlanmoqda..."
       }
+    },
+
+    "updatePasswordPage": {
+      "back": "Ortga",
+      "title": "Parolni yangilash",
+      "form": {
+        "oldPassword": {
+          "label": "Eski parol",
+          "placeholder": "********"
+        },
+        "newPassword": {
+          "label": "Yangi parol",
+          "placeholder": "********"
+        },
+        "newPasswordRepeat": {
+          "label": "Yangi parolni qaytaring",
+          "placeholder": "********"
+        },
+        "confirm": "Yangilash",
+        "loading": "Yangilanmoqda..."
+      }
     }
   },
   "errors": {
+    "dataNotFound": "Bunday ma'lumot topilmadi.",
     "required": "Bu joy majburiy",
     "passwordMinLength": "Kamida 8 belgi bo'lishi shart",
     "invalidEmail": "Noto'g'ri e-pochta",
@@ -187,6 +211,8 @@
     "invalidUsername": "Lotin harflari yoki (_) bilan boshlanishi, raqamlar va (-,_)dan iborat bo'lishi kerak",
     "usernameExists": "Foydalanuvchi nomi mavjud",
     "usernameMinLength": "Kamida 3 belgi bo'lishi shart",
+    "passwordsMatch": "Eski va yangi parollar farqli bo'lishi kerak",
+    "passwordsNotMatch": "Ikkala parol bir xil emas",
 
     "404": {
       "title": "404",

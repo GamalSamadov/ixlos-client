@@ -1,8 +1,11 @@
 'use client'
 
+import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { USER_PAGES } from '@/shared/config/pages/user.config'
 import Button from '@/shared/ui/buttons/Button'
 import TextEditor from '@/shared/ui/text-editor/TextEditor'
 import useUpdateBio from '@/widgets/shared/hooks/useUpdateBio'
@@ -27,6 +30,14 @@ const AddBio = () => {
 
   return (
     <section className={styles.container}>
+      <div className={styles.top_link}>
+        <Link href={USER_PAGES.PROFILE(id)}>
+          <Button variant="link">
+            <ArrowLeft size={30} /> {t('back')}
+          </Button>
+        </Link>
+      </div>
+
       <h1 className={styles.title}>{t('title')}</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

@@ -41,7 +41,9 @@ const Profile = async ({ profile }: Props) => {
         <div className={styles.info}>
           <div className={styles.item}>
             <CaseSensitive size={30} className={styles.icon} />
-            <p className={styles.text}>{profile.displayName}</p>
+            <p className={styles.text}>
+              {profile.displayName ? profile.displayName : ''}
+            </p>
           </div>
           <div className={styles.item}>
             <CustomIcon size={29} variant="email" />
@@ -53,7 +55,10 @@ const Profile = async ({ profile }: Props) => {
           </div>
           {hasAccess && (
             <div className={styles.edit_button}>
-              <Link href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}>
+              <Link
+                href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}
+                className="w-full"
+              >
                 <Button variant="primary" size="full">
                   <Edit2 /> {t('edit')}
                 </Button>
@@ -62,7 +67,11 @@ const Profile = async ({ profile }: Props) => {
           )}
         </div>
 
-        {hasAccess && <Button variant="link">Parolni yangilash</Button>}
+        {hasAccess && (
+          <Link href={USER_PAGES.PROFILE_UPDATE_PASSWORD(profile.id)}>
+            <Button variant="link">Parolni yangilash</Button>
+          </Link>
+        )}
       </div>
       <div className={styles.right}>
         <div className={styles.bio}>

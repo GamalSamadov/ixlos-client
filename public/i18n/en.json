@@ -98,7 +98,7 @@
         "avatar": "Avatar",
         "email": "Email",
         "name": "Name",
-        "edit": "Edit"
+        "action": "Go"
       },
       "search": {
         "title": "All Authors",
@@ -148,10 +148,12 @@
     "bio": "Biography:",
     "noBio": "There is no biography added!",
     "updateBio": {
+      "back": "Back",
       "title": "Update Biography",
       "confirm": "Save"
     },
     "addBio": {
+      "back": "Back",
       "title": "Add Biography",
       "confirm": "Save"
     },
@@ -177,9 +179,30 @@
         "confirm": "Save",
         "loading": "Saqlanmoqda..."
       }
+    },
+    "updatePasswordPage": {
+      "back": "Back",
+      "title": "Update password",
+      "form": {
+        "oldPassword": {
+          "label": "Old Password",
+          "placeholder": "********"
+        },
+        "newPassword": {
+          "label": "New Password",
+          "placeholder": "********"
+        },
+        "newPasswordRepeat": {
+          "label": "Repeat New Password",
+          "placeholder": "********"
+        },
+        "confirm": "Update",
+        "loading": "Updating..."
+      }
     }
   },
   "errors": {
+    "dataNotFound": "Data not found.",
     "required": "This field is required",
     "passwordMinLength": "Must be at least 8 characters",
     "invalidEmail": "Invalid email address",
@@ -187,6 +210,8 @@
     "invalidUsername": "Must start with letter/underscore and only contain letters, numbers, -_",
     "usernameExists": "Username already exists",
     "usernameMinLength": "Password must be at least 3 characters",
+    "passwordsMatch": "Old password and new password must be different",
+    "passwordsNotMatch": "New passwords do not match",
 
     "404": {
       "title": "404",

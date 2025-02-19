@@ -1,4 +1,4 @@
-import { Edit, Trash2 } from 'lucide-react'
+import { LogInIcon, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 
 import type { IDashboardTableBaseData } from './dashboard-table.types'
@@ -9,14 +9,14 @@ export function DashboardTableActions<TData extends IDashboardTableBaseData>({
 }: {
   baseRecord: TData
 }) {
-  const { deleteHandler, editUrl } = baseRecord
+  const { deleteHandler, actionUrl } = baseRecord
 
   return (
     <>
-      {editUrl && (
+      {actionUrl && (
         <td className={styles.minWidth}>
-          <Link href={editUrl} aria-label="Open edit page">
-            <Edit />
+          <Link href={actionUrl} aria-label="Open edit page">
+            <LogInIcon />
           </Link>
         </td>
       )}

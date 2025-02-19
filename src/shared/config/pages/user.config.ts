@@ -14,6 +14,10 @@ class UserPages {
   PROFILE_EDIT_INFO(id: string) {
     return `/profile/${id}/edit-info`
   }
+
+  PROFILE_UPDATE_PASSWORD(id: string) {
+    return `/profile/${id}/update-password`
+  }
 }
 
 export const USER_PAGES = new UserPages()

@@ -21,11 +21,10 @@ const useEditProfileInfo = (profile: IEditProfileInfoFormData) => {
   const [isPending, startTransition] = useTransition()
 
   const [addAuthor, { loading }] = useUpdateProfileInfoByUserIdMutation({
-    onCompleted(data) {
-      const id = data.updateProfileInfoByUserId.id
+    onCompleted() {
       startTransition(() => {
         reset()
-        router.push(USER_PAGES.PROFILE(id))
+        router.push(USER_PAGES.PROFILE(profile.id))
       })
     },
     onError(err) {

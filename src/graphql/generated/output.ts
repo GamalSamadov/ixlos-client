@@ -134,7 +134,8 @@ export type Mutation = {
   updateAuthorBio: Scalars['Boolean']['output'];
   updateAyah: Scalars['Boolean']['output'];
   updateBioByUserId: Scalars['Boolean']['output'];
-  updateProfileInfoByUserId: UserModel;
+  updatePasswordByUserId: Scalars['Boolean']['output'];
+  updateProfileInfoByUserId: Scalars['Boolean']['output'];
   updateSurah: Scalars['Boolean']['output'];
   updateTafseer: Scalars['Boolean']['output'];
   updateTafseerAyah: Scalars['Boolean']['output'];
@@ -247,6 +248,12 @@ export type MutationUpdateAyahArgs = {
 
 export type MutationUpdateBioByUserIdArgs = {
   bio: Scalars['String']['input'];
+  userId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdatePasswordByUserIdArgs = {
+  data: UpdatePasswordInput;
   userId: Scalars['String']['input'];
 };
 
@@ -457,6 +464,12 @@ export type UpdateAyahInput = {
   uzbekText?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type UpdatePasswordInput = {
+  newPassword: Scalars['String']['input'];
+  newPasswordRepeat: Scalars['String']['input'];
+  oldPassword: Scalars['String']['input'];
+};
+
 export type UpdateProfileInfoInput = {
   displayName?: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
@@ -539,13 +552,21 @@ export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type LogoutUserMutation = { __typename?: 'Mutation', logoutUser: boolean };
 
+export type UpdatePasswordByUserIdMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  data: UpdatePasswordInput;
+}>;
+
+
+export type UpdatePasswordByUserIdMutation = { __typename?: 'Mutation', updatePasswordByUserId: boolean };
+
 export type UpdateProfileInfoByUserIdMutationVariables = Exact<{
   userId: Scalars['String']['input'];
   data: UpdateProfileInfoInput;
 }>;
 
 
-export type UpdateProfileInfoByUserIdMutation = { __typename?: 'Mutation', updateProfileInfoByUserId: { __typename?: 'UserModel', id: string } };
+export type UpdateProfileInfoByUserIdMutation = { __typename?: 'Mutation', updateProfileInfoByUserId: boolean };
 
 export type GetCurrentSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -790,11 +811,41 @@ export function useLogoutUserMutation(baseOptions?: Apollo.MutationHookOptions<L
 export type LogoutUserMutationHookResult = ReturnType<typeof useLogoutUserMutation>;
 export type LogoutUserMutationResult = Apollo.MutationResult<LogoutUserMutation>;
 export type LogoutUserMutationOptions = Apollo.BaseMutationOptions<LogoutUserMutation, LogoutUserMutationVariables>;
+export const UpdatePasswordByUserIdDocument = gql`
+    mutation updatePasswordByUserId($userId: String!, $data: UpdatePasswordInput!) {
+  updatePasswordByUserId(userId: $userId, data: $data)
+}
+    `;
+export type UpdatePasswordByUserIdMutationFn = Apollo.MutationFunction<UpdatePasswordByUserIdMutation, UpdatePasswordByUserIdMutationVariables>;
+
+/**
+ * __useUpdatePasswordByUserIdMutation__
+ *
+ * To run a mutation, you first call `useUpdatePasswordByUserIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdatePasswordByUserIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updatePasswordByUserIdMutation, { data, loading, error }] = useUpdatePasswordByUserIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useUpdatePasswordByUserIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePasswordByUserIdMutation, UpdatePasswordByUserIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdatePasswordByUserIdMutation, UpdatePasswordByUserIdMutationVariables>(UpdatePasswordByUserIdDocument, options);
+      }
+export type UpdatePasswordByUserIdMutationHookResult = ReturnType<typeof useUpdatePasswordByUserIdMutation>;
+export type UpdatePasswordByUserIdMutationResult = Apollo.MutationResult<UpdatePasswordByUserIdMutation>;
+export type UpdatePasswordByUserIdMutationOptions = Apollo.BaseMutationOptions<UpdatePasswordByUserIdMutation, UpdatePasswordByUserIdMutationVariables>;
 export const UpdateProfileInfoByUserIdDocument = gql`
     mutation updateProfileInfoByUserId($userId: String!, $data: UpdateProfileInfoInput!) {
-  updateProfileInfoByUserId(userId: $userId, data: $data) {
-    id
-  }
+  updateProfileInfoByUserId(userId: $userId, data: $data)
 }
     `;
 export type UpdateProfileInfoByUserIdMutationFn = Apollo.MutationFunction<UpdateProfileInfoByUserIdMutation, UpdateProfileInfoByUserIdMutationVariables>;
