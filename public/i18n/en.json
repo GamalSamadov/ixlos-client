@@ -199,6 +199,14 @@
         "confirm": "Update",
         "loading": "Updating..."
       }
+    },
+    "updateAvatarPage": {
+      "back": "Back",
+      "title": "Update Avatar",
+      "confirm": "Upload",
+      "loading": "Uploading...",
+      "remove": "Remove",
+      "removing": "Removing..."
     }
   },
   "errors": {
@@ -212,6 +220,8 @@
     "usernameMinLength": "Password must be at least 3 characters",
     "passwordsMatch": "Old password and new password must be different",
     "passwordsNotMatch": "New passwords do not match",
+
+    "errorAvatarFileSize": "Avatar size must be less than 10 MB",
 
     "404": {
       "title": "404",

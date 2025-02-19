@@ -1,11 +1,11 @@
-import { USER_PAGES } from '@/shared/config/pages/user.config'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 
 export const MENUS = [
   {
     id: 'profile',
     title: 'profile',
     icon: 'person',
-    href: USER_PAGES.PROFILE,
+    href: PUBLIC_PAGES.PROFILE,
   },
   {
     id: 'logout',

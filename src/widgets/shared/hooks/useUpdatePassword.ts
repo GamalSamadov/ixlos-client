@@ -26,7 +26,7 @@ const useUpdatePassword = (id: string) => {
     onCompleted() {
       startTransition(() => {
         reset()
-        router.push(USER_PAGES.PROFILE(id))
+        router.push(USER_PAGES.PROFILE_BY_ID(id))
       })
     },
     onError(err) {

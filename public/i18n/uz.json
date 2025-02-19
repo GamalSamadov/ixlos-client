@@ -180,7 +180,6 @@
         "loading": "Saqlanmoqda..."
       }
     },
-
     "updatePasswordPage": {
       "back": "Ortga",
       "title": "Parolni yangilash",
@@ -200,10 +199,18 @@
         "confirm": "Yangilash",
         "loading": "Yangilanmoqda..."
       }
+    },
+    "updateAvatarPage": {
+      "back": "Ortga",
+      "title": "Avatarni yangilash",
+      "confirm": "Yuklash",
+      "loading": "Yuklanmoqda...",
+      "remove": "O'chirish",
+      "removing": "O'chirilmoqda..."
     }
   },
   "errors": {
-    "dataNotFound": "Bunday ma'lumot topilmadi.",
+    "dataNotFound": "Ma'lumot topilmadi.",
     "required": "Bu joy majburiy",
     "passwordMinLength": "Kamida 8 belgi bo'lishi shart",
     "invalidEmail": "Noto'g'ri e-pochta",
@@ -213,6 +220,8 @@
     "usernameMinLength": "Kamida 3 belgi bo'lishi shart",
     "passwordsMatch": "Eski va yangi parollar farqli bo'lishi kerak",
     "passwordsNotMatch": "Ikkala parol bir xil emas",
+
+    "errorAvatarFileSize": "Rasm hajmi 10 MB dan kam bo'lishi kerak",
 
     "404": {
       "title": "404",

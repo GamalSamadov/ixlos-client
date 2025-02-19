@@ -26,7 +26,7 @@ const useUpdateBio = (userId: string, bio: string) => {
     onCompleted() {
       startTransition(() => {
         reset()
-        router.push(USER_PAGES.PROFILE(userId))
+        router.push(USER_PAGES.PROFILE_BY_ID(userId))
       })
     },
     onError(err) {

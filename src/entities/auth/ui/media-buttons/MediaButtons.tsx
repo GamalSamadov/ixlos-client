@@ -3,8 +3,8 @@
 import Link from 'next/link'
 
 import styles from './MediaButtons.module.scss'
-import { GoogleButton } from '../google-button/GoogleButton'
 import { HrWithTitle } from '../../../shared/ui/from/hr-with-title/HrWithTitle'
+import { GoogleButton } from '../google-button/GoogleButton'
 
 interface Props {
   isLoading: boolean

@@ -31,7 +31,7 @@ const EditBio = ({ bio }: { bio: string }) => {
   return (
     <section className={styles.container}>
       <div className={styles.top_link}>
-        <Link href={USER_PAGES.PROFILE(id)}>
+        <Link href={USER_PAGES.PROFILE_BY_ID(id)}>
           <Button variant="link">
             <ArrowLeft size={30} /> {t('back')}
           </Button>

@@ -24,7 +24,7 @@ const useEditProfileInfo = (profile: IEditProfileInfoFormData) => {
     onCompleted() {
       startTransition(() => {
         reset()
-        router.push(USER_PAGES.PROFILE(profile.id))
+        router.push(USER_PAGES.PROFILE_BY_ID(profile.id))
       })
     },
     onError(err) {

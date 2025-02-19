@@ -1,8 +1,8 @@
-import UpdatePasswordForm from '@/widgets/shared/ui/profile/UpdatePasswordForm'
+import EditAvatarForm from '@/widgets/shared/ui/profile/EditAvatarForm'
 
 import getProfile from '../../actions/get-profile-by-id'
 
-const ProfileUpdatePasswordPage = async ({
+const ProfileEditAvatarPage = async ({
   params,
 }: {
   params: Promise<{ id: string }>
@@ -11,9 +11,9 @@ const ProfileUpdatePasswordPage = async ({
   const { profile } = await getProfile(id)
   return (
     <>
-      <UpdatePasswordForm profile={profile} />
+      <EditAvatarForm profile={profile} />
     </>
   )
 }
 
-export default ProfileUpdatePasswordPage
+export default ProfileEditAvatarPage

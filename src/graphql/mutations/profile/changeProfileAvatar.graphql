@@ -1,0 +1,3 @@
+mutation changeProfileAvatar($userId: String!, $avatar: Upload!) {
+  changeProfileAvatarByUserId(userId: $userId, avatar: $avatar)
+}

@@ -1,9 +1,15 @@
-import { createHttpLink, ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import createUploadLink from 'apollo-upload-client/createUploadLink.mjs'
 
-const httpLink = createHttpLink({
-  uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
+import { GRAPHQL_URL } from '../constants/url.constants'
+
+const httpLink = createUploadLink({
+  uri: GRAPHQL_URL,
   credentials: 'include',
+  headers: {
+    'apollo-require-preflight': 'true',
+  },
 })
 
 export const apolloClient = new ApolloClient({

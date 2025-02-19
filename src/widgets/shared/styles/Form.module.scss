@@ -60,3 +60,15 @@
   @apply absolute top-[29%] right-[3%];
   z-index: 1;
 }
+
+.avatar_container {
+  @apply mb-6 flex w-full justify-center;
+}
+
+.input_hidden {
+  @apply hidden;
+}
+
+.upload_input {
+  @apply border-[0.7px] border-sky_blue-light_border rounded-xl px-4 py-3 w-full bg-gray-blur;
+}

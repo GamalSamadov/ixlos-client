@@ -11,7 +11,6 @@ import SearchInput from '@/entities/shared/ui/input/SearchInput'
 import { ShowMore } from '@/entities/shared/ui/show-more/ShowMore'
 import { GetAllAuthorsQuery, UserModel } from '@/graphql/generated/output'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
 import { useTake } from '@/shared/hooks/useTake'
 import Avatar from '@/shared/ui/avatar/Avatar'
@@ -64,7 +63,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
               title: t('table.avatar'),
               dataIndex: 'avatar',
               render: (record) => (
-                <Link href={PUBLIC_PAGES.PROFILE(record.id)}>
+                <Link href={USER_PAGES.PROFILE_BY_ID(record.id)}>
                   <Avatar
                     size={40}
                     avatar={record.avatar}
@@ -91,7 +90,7 @@ const AuthorsWidget: FC<Props> = ({ authors, hasMore, loading }) => {
               avatar: user.avatar,
               email: user.email,
               displayName: user.displayName,
-              actionUrl: USER_PAGES.PROFILE(user.id),
+              actionUrl: USER_PAGES.PROFILE_BY_ID(user.id),
             })) || []
           }
         />

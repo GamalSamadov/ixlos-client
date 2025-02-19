@@ -1,0 +1,3 @@
+mutation removeProfileAvatarByUserId($userId: String!) {
+  removeProfileAvatarByUserId(userId: $userId)
+}

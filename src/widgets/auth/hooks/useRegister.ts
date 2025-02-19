@@ -5,8 +5,8 @@ import { useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useCreateUserMutation } from '@/graphql/generated/output'
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
+import { useRegisterUserMutation } from '@/graphql/generated/output'
+import { USER_PAGES } from '@/shared/config/pages/user.config'
 
 import { IRegisterFormData } from '../types/auth.types'
 
@@ -25,11 +25,11 @@ export const useRegister = () => {
 
   const [isPending, startTransition] = useTransition()
 
-  const [login, { loading }] = useCreateUserMutation({
-    onCompleted() {
+  const [registerUser, { loading }] = useRegisterUserMutation({
+    onCompleted(data) {
       startTransition(() => {
         reset()
-        router.push(PUBLIC_PAGES.HOME)
+        router.push(USER_PAGES.PROFILE_BY_ID(data.registerUser.id))
       })
     },
     onError(err) {
@@ -38,7 +38,7 @@ export const useRegister = () => {
   })
 
   const onSubmit: SubmitHandler<IRegisterFormData> = (data) => {
-    login({ variables: { data } })
+    registerUser({ variables: { data } })
   }
 
   const isLoading = isPending || loading

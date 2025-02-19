@@ -48,7 +48,13 @@ const AddAuthorForm = () => {
         </Link>
       </div>
 
-      <div className={styles.form_container}>
+      <div
+        className={clsx(
+          styles.form_container,
+          'bg_gray_custom',
+          'h_screen_with_header'
+        )}
+      >
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <FormTitle title={t('title')} />
           <div className={styles.input_container}>

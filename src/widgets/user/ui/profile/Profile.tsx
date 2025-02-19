@@ -33,10 +33,12 @@ const Profile = async ({ profile }: Props) => {
         />
 
         {hasAccess && (
-          <Button variant="link">
-            <Upload />
-            {t('updateAvatar')}
-          </Button>
+          <Link href={USER_PAGES.PROFILE_EDIT_AVATAR(profile.id)}>
+            <Button variant="link">
+              <Upload />
+              {t('updateAvatar')}
+            </Button>
+          </Link>
         )}
         <div className={styles.info}>
           <div className={styles.item}>
@@ -55,10 +57,7 @@ const Profile = async ({ profile }: Props) => {
           </div>
           {hasAccess && (
             <div className={styles.edit_button}>
-              <Link
-                href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}
-                className="w-full"
-              >
+              <Link href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}>
                 <Button variant="primary" size="full">
                   <Edit2 /> {t('edit')}
                 </Button>
@@ -67,11 +66,7 @@ const Profile = async ({ profile }: Props) => {
           )}
         </div>
 
-        {hasAccess && (
-          <Link href={USER_PAGES.PROFILE_UPDATE_PASSWORD(profile.id)}>
-            <Button variant="link">Parolni yangilash</Button>
-          </Link>
-        )}
+        {hasAccess && <Button variant="link">Parolni yangilash</Button>}
       </div>
       <div className={styles.right}>
         <div className={styles.bio}>

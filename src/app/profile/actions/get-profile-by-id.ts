@@ -6,7 +6,7 @@ import {
 } from '@/graphql/generated/output'
 import { apolloClientServer } from '@/shared/libs/apollo-client/apollo-client-server'
 
-const getProfile = async (id: string) => {
+const getProfileById = async (id: string) => {
   const { query } = await apolloClientServer()
 
   try {
@@ -25,4 +25,4 @@ const getProfile = async (id: string) => {
   }
 }
 
-export default getProfile
+export default getProfileById

@@ -127,6 +127,7 @@ export type Mutation = {
   deleteTafseerAyah: Scalars['Boolean']['output'];
   loginUser: UserModel;
   logoutUser: Scalars['Boolean']['output'];
+  registerUser: UserModel;
   removeProfileAvatar: Scalars['Boolean']['output'];
   removeProfileAvatarByUserId: Scalars['Boolean']['output'];
   removeSession: Scalars['Boolean']['output'];
@@ -214,6 +215,11 @@ export type MutationDeleteTafseerAyahArgs = {
 
 export type MutationLoginUserArgs = {
   data: LoginInput;
+};
+
+
+export type MutationRegisterUserArgs = {
+  data: CreateUserInput;
 };
 
 
@@ -552,6 +558,28 @@ export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type LogoutUserMutation = { __typename?: 'Mutation', logoutUser: boolean };
 
+export type RegisterUserMutationVariables = Exact<{
+  data: CreateUserInput;
+}>;
+
+
+export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'UserModel', id: string, email: string } };
+
+export type ChangeProfileAvatarMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  avatar: Scalars['Upload']['input'];
+}>;
+
+
+export type ChangeProfileAvatarMutation = { __typename?: 'Mutation', changeProfileAvatarByUserId: boolean };
+
+export type RemoveProfileAvatarByUserIdMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+}>;
+
+
+export type RemoveProfileAvatarByUserIdMutation = { __typename?: 'Mutation', removeProfileAvatarByUserId: boolean };
+
 export type UpdatePasswordByUserIdMutationVariables = Exact<{
   userId: Scalars['String']['input'];
   data: UpdatePasswordInput;
@@ -595,11 +623,6 @@ export type GetEmailByEmailQueryVariables = Exact<{
 
 export type GetEmailByEmailQuery = { __typename?: 'Query', getEmailByEmail: string };
 
-export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetProfileQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role>, bio?: string | null } };
-
 export type GetProfileByIdQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
@@ -607,10 +630,10 @@ export type GetProfileByIdQueryVariables = Exact<{
 
 export type GetProfileByIdQuery = { __typename?: 'Query', getProfileById: { __typename?: 'UserModel', id: string, email: string, avatar?: string | null, displayName: string, username: string, rights: Array<Role>, bio?: string | null } };
 
-export type GetProfileAvatarQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetProfilePictureQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfileAvatarQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, avatar?: string | null, username: string, displayName: string } };
+export type GetProfilePictureQuery = { __typename?: 'Query', getProfile: { __typename?: 'UserModel', id: string, avatar?: string | null, username: string, displayName: string } };
 
 export type GetUsernameByUsernameQueryVariables = Exact<{
   username: Scalars['String']['input'];
@@ -811,6 +834,103 @@ export function useLogoutUserMutation(baseOptions?: Apollo.MutationHookOptions<L
 export type LogoutUserMutationHookResult = ReturnType<typeof useLogoutUserMutation>;
 export type LogoutUserMutationResult = Apollo.MutationResult<LogoutUserMutation>;
 export type LogoutUserMutationOptions = Apollo.BaseMutationOptions<LogoutUserMutation, LogoutUserMutationVariables>;
+export const RegisterUserDocument = gql`
+    mutation RegisterUser($data: CreateUserInput!) {
+  registerUser(data: $data) {
+    id
+    email
+  }
+}
+    `;
+export type RegisterUserMutationFn = Apollo.MutationFunction<RegisterUserMutation, RegisterUserMutationVariables>;
+
+/**
+ * __useRegisterUserMutation__
+ *
+ * To run a mutation, you first call `useRegisterUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerUserMutation, { data, loading, error }] = useRegisterUserMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useRegisterUserMutation(baseOptions?: Apollo.MutationHookOptions<RegisterUserMutation, RegisterUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RegisterUserMutation, RegisterUserMutationVariables>(RegisterUserDocument, options);
+      }
+export type RegisterUserMutationHookResult = ReturnType<typeof useRegisterUserMutation>;
+export type RegisterUserMutationResult = Apollo.MutationResult<RegisterUserMutation>;
+export type RegisterUserMutationOptions = Apollo.BaseMutationOptions<RegisterUserMutation, RegisterUserMutationVariables>;
+export const ChangeProfileAvatarDocument = gql`
+    mutation changeProfileAvatar($userId: String!, $avatar: Upload!) {
+  changeProfileAvatarByUserId(userId: $userId, avatar: $avatar)
+}
+    `;
+export type ChangeProfileAvatarMutationFn = Apollo.MutationFunction<ChangeProfileAvatarMutation, ChangeProfileAvatarMutationVariables>;
+
+/**
+ * __useChangeProfileAvatarMutation__
+ *
+ * To run a mutation, you first call `useChangeProfileAvatarMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChangeProfileAvatarMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [changeProfileAvatarMutation, { data, loading, error }] = useChangeProfileAvatarMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      avatar: // value for 'avatar'
+ *   },
+ * });
+ */
+export function useChangeProfileAvatarMutation(baseOptions?: Apollo.MutationHookOptions<ChangeProfileAvatarMutation, ChangeProfileAvatarMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChangeProfileAvatarMutation, ChangeProfileAvatarMutationVariables>(ChangeProfileAvatarDocument, options);
+      }
+export type ChangeProfileAvatarMutationHookResult = ReturnType<typeof useChangeProfileAvatarMutation>;
+export type ChangeProfileAvatarMutationResult = Apollo.MutationResult<ChangeProfileAvatarMutation>;
+export type ChangeProfileAvatarMutationOptions = Apollo.BaseMutationOptions<ChangeProfileAvatarMutation, ChangeProfileAvatarMutationVariables>;
+export const RemoveProfileAvatarByUserIdDocument = gql`
+    mutation removeProfileAvatarByUserId($userId: String!) {
+  removeProfileAvatarByUserId(userId: $userId)
+}
+    `;
+export type RemoveProfileAvatarByUserIdMutationFn = Apollo.MutationFunction<RemoveProfileAvatarByUserIdMutation, RemoveProfileAvatarByUserIdMutationVariables>;
+
+/**
+ * __useRemoveProfileAvatarByUserIdMutation__
+ *
+ * To run a mutation, you first call `useRemoveProfileAvatarByUserIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRemoveProfileAvatarByUserIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [removeProfileAvatarByUserIdMutation, { data, loading, error }] = useRemoveProfileAvatarByUserIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useRemoveProfileAvatarByUserIdMutation(baseOptions?: Apollo.MutationHookOptions<RemoveProfileAvatarByUserIdMutation, RemoveProfileAvatarByUserIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RemoveProfileAvatarByUserIdMutation, RemoveProfileAvatarByUserIdMutationVariables>(RemoveProfileAvatarByUserIdDocument, options);
+      }
+export type RemoveProfileAvatarByUserIdMutationHookResult = ReturnType<typeof useRemoveProfileAvatarByUserIdMutation>;
+export type RemoveProfileAvatarByUserIdMutationResult = Apollo.MutationResult<RemoveProfileAvatarByUserIdMutation>;
+export type RemoveProfileAvatarByUserIdMutationOptions = Apollo.BaseMutationOptions<RemoveProfileAvatarByUserIdMutation, RemoveProfileAvatarByUserIdMutationVariables>;
 export const UpdatePasswordByUserIdDocument = gql`
     mutation updatePasswordByUserId($userId: String!, $data: UpdatePasswordInput!) {
   updatePasswordByUserId(userId: $userId, data: $data)
@@ -1041,51 +1161,6 @@ export type GetEmailByEmailQueryHookResult = ReturnType<typeof useGetEmailByEmai
 export type GetEmailByEmailLazyQueryHookResult = ReturnType<typeof useGetEmailByEmailLazyQuery>;
 export type GetEmailByEmailSuspenseQueryHookResult = ReturnType<typeof useGetEmailByEmailSuspenseQuery>;
 export type GetEmailByEmailQueryResult = Apollo.QueryResult<GetEmailByEmailQuery, GetEmailByEmailQueryVariables>;
-export const GetProfileDocument = gql`
-    query GetProfile {
-  getProfile {
-    id
-    email
-    avatar
-    displayName
-    username
-    rights
-    bio
-  }
-}
-    `;
-
-/**
- * __useGetProfileQuery__
- *
- * To run a query within a React component, call `useGetProfileQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetProfileQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetProfileQuery(baseOptions?: Apollo.QueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
-      }
-export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
-        }
-export function useGetProfileSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
-          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
-        }
-export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
-export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
-export type GetProfileSuspenseQueryHookResult = ReturnType<typeof useGetProfileSuspenseQuery>;
-export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
 export const GetProfileByIdDocument = gql`
     query GetProfileById($id: String!) {
   getProfileById(id: $id) {
@@ -1132,8 +1207,8 @@ export type GetProfileByIdQueryHookResult = ReturnType<typeof useGetProfileByIdQ
 export type GetProfileByIdLazyQueryHookResult = ReturnType<typeof useGetProfileByIdLazyQuery>;
 export type GetProfileByIdSuspenseQueryHookResult = ReturnType<typeof useGetProfileByIdSuspenseQuery>;
 export type GetProfileByIdQueryResult = Apollo.QueryResult<GetProfileByIdQuery, GetProfileByIdQueryVariables>;
-export const GetProfileAvatarDocument = gql`
-    query GetProfileAvatar {
+export const GetProfilePictureDocument = gql`
+    query GetProfilePicture {
   getProfile {
     id
     avatar
@@ -1144,36 +1219,36 @@ export const GetProfileAvatarDocument = gql`
     `;
 
 /**
- * __useGetProfileAvatarQuery__
+ * __useGetProfilePictureQuery__
  *
- * To run a query within a React component, call `useGetProfileAvatarQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetProfileAvatarQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetProfilePictureQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProfilePictureQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetProfileAvatarQuery({
+ * const { data, loading, error } = useGetProfilePictureQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetProfileAvatarQuery(baseOptions?: Apollo.QueryHookOptions<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>) {
+export function useGetProfilePictureQuery(baseOptions?: Apollo.QueryHookOptions<GetProfilePictureQuery, GetProfilePictureQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>(GetProfileAvatarDocument, options);
+        return Apollo.useQuery<GetProfilePictureQuery, GetProfilePictureQueryVariables>(GetProfilePictureDocument, options);
       }
-export function useGetProfileAvatarLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>) {
+export function useGetProfilePictureLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfilePictureQuery, GetProfilePictureQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>(GetProfileAvatarDocument, options);
+          return Apollo.useLazyQuery<GetProfilePictureQuery, GetProfilePictureQueryVariables>(GetProfilePictureDocument, options);
         }
-export function useGetProfileAvatarSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>) {
+export function useGetProfilePictureSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetProfilePictureQuery, GetProfilePictureQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>(GetProfileAvatarDocument, options);
+          return Apollo.useSuspenseQuery<GetProfilePictureQuery, GetProfilePictureQueryVariables>(GetProfilePictureDocument, options);
         }
-export type GetProfileAvatarQueryHookResult = ReturnType<typeof useGetProfileAvatarQuery>;
-export type GetProfileAvatarLazyQueryHookResult = ReturnType<typeof useGetProfileAvatarLazyQuery>;
-export type GetProfileAvatarSuspenseQueryHookResult = ReturnType<typeof useGetProfileAvatarSuspenseQuery>;
-export type GetProfileAvatarQueryResult = Apollo.QueryResult<GetProfileAvatarQuery, GetProfileAvatarQueryVariables>;
+export type GetProfilePictureQueryHookResult = ReturnType<typeof useGetProfilePictureQuery>;
+export type GetProfilePictureLazyQueryHookResult = ReturnType<typeof useGetProfilePictureLazyQuery>;
+export type GetProfilePictureSuspenseQueryHookResult = ReturnType<typeof useGetProfilePictureSuspenseQuery>;
+export type GetProfilePictureQueryResult = Apollo.QueryResult<GetProfilePictureQuery, GetProfilePictureQueryVariables>;
 export const GetUsernameByUsernameDocument = gql`
     query getUsernameByUsername($username: String!) {
   getUsernameByUsername(username: $username)

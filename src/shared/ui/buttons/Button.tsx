@@ -6,7 +6,13 @@ import styles from './Button.module.scss'
 interface IButtonProps {
   children: ReactNode
   className?: string
-  variant?: 'primary' | 'transparent' | 'white' | 'link' | 'link-active'
+  variant?:
+    | 'primary'
+    | 'transparent'
+    | 'white'
+    | 'link'
+    | 'link-active'
+    | 'danger'
   size?: 'standard' | 'full'
   type?: 'button' | 'submit' | 'reset' | undefined
   disabled?: boolean
@@ -33,6 +39,7 @@ const Button = ({
         variant === 'white' && styles.white,
         variant === 'transparent' && styles.transparent,
         variant === 'link' && styles.link,
+        variant === 'danger' && styles.danger,
         size === 'standard' && styles.standard,
         size === 'full' && styles.full,
         isActive && styles.active,

@@ -1,8 +1,8 @@
 'use server'
 
 import {
-  GetProfileAvatarDocument,
-  GetProfileAvatarQuery,
+  GetProfilePictureDocument,
+  GetProfilePictureQuery,
 } from '@/graphql/generated/output'
 
 import { apolloClientServer } from '../libs/apollo-client/apollo-client-server'
@@ -10,8 +10,8 @@ import { apolloClientServer } from '../libs/apollo-client/apollo-client-server'
 const getProfileAvatar = async () => {
   const { query } = await apolloClientServer()
 
-  const { data, loading } = await query<GetProfileAvatarQuery>({
-    query: GetProfileAvatarDocument,
+  const { data, loading } = await query<GetProfilePictureQuery>({
+    query: GetProfilePictureDocument,
   })
 
   const avatar = data.getProfile.avatar

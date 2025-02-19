@@ -1,5 +1,5 @@
 .avatar {
-  @apply rounded-full border border-sky_blue bg-sky_blue-light flex items-center justify-center cursor-pointer;
+  @apply rounded-full border border-sky_blue bg-sky_blue-light flex items-center justify-center cursor-pointer overflow-hidden;
 }
 
 .letter {

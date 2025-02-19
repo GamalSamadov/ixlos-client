@@ -35,6 +35,7 @@
 }
 
 .link:hover,
+.danger:hover,
 .link-active:hover {
   text-decoration: underline;
 }
@@ -49,4 +50,8 @@
 
 .active {
   @apply bg-gray-700;
+}
+
+.danger {
+  @apply text-red-500;
 }

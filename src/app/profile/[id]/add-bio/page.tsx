@@ -1,11 +1,11 @@
-import AddBio from '@/widgets/shared/ui/bio/add-bio/AddBio'
+import AddBioForm from '@/widgets/shared/ui/bio/add-bio/AddBioForm'
 
-const BioAddPage = () => {
+const ProfileBioAddPage = () => {
   return (
     <>
-      <AddBio />
+      <AddBioForm />
     </>
   )
 }
 
-export default BioAddPage
+export default ProfileBioAddPage

@@ -13,7 +13,7 @@ import { MENUS } from './data/avatar-menu-items.data'
 import styles from './DropdownMenu.module.scss'
 import { VARIANTS } from './menuAnimateVariants'
 
-const DropDown = ({ children, id }: { children: ReactNode; id: string }) => {
+const DropDown = ({ children }: { children: ReactNode; id: string }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -68,7 +68,7 @@ const DropDown = ({ children, id }: { children: ReactNode; id: string }) => {
                   if (menu.id === 'logout') {
                     logout()
                   } else if (menu.id === 'profile') {
-                    router.push(PUBLIC_PAGES.PROFILE(id))
+                    router.push(PUBLIC_PAGES.PROFILE)
                   } else {
                     router.push(menu.href)
                   }

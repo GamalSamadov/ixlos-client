@@ -21,6 +21,8 @@
     "@tiptap/pm": "^2.11.5",
     "@tiptap/react": "^2.11.5",
     "@tiptap/starter-kit": "^2.11.5",
+    "@types/apollo-upload-client": "^18.0.0",
+    "apollo-upload-client": "^18.0.1",
     "class-variance-authority": "^0.7.1",
     "eslint-config-import": "^0.13.0",
     "eslint-config-prettier": "^10.0.1",

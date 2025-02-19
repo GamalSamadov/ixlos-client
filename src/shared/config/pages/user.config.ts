@@ -1,5 +1,5 @@
 class UserPages {
-  PROFILE(id: string) {
+  PROFILE_BY_ID(id: string) {
     return `/profile/${id}`
   }
 
@@ -17,6 +17,10 @@ class UserPages {
 
   PROFILE_UPDATE_PASSWORD(id: string) {
     return `/profile/${id}/update-password`
+  }
+
+  PROFILE_EDIT_AVATAR(id: string) {
+    return `/profile/${id}/edit-avatar`
   }
 }
 

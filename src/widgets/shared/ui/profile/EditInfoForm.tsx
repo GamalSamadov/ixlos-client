@@ -53,7 +53,7 @@ const EditProfileInfoForm = ({
   return (
     <section className={clsx(styles.container)}>
       <div className={styles.top_link}>
-        <Link href={USER_PAGES.PROFILE(profile.id)}>
+        <Link href={USER_PAGES.PROFILE_BY_ID(profile.id)}>
           <Button variant="link">
             <ArrowLeft size={30} /> {t('back')}
           </Button>

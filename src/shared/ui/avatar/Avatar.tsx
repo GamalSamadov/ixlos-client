@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
+import { getMediaSource } from '@/shared/utils/get-media-source'
 import { getFirstLetter } from '@/shared/utils/user/get-first-letter'
 
 import styles from './Avatar.module.scss'
@@ -22,10 +23,11 @@ const Avatar = ({ size, avatar, username, displayName }: Props) => {
         </h1>
       ) : avatar && username ? (
         <Image
-          src={avatar}
-          width={size && size - 15}
-          height={size && size - 15}
+          src={getMediaSource(avatar)}
+          width={size}
+          height={size}
           alt={username}
+          draggable={false}
         />
       ) : (
         <Image

@@ -1,4 +1,4 @@
-query GetProfileAvatar {
+query GetProfilePicture {
   getProfile {
     id
     avatar
