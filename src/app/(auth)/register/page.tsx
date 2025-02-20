@@ -1,7 +1,7 @@
-import { RegisterForm } from '@/widgets/auth/forms/RegisterForm'
+import Register from '@/widgets/auth/ui/register'
 
 const CreateAccountPage = () => {
-  return <RegisterForm />
+  return <Register />
 }
 
 export default CreateAccountPage

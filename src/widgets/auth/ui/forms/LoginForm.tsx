@@ -8,9 +8,8 @@ import ContinueWithoutSignin from '@/entities/auth/ui/continue-without-singnin/C
 import { FormTitle } from '@/entities/shared/ui/from/form-title/FormTitle'
 import { SubmitButton } from '@/entities/shared/ui/from/submit-button/SubmitButton'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import { useLogin } from '@/widgets/auth/hooks/useLogin'
 import styles from '@/widgets/shared/styles/Form.module.scss'
-
-import { useLogin } from '../hooks/useLogin'
 
 export const LoginForm = () => {
   const [isVisible, setIsVisible] = useState(false)

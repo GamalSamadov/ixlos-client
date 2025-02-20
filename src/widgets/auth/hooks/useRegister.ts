@@ -1,16 +1,20 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useSetAtom } from 'jotai'
 import { useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 import { useRegisterUserMutation } from '@/graphql/generated/output'
-import { USER_PAGES } from '@/shared/config/pages/user.config'
+import { createUserCurrentPageAtom } from '@/shared/atoms/create-user-current-page.atom'
+import { currentUserId } from '@/shared/atoms/current-userId.atom'
 
 import { IRegisterFormData } from '../types/auth.types'
 
 export const useRegister = () => {
+  const setCreateUserCurrentPage = useSetAtom(createUserCurrentPageAtom)
+  const setUserId = useSetAtom(currentUserId)
+
   const { register, handleSubmit, reset, formState } =
     useForm<IRegisterFormData>({
       defaultValues: {
@@ -21,15 +25,15 @@ export const useRegister = () => {
       mode: 'onChange',
     })
 
-  const router = useRouter()
-
   const [isPending, startTransition] = useTransition()
 
   const [registerUser, { loading }] = useRegisterUserMutation({
     onCompleted(data) {
+      const userId = data.registerUser.id
       startTransition(() => {
         reset()
-        router.push(USER_PAGES.PROFILE_BY_ID(data.registerUser.id))
+        setCreateUserCurrentPage('create-avatar')
+        setUserId(userId)
       })
     },
     onError(err) {

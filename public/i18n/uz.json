@@ -48,7 +48,19 @@
         },
         "confirm": "Ro'yxatdan o'tish"
       },
-      "loading": "Ro'yxatdan o'tish jarayoni..."
+      "loading": "Ro'yxatdan o'tish jarayoni...",
+
+      "addBio": {
+        "title": "O'zingiz haqingizda malumot kiriting",
+        "skip": "O'tkazib yuborish",
+        "confirm": "Kiritish"
+      },
+      "addAvatar": {
+        "title": "Avatar kiriting",
+        "skip": "O'tkazib yuborish",
+        "confirm": "Yuklash",
+        "loading": "Yuklanmoqda..."
+      }
     },
     "logout": {
       "loading": "Chiqilmoqda..."

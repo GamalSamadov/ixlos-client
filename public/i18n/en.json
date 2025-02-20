@@ -48,7 +48,18 @@
         },
         "confirm": "Sign up"
       },
-      "loading": "Signing up..."
+      "loading": "Signing up...",
+      "addBio": {
+        "title": "Add something about yourself",
+        "skip": "Skip",
+        "confirm": "Add"
+      },
+      "addAvatar": {
+        "title": "Add avatar",
+        "skip": "Skip",
+        "confirm": "Upload",
+        "loading": "Uploading..."
+      }
     },
     "logout": {
       "loading": "Logging out..."
