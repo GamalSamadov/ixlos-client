@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState, useRef, useEffect, ReactNode } from 'react'
 
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
+import { USER_PAGES } from '@/shared/config/pages/user.config'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
 import useLogout from '@/widgets/shared/hooks/useLogout'
 
@@ -13,7 +13,7 @@ import { MENUS } from './data/avatar-menu-items.data'
 import styles from './DropdownMenu.module.scss'
 import { VARIANTS } from './menuAnimateVariants'
 
-const DropDown = ({ children }: { children: ReactNode; id: string }) => {
+const DropDown = ({ children, id }: { children: ReactNode; id: string }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -68,7 +68,7 @@ const DropDown = ({ children }: { children: ReactNode; id: string }) => {
                   if (menu.id === 'logout') {
                     logout()
                   } else if (menu.id === 'profile') {
-                    router.push(PUBLIC_PAGES.PROFILE)
+                    router.push(USER_PAGES.PROFILE_BY_ID(id))
                   } else {
                     router.push(menu.href)
                   }

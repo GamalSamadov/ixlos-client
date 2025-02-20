@@ -1,0 +1,6 @@
+mutation deleteUserById($userId: String!) {
+  deleteUserById(userId: $userId) {
+    id
+    rights
+  }
+}

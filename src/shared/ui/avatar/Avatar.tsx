@@ -32,8 +32,8 @@ const Avatar = ({ size, avatar, username, displayName }: Props) => {
       ) : (
         <Image
           src="/assets/icons/person.svg"
-          width={size && size - 15}
-          height={size && size - 15}
+          width={size && size - 25}
+          height={size && size - 25}
           alt="User"
           className={styles.person_icon}
         />

@@ -145,6 +145,13 @@
     "edit": "Edit",
     "add": "Add",
     "updatePassword": "Update Password",
+    "deleteAccount": {
+      "title": "Delete Account",
+      "message": "Are you sure you want to delete your account? This action cannot be undone.",
+      "confirm": "Delete",
+      "loading": "Deleting...",
+      "cancel": "Cancel"
+    },
     "bio": "Biography:",
     "noBio": "There is no biography added!",
     "updateBio": {

@@ -1,3 +1,5 @@
+'use client'
+
 import { AnimatePresence, m } from 'framer-motion'
 import { ReactNode, useState } from 'react'
 
@@ -11,6 +13,7 @@ interface Props {
   closeText: string
   continueText: string
   action: () => void
+  variant?: 'danger' | 'primary'
 }
 
 const Dialog = ({
@@ -20,6 +23,7 @@ const Dialog = ({
   closeText,
   continueText,
   action,
+  variant = 'primary',
 }: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   return (
@@ -55,6 +59,7 @@ const Dialog = ({
                   {closeText}
                 </Button>
                 <Button
+                  variant={variant}
                   onClick={() => {
                     setIsDialogOpen(false)
                     action()

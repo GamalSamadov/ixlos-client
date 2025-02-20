@@ -3,17 +3,18 @@ import { CaseSensitive, Edit2, Plus, Upload, User2 } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 
-import { GetProfileQuery } from '@/graphql/generated/output'
+import { GetProfileByIdQuery } from '@/graphql/generated/output'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
 import Avatar from '@/shared/ui/avatar/Avatar'
 import Button from '@/shared/ui/buttons/Button'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
 import { getAuth } from '@/shared/utils/auth/get-auth'
 
+import DeleteAccountButton from './DeleteAccountButton'
 import styles from './Profile.module.scss'
 
 interface Props {
-  profile: GetProfileQuery['getProfile']
+  profile: GetProfileByIdQuery['getProfileById']
   loading: boolean
 }
 
@@ -57,7 +58,10 @@ const Profile = async ({ profile }: Props) => {
           </div>
           {hasAccess && (
             <div className={styles.edit_button}>
-              <Link href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}>
+              <Link
+                href={USER_PAGES.PROFILE_EDIT_INFO(profile.id)}
+                className="w-full"
+              >
                 <Button variant="primary" size="full">
                   <Edit2 /> {t('edit')}
                 </Button>
@@ -66,7 +70,14 @@ const Profile = async ({ profile }: Props) => {
           )}
         </div>
 
-        {hasAccess && <Button variant="link">Parolni yangilash</Button>}
+        {hasAccess && (
+          <div className={styles.actions}>
+            <Link href={USER_PAGES.PROFILE_UPDATE_PASSWORD(profile.id)}>
+              <Button variant="link">{t('updatePassword')}</Button>
+            </Link>
+            <DeleteAccountButton id={profile.id} />
+          </div>
+        )}
       </div>
       <div className={styles.right}>
         <div className={styles.bio}>

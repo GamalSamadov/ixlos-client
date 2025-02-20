@@ -145,6 +145,13 @@
     "edit": "Yahrirlash",
     "add": "Kiritish",
     "updatePassword": "Parolni yangilash",
+    "deleteAccount": {
+      "title": "Accountni o'chirish",
+      "message": "Chindan ham o'chirishga aminmisiz. Hisobingizni o'chirib hisobga tegishli ma'lumotlarni qayta tiklay olmaysiz.",
+      "confirm": "O'chirish",
+      "loading": "O'chirilmoqda...",
+      "cancel": "Bekor qilish"
+    },
     "bio": "Biografiya:",
     "noBio": "Biografiya kiritilmagan!",
     "updateBio": {
