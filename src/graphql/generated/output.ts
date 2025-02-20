@@ -111,7 +111,6 @@ export type LoginInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  changeProfileAvatar: Scalars['Boolean']['output'];
   changeProfileAvatarByUserId: Scalars['Boolean']['output'];
   clearSessionCookie: Scalars['Boolean']['output'];
   createAuthor: Scalars['String']['output'];
@@ -141,11 +140,6 @@ export type Mutation = {
   updateSurah: Scalars['Boolean']['output'];
   updateTafseer: Scalars['Boolean']['output'];
   updateTafseerAyah: Scalars['Boolean']['output'];
-};
-
-
-export type MutationChangeProfileAvatarArgs = {
-  avatar: Scalars['Upload']['input'];
 };
 
 

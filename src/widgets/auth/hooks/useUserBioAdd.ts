@@ -1,18 +1,21 @@
 'use client'
 
-import { useAtomValue } from 'jotai'
+import { useAtomValue, useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 import { useUpdateBioByUserIdMutation } from '@/graphql/generated/output'
+import { createUserCurrentPageAtom } from '@/shared/atoms/create-user-current-page.atom'
 import { currentUserId } from '@/shared/atoms/current-userId.atom'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { IBioFormData } from '@/widgets/shared/types/bio.type'
 
 const useUserBioAdd = () => {
   const userId = useAtomValue(currentUserId)
+  const setCreateUserCurrentPage = useSetAtom(createUserCurrentPageAtom)
+  const setUserId = useSetAtom(currentUserId)
 
   const [content, setContent] = useState('')
 
@@ -30,6 +33,8 @@ const useUserBioAdd = () => {
     onCompleted() {
       startTransition(() => {
         reset()
+        setCreateUserCurrentPage('create-user')
+        setUserId('')
         router.push(PUBLIC_PAGES.HOME)
       })
     },

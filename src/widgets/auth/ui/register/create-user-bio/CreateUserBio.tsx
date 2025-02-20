@@ -3,28 +3,19 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
+import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import Button from '@/shared/ui/buttons/Button'
 import TextEditor from '@/shared/ui/text-editor/TextEditor'
 import useUserBioAdd from '@/widgets/auth/hooks/useUserBioAdd'
 import styles from '@/widgets/shared/styles/Bio.module.scss'
 
 const CreateUserBio = () => {
-  const {
-    setContent,
-    content,
-    handleSubmit,
-    register,
-    onSubmit,
-    isLoading,
-    formState,
-  } = useUserBioAdd()
+  const { setContent, content, handleSubmit, register, onSubmit, isLoading } =
+    useUserBioAdd()
 
   const router = useRouter()
 
   const t = useTranslations('auth.register.addBio')
-
-  const error = formState.errors.bio?.message
 
   return (
     <section className={styles.container}>
@@ -43,13 +34,8 @@ const CreateUserBio = () => {
           className="hidden"
         />
 
-        <p className="text-red-600">{error}</p>
-
         <div className={styles.buttons}>
-          <Button
-            variant="link"
-            onClick={() => router.push(ADMIN_PAGES.AUTHORS)}
-          >
+          <Button variant="link" onClick={() => router.push(PUBLIC_PAGES.HOME)}>
             {t('skip')}
           </Button>
           <Button type="submit" disabled={isLoading}>

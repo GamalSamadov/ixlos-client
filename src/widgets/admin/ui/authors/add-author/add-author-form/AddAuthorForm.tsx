@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { FormTitle } from '@/entities/shared/ui/from/form-title/FormTitle'
+import CustomInput from '@/entities/shared/ui/from/input'
 import { SubmitButton } from '@/entities/shared/ui/from/submit-button/SubmitButton'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import {
@@ -23,7 +24,6 @@ import styles from '@/widgets/shared/styles/Form.module.scss'
 const AddAuthorForm = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
-  const [isVisible, setIsVisible] = useState(false)
 
   const { existingUsername } = useCheckUsername(username)
   const { existingEmail } = useCheckEmail(email)
@@ -55,120 +55,78 @@ const AddAuthorForm = () => {
           autoComplete="on"
         >
           <FormTitle title={t('title')} />
-          <div className={styles.input_container}>
-            <label htmlFor="email" className={styles.label}>
-              {t('form.email.label')}
-            </label>
-            <input
-              {...register('email', {
-                required: tError('required'),
-                pattern: {
-                  value: EMAIL_PATTERN,
-                  message: tError('invalidEmail'),
-                },
-                validate: {
-                  isEmailUnique: (value) =>
-                    existingEmail !== value || tError('emailExists'),
-                },
-              })}
-              className={styles.input}
-              name="email"
-              id="email"
-              type="email"
-              placeholder={t('form.email.placeholder')}
-              onKeyUp={(e) => setEmail(e.currentTarget.value)}
-            />
-            <div className={styles.icon_container}>
-              <CustomIcon size={25} variant="email" />
-            </div>
-          </div>
-          <p className={styles.error}>{emailError}</p>
+          <CustomInput
+            {...register('email', {
+              required: tError('required'),
+              pattern: {
+                value: EMAIL_PATTERN,
+                message: tError('invalidEmail'),
+              },
+              validate: {
+                isEmailUnique: (value) =>
+                  existingEmail !== value || tError('emailExists'),
+              },
+            })}
+            label={t('form.email.label')}
+            type="email"
+            name="email"
+            placeholder={t('form.email.placeholder')}
+            errormessage={emailError}
+            icon={<CustomIcon size={25} variant="email" />}
+            onKeyUp={(e) => setEmail(e.currentTarget.value)}
+          />
 
-          <div className={styles.input_container}>
-            <label htmlFor="username" className={styles.label}>
-              {t('form.username.label')}
-            </label>
-            <input
-              {...register('username', {
-                required: tError('required'),
-                pattern: {
-                  value: USERNAME_PATTERN,
-                  message: tError('invalidUsername'),
-                },
-                validate: {
-                  isUsernameUnique: (value) =>
-                    existingUsername !== value || tError('usernameExists'),
-                },
-                minLength: {
-                  value: 3,
-                  message: tError('usernameMinLength'),
-                },
-              })}
-              className={styles.input}
-              name="username"
-              id="username"
-              type="username"
-              placeholder={t('form.username.placeholder')}
-              onKeyUp={(e) => setUsername(e.currentTarget.value)}
-            />
-            <div className={styles.icon_container}>
-              <User2 size={25} />
-            </div>
-          </div>
-          <p className={styles.error}>{usernameError}</p>
+          <CustomInput
+            {...register('username', {
+              required: tError('required'),
+              pattern: {
+                value: USERNAME_PATTERN,
+                message: tError('invalidUsername'),
+              },
+              validate: {
+                isUsernameUnique: (value) =>
+                  existingUsername !== value || tError('usernameExists'),
+              },
+              minLength: {
+                value: 3,
+                message: tError('usernameMinLength'),
+              },
+            })}
+            label={t('form.username.label')}
+            type="text"
+            name="username"
+            placeholder={t('form.username.placeholder')}
+            errormessage={usernameError}
+            icon={<User2 size={25} />}
+            onKeyUp={(e) => setUsername(e.currentTarget.value)}
+          />
 
-          <div className={styles.input_container}>
-            <label htmlFor="password" className={styles.label}>
-              {t('form.password.label')}
-            </label>
-            <input
-              {...register('password', {
-                required: tError('required'),
-                minLength: {
-                  value: 8,
-                  message: tError('passwordMinLength'),
-                },
-              })}
-              className={styles.input}
-              name="password"
-              id="password"
-              type={isVisible ? 'text' : 'password'}
-              placeholder={t('form.password.placeholder')}
-            />
-            <div
-              className={styles.password_icon_container}
-              onClick={() => setIsVisible(!isVisible)}
-            >
-              <div className={styles.icon_container}>
-                {isVisible ? (
-                  <CustomIcon size={25} variant="eye-closed" />
-                ) : (
-                  <CustomIcon size={25} variant="eye-opened" />
-                )}
-              </div>
-            </div>
-          </div>
-          <p className={styles.error}>{passwordError}</p>
+          <CustomInput
+            {...register('password', {
+              required: tError('required'),
+              minLength: {
+                value: 8,
+                message: tError('passwordMinLength'),
+              },
+            })}
+            label={t('form.password.label')}
+            type="password"
+            name="password"
+            placeholder={t('form.password.placeholder')}
+            errormessage={passwordError}
+          />
 
-          <div className={styles.input_container}>
-            <label htmlFor="displayName" className={styles.label}>
-              {t('form.name.label')}
-            </label>
-            <input
-              {...register('displayName', {
-                required: tError('required'),
-              })}
-              className={styles.input}
-              name="displayName"
-              id="displayName"
-              type="displayName"
-              placeholder={t('form.name.placeholder')}
-            />
-            <div className={styles.icon_container}>
-              <CaseSensitive size={25} />
-            </div>
-          </div>
-          <p className={styles.error}>{displayNameError}</p>
+          <CustomInput
+            {...register('displayName', {
+              required: tError('required'),
+            })}
+            label={t('form.name.label')}
+            type="text"
+            name="displayName"
+            placeholder={t('form.name.placeholder')}
+            errormessage={displayNameError}
+            icon={<CaseSensitive size={25} />}
+          />
 
           <SubmitButton
             loadingText={t('form.loading')}

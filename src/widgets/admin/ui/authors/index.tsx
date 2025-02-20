@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import { FC } from 'react'
 
 import { Collapse } from '@/entities/shared/ui/collapse/Collapse'
-import SearchInput from '@/entities/shared/ui/input/SearchInput'
+import SearchInput from '@/entities/shared/ui/from/input/search-input/SearchInput'
 import { ShowMore } from '@/entities/shared/ui/show-more/ShowMore'
 import { GetAllAuthorsQuery, UserModel } from '@/graphql/generated/output'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
