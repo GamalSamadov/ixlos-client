@@ -1,17 +1,15 @@
 'use client'
 
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import Button from '@/shared/ui/buttons/Button'
 import TextEditor from '@/shared/ui/text-editor/TextEditor'
-
-import styles from '../Bio.module.scss'
-import useAuthorBioAdd from './useAuthorBioAdd'
+import useAuthorAddBio from '@/widgets/admin/hooks/useAuthorBioAdd'
+import styles from '@/widgets/shared/styles/Bio.module.scss'
 
 const AddAuthorBio = () => {
-  const { id }: { id: string } = useParams()
   const {
     setContent,
     content,
@@ -20,7 +18,7 @@ const AddAuthorBio = () => {
     onSubmit,
     isLoading,
     formState,
-  } = useAuthorBioAdd(id)
+  } = useAuthorAddBio()
 
   const router = useRouter()
 
@@ -32,7 +30,11 @@ const AddAuthorBio = () => {
     <section className={styles.container}>
       <h1 className={styles.title}>{t('title')}</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.form}
+        autoComplete="off"
+      >
         <TextEditor content={content} onChange={(e) => setContent(e)} />
         <input
           {...register('bio')}

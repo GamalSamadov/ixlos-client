@@ -17,8 +17,7 @@ import Avatar from '@/shared/ui/avatar/Avatar'
 import Button from '@/shared/ui/buttons/Button'
 import { IDashboardTableBaseData } from '@/shared/ui/table/dashboard-table.types'
 import DashboardTable from '@/shared/ui/table/DashboardTable'
-
-import styles from '../admin-widget.module.scss'
+import styles from '@/widgets/admin/styles/admin-widget.module.scss'
 
 interface IUsersTable
   extends Pick<UserModel, 'email' | 'displayName' | 'avatar' | 'id'>,

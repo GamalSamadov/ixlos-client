@@ -12,9 +12,8 @@ import { USER_PAGES } from '@/shared/config/pages/user.config'
 import Avatar from '@/shared/ui/avatar/Avatar'
 import Button from '@/shared/ui/buttons/Button'
 import Skeleton from '@/shared/ui/skeleton/Skeleton'
+import useUpdateAvatar from '@/widgets/shared/hooks/useUpdateAvatar'
 import styles from '@/widgets/shared/styles/Form.module.scss'
-
-import useUpdateAvatar from '../../hooks/useUpdateAvatar'
 
 const EditAvatarForm = ({
   profile,

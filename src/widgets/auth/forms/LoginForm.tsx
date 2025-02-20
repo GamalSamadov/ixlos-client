@@ -24,7 +24,11 @@ export const LoginForm = () => {
   const passwordError = formState.errors.password?.message
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+      autoComplete="on"
+    >
       <FormTitle title={t('title')} />
       <div className={styles.input_container}>
         <label className={styles.label} htmlFor="login">
@@ -39,6 +43,7 @@ export const LoginForm = () => {
           type="text"
           id="login"
           placeholder={t('form.login.placeholder')}
+          autoComplete="email"
         />
 
         <div className={styles.icon_container}>
@@ -63,6 +68,7 @@ export const LoginForm = () => {
           id="password"
           type={isVisible ? 'text' : 'password'}
           placeholder={t('form.password.placeholder')}
+          autoComplete="password"
         />
 
         <div

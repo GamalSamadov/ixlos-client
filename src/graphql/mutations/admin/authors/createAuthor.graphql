@@ -1,5 +1,3 @@
 mutation CreateAuthor($data: CreateAuthorInput!) {
-  createAuthor(data: $data) {
-    id
-  }
+  createAuthor(data: $data)
 }

@@ -1,11 +1,7 @@
-import AddAuthorForm from '@/widgets/admin/ui/authors/add-author-form/AddAuthorForm'
+import AddAuthor from '@/widgets/admin/ui/authors/add-author'
 
 const AddAuthorPage = () => {
-  return (
-    <>
-      <AddAuthorForm />
-    </>
-  )
+  return <AddAuthor />
 }
 
 export default AddAuthorPage

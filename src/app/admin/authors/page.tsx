@@ -1,5 +1,5 @@
 import { ISearchParams } from '@/shared/types/search-params'
-import AuthorsWidget from '@/widgets/admin/ui/authors/Authors'
+import AuthorsWidget from '@/widgets/admin/ui/authors'
 import Header from '@/widgets/shared/ui/header/Header/Header'
 
 import getAllAuthors from './actions/get-authors'

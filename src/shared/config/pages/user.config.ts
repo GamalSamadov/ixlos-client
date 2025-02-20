@@ -22,6 +22,14 @@ class UserPages {
   PROFILE_EDIT_AVATAR(id: string) {
     return `/profile/${id}/edit-avatar`
   }
+
+  ADD_USER_BIO(id: string) {
+    return `profile/${id}/bio`
+  }
+
+  ADD_USER_AVATAR(id: string) {
+    return `profile/${id}/avatar`
+  }
 }
 
 export const USER_PAGES = new UserPages()

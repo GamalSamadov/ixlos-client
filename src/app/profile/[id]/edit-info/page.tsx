@@ -1,6 +1,6 @@
 import EditProfileInfoForm from '@/widgets/shared/ui/profile/EditInfoForm'
 
-import getProfile from '../../actions/get-profile-by-id'
+import getProfile from '../../../shared/actions/get-profile-by-id'
 
 const ProfileEditInfo = async ({
   params,

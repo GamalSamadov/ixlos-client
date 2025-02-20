@@ -114,7 +114,7 @@ export type Mutation = {
   changeProfileAvatar: Scalars['Boolean']['output'];
   changeProfileAvatarByUserId: Scalars['Boolean']['output'];
   clearSessionCookie: Scalars['Boolean']['output'];
-  createAuthor: AuthorModel;
+  createAuthor: Scalars['String']['output'];
   createAyah: Scalars['Boolean']['output'];
   createSurah: Scalars['Boolean']['output'];
   createTafseer: Scalars['Boolean']['output'];
@@ -134,7 +134,6 @@ export type Mutation = {
   removeProfileAvatarByUserId: Scalars['Boolean']['output'];
   removeSession: Scalars['Boolean']['output'];
   updateAuthor: Scalars['Boolean']['output'];
-  updateAuthorBio: Scalars['Boolean']['output'];
   updateAyah: Scalars['Boolean']['output'];
   updateBioByUserId: Scalars['Boolean']['output'];
   updatePasswordByUserId: Scalars['Boolean']['output'];
@@ -242,12 +241,6 @@ export type MutationRemoveSessionArgs = {
 
 export type MutationUpdateAuthorArgs = {
   data: UpdateAuthorInput;
-  id: Scalars['String']['input'];
-};
-
-
-export type MutationUpdateAuthorBioArgs = {
-  bio: Scalars['String']['input'];
   id: Scalars['String']['input'];
 };
 
@@ -528,15 +521,7 @@ export type CreateAuthorMutationVariables = Exact<{
 }>;
 
 
-export type CreateAuthorMutation = { __typename?: 'Mutation', createAuthor: { __typename?: 'AuthorModel', id: string } };
-
-export type UpdateAuthorBioMutationVariables = Exact<{
-  id: Scalars['String']['input'];
-  bio: Scalars['String']['input'];
-}>;
-
-
-export type UpdateAuthorBioMutation = { __typename?: 'Mutation', updateAuthorBio: boolean };
+export type CreateAuthorMutation = { __typename?: 'Mutation', createAuthor: string };
 
 export type UpdateBioByUserIdMutationVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -664,9 +649,7 @@ export type GetUsernameByUsernameQuery = { __typename?: 'Query', getUsernameByUs
 
 export const CreateAuthorDocument = gql`
     mutation CreateAuthor($data: CreateAuthorInput!) {
-  createAuthor(data: $data) {
-    id
-  }
+  createAuthor(data: $data)
 }
     `;
 export type CreateAuthorMutationFn = Apollo.MutationFunction<CreateAuthorMutation, CreateAuthorMutationVariables>;
@@ -695,38 +678,6 @@ export function useCreateAuthorMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateAuthorMutationHookResult = ReturnType<typeof useCreateAuthorMutation>;
 export type CreateAuthorMutationResult = Apollo.MutationResult<CreateAuthorMutation>;
 export type CreateAuthorMutationOptions = Apollo.BaseMutationOptions<CreateAuthorMutation, CreateAuthorMutationVariables>;
-export const UpdateAuthorBioDocument = gql`
-    mutation UpdateAuthorBio($id: String!, $bio: String!) {
-  updateAuthorBio(id: $id, bio: $bio)
-}
-    `;
-export type UpdateAuthorBioMutationFn = Apollo.MutationFunction<UpdateAuthorBioMutation, UpdateAuthorBioMutationVariables>;
-
-/**
- * __useUpdateAuthorBioMutation__
- *
- * To run a mutation, you first call `useUpdateAuthorBioMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateAuthorBioMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateAuthorBioMutation, { data, loading, error }] = useUpdateAuthorBioMutation({
- *   variables: {
- *      id: // value for 'id'
- *      bio: // value for 'bio'
- *   },
- * });
- */
-export function useUpdateAuthorBioMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAuthorBioMutation, UpdateAuthorBioMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateAuthorBioMutation, UpdateAuthorBioMutationVariables>(UpdateAuthorBioDocument, options);
-      }
-export type UpdateAuthorBioMutationHookResult = ReturnType<typeof useUpdateAuthorBioMutation>;
-export type UpdateAuthorBioMutationResult = Apollo.MutationResult<UpdateAuthorBioMutation>;
-export type UpdateAuthorBioMutationOptions = Apollo.BaseMutationOptions<UpdateAuthorBioMutation, UpdateAuthorBioMutationVariables>;
 export const UpdateBioByUserIdDocument = gql`
     mutation updateBioByUserId($userId: String!, $bio: String!) {
   updateBioByUserId(userId: $userId, bio: $bio)

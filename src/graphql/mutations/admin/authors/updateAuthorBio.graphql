@@ -1,3 +1,0 @@
-mutation UpdateAuthorBio($id: String!, $bio: String!) {
-  updateAuthorBio(id: $id, bio: $bio)
-}

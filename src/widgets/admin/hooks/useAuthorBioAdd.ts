@@ -1,15 +1,19 @@
 'use client'
 
+import { useAtomValue } from 'jotai'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useUpdateAuthorBioMutation } from '@/graphql/generated/output'
+import { useUpdateBioByUserIdMutation } from '@/graphql/generated/output'
+import { currentUserId } from '@/shared/atoms/current-userId.atom'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import { IBioFormData } from '@/widgets/shared/types/bio.type'
 
-const useAuthorBioUpdate = (id: string) => {
+const useAuthorAddBio = () => {
+  const userId = useAtomValue(currentUserId)
+
   const [content, setContent] = useState('')
 
   const { handleSubmit, register, reset, formState } = useForm<IBioFormData>({
@@ -22,7 +26,7 @@ const useAuthorBioUpdate = (id: string) => {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
 
-  const [update, { loading }] = useUpdateAuthorBioMutation({
+  const [update, { loading }] = useUpdateBioByUserIdMutation({
     onCompleted() {
       startTransition(() => {
         reset()
@@ -36,7 +40,7 @@ const useAuthorBioUpdate = (id: string) => {
 
   const onSubmit = (data: IBioFormData) => {
     data.bio = content
-    update({ variables: { id, bio: data.bio } })
+    update({ variables: { userId, bio: data.bio } })
   }
 
   const isLoading = loading || isPending || !content || content === '<p></p>'
@@ -52,4 +56,4 @@ const useAuthorBioUpdate = (id: string) => {
   }
 }
 
-export default useAuthorBioUpdate
+export default useAuthorAddBio

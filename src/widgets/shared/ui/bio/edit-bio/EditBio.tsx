@@ -9,8 +9,7 @@ import { USER_PAGES } from '@/shared/config/pages/user.config'
 import Button from '@/shared/ui/buttons/Button'
 import TextEditor from '@/shared/ui/text-editor/TextEditor'
 import useUpdateBio from '@/widgets/shared/hooks/useUpdateBio'
-
-import styles from '../Bio.module.scss'
+import styles from '@/widgets/shared/styles/Bio.module.scss'
 
 const EditBio = ({ bio }: { bio: string }) => {
   const { id }: { id: string } = useParams()

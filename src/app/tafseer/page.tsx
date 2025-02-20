@@ -4,7 +4,7 @@ import Header from '@/widgets/shared/ui/header/Header/Header'
 
 import styles from './TafseerPage.module.scss'
 
-const TafseerPage = () => {
+const TafseerPage = async () => {
   return (
     <>
       <Header />

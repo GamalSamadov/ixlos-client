@@ -6,14 +6,14 @@ import {
 } from '@/graphql/generated/output'
 import { apolloClientServer } from '@/shared/libs/apollo-client/apollo-client-server'
 
-const getProfileById = async (id: string) => {
+const getProfileById = async (userId: string) => {
   const { query } = await apolloClientServer()
 
   try {
     const { data, loading } = await query<GetProfileByIdQuery>({
       query: GetProfileByIdDocument,
       variables: {
-        id,
+        id: userId,
       },
     })
 

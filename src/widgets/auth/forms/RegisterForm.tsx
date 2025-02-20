@@ -37,7 +37,11 @@ export const RegisterForm = () => {
   const passwordError = formState.errors.password?.message
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+      autoComplete="on"
+    >
       <FormTitle title={t('title')} />
       <div className={styles.input_container}>
         <label htmlFor="email" className={styles.label}>
@@ -61,6 +65,7 @@ export const RegisterForm = () => {
           type="email"
           placeholder={t('form.email.placeholder')}
           onKeyUp={(e) => setEmail(e.currentTarget.value)}
+          autoComplete="email"
         />
         <div className={styles.icon_container}>
           <CustomIcon size={25} variant="email" />
@@ -95,6 +100,7 @@ export const RegisterForm = () => {
           type="text"
           placeholder={t('form.username.placeholder')}
           onKeyUp={(e) => setUsername(e.currentTarget.value)}
+          autoComplete="username"
         />
         <div className={styles.icon_container}>
           <User2 size={25} />
@@ -120,6 +126,7 @@ export const RegisterForm = () => {
           id="password"
           type={isVisible ? 'text' : 'password'}
           placeholder={t('form.password.placeholder')}
+          autoComplete="password"
         />
         <div
           className={styles.password_icon_container}

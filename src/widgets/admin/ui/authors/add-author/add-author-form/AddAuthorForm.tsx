@@ -48,14 +48,12 @@ const AddAuthorForm = () => {
         </Link>
       </div>
 
-      <div
-        className={clsx(
-          styles.form_container,
-          'bg_gray_custom',
-          'h_screen_with_header'
-        )}
-      >
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className={clsx(styles.form_container, 'h_screen_with_header')}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.form}
+          autoComplete="on"
+        >
           <FormTitle title={t('title')} />
           <div className={styles.input_container}>
             <label htmlFor="email" className={styles.label}>

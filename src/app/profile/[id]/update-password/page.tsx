@@ -1,6 +1,6 @@
 import UpdatePasswordForm from '@/widgets/shared/ui/profile/UpdatePasswordForm'
 
-import getProfile from '../../actions/get-profile-by-id'
+import getProfile from '../../../shared/actions/get-profile-by-id'
 
 const ProfileUpdatePasswordPage = async ({
   params,

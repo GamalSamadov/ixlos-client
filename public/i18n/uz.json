@@ -138,6 +138,12 @@
       "title": "Aftor haqida ma'lumot qo'shish",
       "skip": "O'tkazib yuborish",
       "confirm": "Ma'lumotni qo'shish"
+    },
+    "authorAddAvatar": {
+      "title": "Avatar kiritish",
+      "skip": "O'tkazib yuborish",
+      "confirm": "Yuklash",
+      "loading": "Yuklanmoqda..."
     }
   },
   "profile": {
