@@ -8,7 +8,7 @@ import { USER_PAGES } from '@/shared/config/pages/user.config'
 
 import { IUpdatePasswordFormData } from '../types/update-password.type'
 
-const useUpdatePassword = (id: string) => {
+export const useUpdatePassword = (id: string) => {
   const { register, handleSubmit, reset, formState, watch } =
     useForm<IUpdatePasswordFormData>({
       defaultValues: {
@@ -54,5 +54,3 @@ const useUpdatePassword = (id: string) => {
     watch,
   }
 }
-
-export default useUpdatePassword

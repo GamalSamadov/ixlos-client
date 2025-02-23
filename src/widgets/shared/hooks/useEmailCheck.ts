@@ -7,7 +7,7 @@ import {
 } from '@/graphql/generated/output'
 import { useDebounce } from '@/shared/hooks/useDebounce'
 
-const useCheckEmail = (email: string) => {
+export const useCheckEmail = (email: string) => {
   const debouncedEmail = useDebounce(email, 300)
   const { query } = useApolloClient()
   const [existingEmail, setExistingEmail] = useState('')
@@ -28,5 +28,3 @@ const useCheckEmail = (email: string) => {
 
   return { existingEmail }
 }
-
-export default useCheckEmail

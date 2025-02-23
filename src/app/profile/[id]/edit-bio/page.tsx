@@ -1,6 +1,6 @@
-import EditBio from '@/widgets/shared/ui/bio/edit-bio/EditBio'
+import { EditBio } from '@/widgets/shared/ui'
 
-import getBioByUserId from './actions/get-bio-by-userId'
+import { getBioByUserId } from './actions'
 
 const ProfileBioEditPage = async ({
   params,

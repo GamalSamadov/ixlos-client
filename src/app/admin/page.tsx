@@ -1,4 +1,4 @@
-import Header from '@/widgets/shared/ui/header/Header/Header'
+import { Header } from '@/widgets/shared/ui'
 
 const AdminPage = () => {
   return (

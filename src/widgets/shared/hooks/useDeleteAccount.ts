@@ -13,7 +13,7 @@ import {
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 
-const useDeleteAccount = (id: string) => {
+export const useDeleteAccount = (id: string) => {
   const router = useRouter()
   const [isPendingDelete, startTransitionDelete] = useTransition()
   const [isPendingLogout, startTransitionLogout] = useTransition()
@@ -66,5 +66,3 @@ const useDeleteAccount = (id: string) => {
     isLoading,
   }
 }
-
-export default useDeleteAccount

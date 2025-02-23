@@ -3,13 +3,13 @@
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-import Button from '@/shared/ui/buttons/Button'
-import Dialog from '@/shared/ui/dialog/Dialog'
-import useDeleteAccount from '@/widgets/shared/hooks/useDeleteAccount'
+import { Dialog } from '@/entities/shared/ui'
+import { Button } from '@/shared/ui'
+import { useDeleteAccount } from '@/widgets/shared/hooks'
 
 import styles from './Profile.module.scss'
 
-const DeleteAccountButton = ({ id }: { id: string }) => {
+export const DeleteAccountButton = ({ id }: { id: string }) => {
   const t = useTranslations('profile.deleteAccount')
   const { deleteUser, isLoading } = useDeleteAccount(id)
 
@@ -30,5 +30,3 @@ const DeleteAccountButton = ({ id }: { id: string }) => {
     </div>
   )
 }
-
-export default DeleteAccountButton

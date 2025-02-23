@@ -1,4 +1,4 @@
-import AddBioForm from '@/widgets/shared/ui/bio/add-bio/AddBioForm'
+import { AddBioForm } from '@/widgets/shared/ui'
 
 const ProfileBioAddPage = () => {
   return (

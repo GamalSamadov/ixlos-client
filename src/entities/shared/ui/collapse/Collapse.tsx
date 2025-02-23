@@ -1,7 +1,7 @@
 import { ArrowUp } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import Button from '@/shared/ui/buttons/Button'
+import { Button } from '@/shared/ui'
 
 import styles from './Collapse.module.scss'
 

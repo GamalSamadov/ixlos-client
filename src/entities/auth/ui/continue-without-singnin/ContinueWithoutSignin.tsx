@@ -3,14 +3,14 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { HrWithTitle } from '@/entities/form/ui'
+import { Dialog } from '@/entities/shared/ui'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import Button from '@/shared/ui/buttons/Button'
-import Dialog from '@/shared/ui/dialog/Dialog'
+import { Button } from '@/shared/ui'
 
 import styles from './ContinueWithoutSignin.module.scss'
-import { HrWithTitle } from '../../../shared/ui/from/hr-with-title/HrWithTitle'
 
-const ContinueWithoutSignin = () => {
+export const ContinueWithoutSignin = () => {
   const router = useRouter()
   const t = useTranslations('auth.continue')
   return (
@@ -31,5 +31,3 @@ const ContinueWithoutSignin = () => {
     </div>
   )
 }
-
-export default ContinueWithoutSignin

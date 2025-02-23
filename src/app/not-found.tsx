@@ -3,8 +3,7 @@ import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import Button from '@/shared/ui/buttons/Button'
-import LogoClear from '@/shared/ui/vectors/LogoClear'
+import { Button, LogoClear } from '@/shared/ui'
 
 const Custom404 = async () => {
   const t = await getTranslations('errors.404')

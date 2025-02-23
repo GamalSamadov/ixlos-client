@@ -13,7 +13,9 @@ import { USER_PAGES } from '@/shared/config/pages/user.config'
 
 import { IUpdateAvatarFormData } from '../types/update-avatar.type'
 
-const useUpdateAvatar = (profile: GetProfileByIdQuery['getProfileById']) => {
+export const useUpdateAvatar = (
+  profile: GetProfileByIdQuery['getProfileById']
+) => {
   const tError = useTranslations('errors')
   const { register, handleSubmit, reset, formState, setValue } =
     useForm<IUpdateAvatarFormData>({
@@ -81,5 +83,3 @@ const useUpdateAvatar = (profile: GetProfileByIdQuery['getProfileById']) => {
     isLoadingRemove,
   }
 }
-
-export default useUpdateAvatar

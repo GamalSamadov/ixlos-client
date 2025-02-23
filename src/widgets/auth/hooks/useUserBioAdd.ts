@@ -12,7 +12,7 @@ import { currentUserId } from '@/shared/atoms/current-userId.atom'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { IBioFormData } from '@/widgets/shared/types/bio.type'
 
-const useUserBioAdd = () => {
+export const useUserBioAdd = () => {
   const userId = useAtomValue(currentUserId)
   const setCreateUserCurrentPage = useSetAtom(createUserCurrentPageAtom)
   const setUserId = useSetAtom(currentUserId)
@@ -60,5 +60,3 @@ const useUserBioAdd = () => {
     formState,
   }
 }
-
-export default useUserBioAdd

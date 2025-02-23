@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 
 import { AnimateDownOnClickLeft } from '@/shared/ui/buttons/animate-down-on-click/AnimateDownOnClick'
-import Button from '@/shared/ui/buttons/Button'
+import Button from '@/shared/ui/buttons/button/Button'
 import CustomIcon from '@/shared/ui/icons/CustomIcon'
 
 interface Props {

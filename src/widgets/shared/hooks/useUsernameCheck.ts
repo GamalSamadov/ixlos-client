@@ -7,7 +7,7 @@ import {
 } from '@/graphql/generated/output'
 import { useDebounce } from '@/shared/hooks/useDebounce'
 
-const useCheckUsername = (username: string) => {
+export const useCheckUsername = (username: string) => {
   const debouncedUsername = useDebounce(username, 300)
   const { query } = useApolloClient()
   const [existingUsername, setExistingUsername] = useState('')
@@ -28,5 +28,3 @@ const useCheckUsername = (username: string) => {
 
   return { existingUsername }
 }
-
-export default useCheckUsername

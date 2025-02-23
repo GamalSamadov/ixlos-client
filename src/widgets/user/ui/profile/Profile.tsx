@@ -5,12 +5,10 @@ import { getTranslations } from 'next-intl/server'
 
 import { GetProfileByIdQuery } from '@/graphql/generated/output'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
-import Avatar from '@/shared/ui/avatar/Avatar'
-import Button from '@/shared/ui/buttons/Button'
-import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import { Avatar, Button, CustomIcon } from '@/shared/ui'
 import { getAuth } from '@/shared/utils/auth/get-auth'
 
-import DeleteAccountButton from './DeleteAccountButton'
+import { DeleteAccountButton } from './DeleteAccountButton'
 import styles from './Profile.module.scss'
 
 interface Props {
@@ -18,7 +16,7 @@ interface Props {
   loading: boolean
 }
 
-const Profile = async ({ profile }: Props) => {
+export const Profile = async ({ profile }: Props) => {
   const currentUser = await getAuth()
   const t = await getTranslations('profile')
   const hasAccess = profile.id === currentUser?.userId || currentUser?.isAdmin
@@ -112,5 +110,3 @@ const Profile = async ({ profile }: Props) => {
     </section>
   )
 }
-
-export default Profile

@@ -8,17 +8,12 @@ import styles from './Avatar.module.scss'
 
 interface Props {
   size: number
-  avatar?: string | null | undefined
-  username?: string | undefined
-  displayName?: string | undefined
+  avatar: string | null | undefined
+  username: string | undefined
+  displayName: string | undefined
 }
 
-const Avatar = ({
-  size,
-  avatar = '',
-  username = '',
-  displayName = '',
-}: Props) => {
+export const Avatar = ({ size, avatar, username, displayName }: Props) => {
   const firstLetter = getFirstLetter(displayName)
   return (
     <div className={styles.avatar} style={{ width: size, height: size }}>
@@ -37,8 +32,8 @@ const Avatar = ({
       ) : (
         <Image
           src="/assets/icons/person.svg"
-          width={size && size - 80}
-          height={size && size - 80}
+          width={size && size - 25}
+          height={size && size - 25}
           alt="User"
           className={styles.person_icon}
         />
@@ -46,5 +41,3 @@ const Avatar = ({
     </div>
   )
 }
-
-export default Avatar

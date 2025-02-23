@@ -1,7 +1,6 @@
-import Header from '@/widgets/shared/ui/header/Header/Header'
-import Profile from '@/widgets/user/ui/profile/Profile'
-
-import getProfileById from '../../shared/actions/get-profile-by-id'
+import { getProfileById } from '@/app/shared/actions'
+import { Header } from '@/widgets/shared/ui'
+import { Profile } from '@/widgets/user/ui'
 
 const ProfilePage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params

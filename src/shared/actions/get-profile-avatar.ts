@@ -7,7 +7,7 @@ import {
 
 import { apolloClientServer } from '../libs/apollo-client/apollo-client-server'
 
-const getProfileAvatar = async () => {
+export const getProfileAvatar = async () => {
   const { query } = await apolloClientServer()
 
   const { data, loading } = await query<GetProfilePictureQuery>({
@@ -21,5 +21,3 @@ const getProfileAvatar = async () => {
 
   return { id, avatar, username, displayName, loading }
 }
-
-export default getProfileAvatar

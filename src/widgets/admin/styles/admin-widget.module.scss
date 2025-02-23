@@ -9,3 +9,7 @@
 .bottom {
   @apply py-2 overflow-x-auto flex flex-col;
 }
+
+.search-container {
+  @apply w-full flex items-center justify-center md:justify-between py-1 px-5;
+}

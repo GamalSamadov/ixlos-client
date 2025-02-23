@@ -3,10 +3,10 @@ import { Poppins, Josefin_Sans as JosefinSans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
-import { BackgroundEllipsis } from '@/shared/ui/backgrounds/background-ellipsis/BackgroundEllipsis'
+import { BackgroundEllipsis } from '@/shared/ui'
 
 import '@/shared/styles/globals.scss'
-import Providers from './providers'
+import { Providers } from './providers'
 
 const poppins = Poppins({
   variable: '--poppins',

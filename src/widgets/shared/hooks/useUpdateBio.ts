@@ -9,7 +9,7 @@ import { useUpdateBioByUserIdMutation } from '@/graphql/generated/output'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
 import { IBioFormData } from '@/widgets/shared/types/bio.type'
 
-const useUpdateBio = (userId: string, bio: string) => {
+export const useUpdateBio = (userId: string, bio: string) => {
   const [content, setContent] = useState(bio)
 
   const { handleSubmit, register, reset, formState } = useForm<IBioFormData>({
@@ -51,5 +51,3 @@ const useUpdateBio = (userId: string, bio: string) => {
     formState,
   }
 }
-
-export default useUpdateBio

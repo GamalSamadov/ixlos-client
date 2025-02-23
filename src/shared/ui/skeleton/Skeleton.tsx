@@ -5,8 +5,6 @@ interface Props {
   height?: number | string | undefined
 }
 
-const Skeleton = ({ width, height }: Props) => {
+export const Skeleton = ({ width, height }: Props) => {
   return <div className={styles.skeleton} style={{ width, height }} />
 }
-
-export default Skeleton

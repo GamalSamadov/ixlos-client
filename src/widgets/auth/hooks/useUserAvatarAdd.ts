@@ -9,7 +9,7 @@ import { createUserCurrentPageAtom } from '@/shared/atoms/create-user-current-pa
 import { currentUserId } from '@/shared/atoms/current-userId.atom'
 import { IUpdateAvatarFormData } from '@/widgets/shared/types/update-avatar.type'
 
-const useUserAvatarAdd = () => {
+export const useUserAvatarAdd = () => {
   const userId = useAtomValue(currentUserId)
 
   const setCreateUserCurrentPage = useSetAtom(createUserCurrentPageAtom)
@@ -61,5 +61,3 @@ const useUserAvatarAdd = () => {
     handleImageChange,
   }
 }
-
-export default useUserAvatarAdd

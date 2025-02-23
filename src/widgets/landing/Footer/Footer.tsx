@@ -3,12 +3,12 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import { CustomIcon } from '@/shared/ui'
 
 import styles from './Footer.module.scss'
 import { LINKS } from './links'
 
-const Footer = () => {
+export const Footer = () => {
   const t = useTranslations('landing.footer')
   return (
     <footer className={styles.footer}>
@@ -29,5 +29,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

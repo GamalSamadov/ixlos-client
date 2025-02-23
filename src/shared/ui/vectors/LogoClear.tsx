@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const LogoClear = ({ size }: { size: number }) => {
+export const LogoClear = ({ size }: { size: number }) => {
   return (
     <Image
       style={{ userSelect: 'none' }}
@@ -12,5 +12,3 @@ const LogoClear = ({ size }: { size: number }) => {
     />
   )
 }
-
-export default LogoClear

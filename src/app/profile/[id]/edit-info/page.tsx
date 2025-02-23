@@ -1,6 +1,5 @@
-import EditProfileInfoForm from '@/widgets/shared/ui/profile/EditInfoForm'
-
-import getProfile from '../../../shared/actions/get-profile-by-id'
+import { getProfileById } from '@/app/shared/actions'
+import { EditProfileInfoForm } from '@/widgets/shared/ui'
 
 const ProfileEditInfo = async ({
   params,
@@ -8,7 +7,7 @@ const ProfileEditInfo = async ({
   params: Promise<{ id: string }>
 }) => {
   const { id } = await params
-  const { profile } = await getProfile(id)
+  const { profile } = await getProfileById(id)
   return (
     <>
       <EditProfileInfoForm profile={profile} />

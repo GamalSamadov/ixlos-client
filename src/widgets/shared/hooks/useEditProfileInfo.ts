@@ -10,7 +10,7 @@ import { USER_PAGES } from '@/shared/config/pages/user.config'
 
 import { IEditProfileInfoFormData } from '../types/edit-profile-info.type'
 
-const useEditProfileInfo = (profile: IEditProfileInfoFormData) => {
+export const useEditProfileInfo = (profile: IEditProfileInfoFormData) => {
   const { register, handleSubmit, reset, formState } =
     useForm<IEditProfileInfoFormData>({
       defaultValues: profile,
@@ -51,5 +51,3 @@ const useEditProfileInfo = (profile: IEditProfileInfoFormData) => {
     formState,
   }
 }
-
-export default useEditProfileInfo

@@ -6,12 +6,11 @@ import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { USER_PAGES } from '@/shared/config/pages/user.config'
-import Button from '@/shared/ui/buttons/Button'
-import TextEditor from '@/shared/ui/text-editor/TextEditor'
-import useUpdateBio from '@/widgets/shared/hooks/useUpdateBio'
+import { Button, TextEditor } from '@/shared/ui'
+import { useUpdateBio } from '@/widgets/shared/hooks'
 import styles from '@/widgets/shared/styles/Bio.module.scss'
 
-const AddBioForm = () => {
+export const AddBioForm = () => {
   const { id }: { id: string } = useParams()
   const {
     setContent,
@@ -59,5 +58,3 @@ const AddBioForm = () => {
     </section>
   )
 }
-
-export default AddBioForm

@@ -11,7 +11,7 @@ import { currentUserId } from '@/shared/atoms/current-userId.atom'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import { IBioFormData } from '@/widgets/shared/types/bio.type'
 
-const useAuthorAddBio = () => {
+export const useAuthorAddBio = () => {
   const userId = useAtomValue(currentUserId)
 
   const [content, setContent] = useState('')
@@ -55,5 +55,3 @@ const useAuthorAddBio = () => {
     formState,
   }
 }
-
-export default useAuthorAddBio

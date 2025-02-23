@@ -1,4 +1,4 @@
-import AddAuthorBio from '@/widgets/admin/ui/authors/add-author/add-author-bio/AddAuthorBio'
+import { AddAuthorBio } from '@/widgets/admin/ui/authors/add-author/forms'
 
 const AuthorBioAddPage = () => {
   return (

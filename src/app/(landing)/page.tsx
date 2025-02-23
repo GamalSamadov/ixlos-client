@@ -1,6 +1,5 @@
 import { getAuth } from '@/shared/utils/auth/get-auth'
-import Footer from '@/widgets/landing/Footer/Footer'
-import Hero from '@/widgets/landing/Hero/Hero'
+import { Footer, Hero } from '@/widgets/landing'
 
 import styles from './Landing.module.scss'
 

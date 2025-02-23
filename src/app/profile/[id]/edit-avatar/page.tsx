@@ -1,5 +1,5 @@
-import getProfileById from '@/app/shared/actions/get-profile-by-id'
-import EditAvatarForm from '@/widgets/shared/ui/profile/EditAvatarForm'
+import { getProfileById } from '@/app/shared/actions'
+import { EditAvatarForm } from '@/widgets/shared/ui'
 
 const ProfileEditAvatarPage = async ({
   params,

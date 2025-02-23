@@ -1,7 +1,7 @@
-import AddAuthor from '@/widgets/admin/ui/authors/add-author'
+import { AdminAddAuthor } from '@/widgets/admin/ui'
 
 const AddAuthorPage = () => {
-  return <AddAuthor />
+  return <AdminAddAuthor />
 }
 
 export default AddAuthorPage

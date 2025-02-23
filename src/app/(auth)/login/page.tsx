@@ -1,4 +1,4 @@
-import { LoginForm } from '@/widgets/auth/ui/forms/LoginForm'
+import { LoginForm } from '@/widgets/auth/ui'
 
 const LoginPage = () => {
   return <LoginForm />

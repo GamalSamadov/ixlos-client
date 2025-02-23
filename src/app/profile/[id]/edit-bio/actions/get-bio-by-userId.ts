@@ -4,7 +4,7 @@ import {
 } from '@/graphql/generated/output'
 import { apolloClientServer } from '@/shared/libs/apollo-client/apollo-client-server'
 
-const getBioByUserId = async (userId: string) => {
+export const getBioByUserId = async (userId: string) => {
   const { query } = await apolloClientServer()
 
   const { data, loading } = await query<GetBioByUserIdQuery>({
@@ -18,5 +18,3 @@ const getBioByUserId = async (userId: string) => {
 
   return { bio, loading }
 }
-
-export default getBioByUserId

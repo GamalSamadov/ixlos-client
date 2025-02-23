@@ -1,7 +1,7 @@
 import { BookText } from 'lucide-react'
 
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import { CustomIcon } from '@/shared/ui'
 
 export const MEMBER_LINKS = [
   {

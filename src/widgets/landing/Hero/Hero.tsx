@@ -5,12 +5,12 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import Button from '@/shared/ui/buttons/Button'
+import { Button } from '@/shared/ui'
 import { TUserDataState } from '@/shared/utils/user/transform-user-to-state'
 
 import styles from './Hero.module.scss'
 
-const Hero = ({ user }: { user: TUserDataState | null }) => {
+export const Hero = ({ user }: { user: TUserDataState | null }) => {
   const t = useTranslations('landing.hero')
   return (
     <section className={styles.hero}>
@@ -51,5 +51,3 @@ const Hero = ({ user }: { user: TUserDataState | null }) => {
     </section>
   )
 }
-
-export default Hero

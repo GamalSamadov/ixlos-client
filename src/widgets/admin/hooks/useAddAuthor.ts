@@ -11,7 +11,7 @@ import { currentUserId } from '@/shared/atoms/current-userId.atom'
 
 import { IAddAuthorFormData } from '../types/add-author.type'
 
-const useAddAuthor = () => {
+export const useAddAuthor = () => {
   const setCreateUserCurrentPage = useSetAtom(createUserCurrentPageAtom)
   const setUserId = useSetAtom(currentUserId)
   // TODO: country
@@ -56,5 +56,3 @@ const useAddAuthor = () => {
     formState,
   }
 }
-
-export default useAddAuthor

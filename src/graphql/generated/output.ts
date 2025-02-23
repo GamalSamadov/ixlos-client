@@ -294,7 +294,6 @@ export type Query = {
   getAllAyahs: Array<AyahModel>;
   getAllSurahs: Array<SurahModel>;
   getAllTafseers: Array<TafseerModel>;
-  getAllUsers: Array<UserModel>;
   getAuthorById: AuthorModel;
   getAyahById: AyahModel;
   getBioByUserId: Scalars['String']['output'];
@@ -324,11 +323,6 @@ export type QueryGetAllAyahsArgs = {
 
 
 export type QueryGetAllSurahsArgs = {
-  pagination: PaginationInput;
-};
-
-
-export type QueryGetAllUsersArgs = {
   pagination: PaginationInput;
 };
 
@@ -504,6 +498,7 @@ export type UserModel = {
   displayName: Scalars['String']['output'];
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
+  isActive: Scalars['Boolean']['output'];
   password: Scalars['String']['output'];
   rights: Array<Role>;
   updatedAt: Scalars['DateTime']['output'];

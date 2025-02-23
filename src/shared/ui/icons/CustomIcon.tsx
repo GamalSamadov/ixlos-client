@@ -1,6 +1,12 @@
 import Image from 'next/image'
 
-const CustomIcon = ({ size, variant }: { size: number; variant: string }) => {
+export const CustomIcon = ({
+  size,
+  variant,
+}: {
+  size: number
+  variant: string
+}) => {
   return (
     <Image
       style={{ userSelect: 'none' }}
@@ -12,5 +18,3 @@ const CustomIcon = ({ size, variant }: { size: number; variant: string }) => {
     />
   )
 }
-
-export default CustomIcon

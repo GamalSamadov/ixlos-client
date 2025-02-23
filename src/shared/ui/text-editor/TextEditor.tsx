@@ -20,9 +20,9 @@ import {
 } from 'lucide-react'
 
 import styles from './TextEditor.module.scss'
-import Button from '../buttons/Button'
+import { Button } from '../buttons/button/Button'
 
-const TextEditor = ({
+export const TextEditor = ({
   content,
   onChange,
 }: {
@@ -146,5 +146,3 @@ const TextEditor = ({
     </>
   )
 }
-
-export default TextEditor

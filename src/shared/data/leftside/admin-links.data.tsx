@@ -2,7 +2,7 @@ import { BookText, SignatureIcon, Users2 } from 'lucide-react'
 
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import CustomIcon from '@/shared/ui/icons/CustomIcon'
+import { CustomIcon } from '@/shared/ui'
 
 export const ADMIN_LINKS = [
   {

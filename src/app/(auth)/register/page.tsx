@@ -1,4 +1,4 @@
-import Register from '@/widgets/auth/ui/register'
+import { Register } from '@/widgets/auth/ui'
 
 const CreateAccountPage = () => {
   return <Register />

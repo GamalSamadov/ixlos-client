@@ -1,9 +1,8 @@
 import { redirect } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
-import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
-import { MosqueBackground } from '@/shared/ui/backgrounds/mosque-background/MosqueBackground'
+import { ADMIN_PAGES, PUBLIC_PAGES } from '@/shared/config/pages'
+import { MosqueBackground } from '@/shared/ui'
 import { getAuth } from '@/shared/utils/auth/get-auth'
 
 import styles from './Auth.module.scss'
