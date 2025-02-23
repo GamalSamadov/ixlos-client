@@ -1,6 +1,6 @@
 'use client'
 
-import { SearchInput } from '@/entities/form/ui'
+import { SearchInput } from '@/features/search-input'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 
 import styles from './SearchTafseer.module.scss'
