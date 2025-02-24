@@ -1,0 +1,29 @@
+.card-container {
+  @apply w-full flex flex-col justify-center items-center;
+}
+
+.card {
+  @apply w-full h-full shadow-lg rounded-lg flex flex-col justify-center items-center gap-1 relative overflow-hidden py-3 px-4;
+
+  .card-content {
+    @apply w-full h-full flex flex-col justify-center items-center;
+    z-index: 1;
+  }
+
+  .card-bg-image {
+    @apply absolute bottom-0 right-0 opacity-30;
+    z-index: 0;
+  }
+
+  .card-title {
+    @apply text-2xl font-josefin_sans text-center font-bold;
+  }
+
+  .card-description {
+    @apply font-josefin_sans text-center;
+  }
+
+  .card-button {
+    @apply w-full flex justify-start rounded-full;
+  }
+}

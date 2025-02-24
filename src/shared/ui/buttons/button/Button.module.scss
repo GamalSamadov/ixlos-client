@@ -55,3 +55,7 @@
 .danger {
   @apply text-red-500;
 }
+
+.dark-blue {
+  @apply bg-blue-950 rounded-full p-2;
+}

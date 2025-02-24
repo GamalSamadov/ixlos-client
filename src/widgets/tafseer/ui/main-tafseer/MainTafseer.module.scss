@@ -1,0 +1,15 @@
+.container {
+  @apply mb-2 flex flex-col justify-start gap-6 md:gap-2 md:grid md:grid-rows-10 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.left {
+  @apply lg:col-span-2 md:col-span-1 md:row-span-10 flex flex-col gap-2;
+}
+
+.right {
+  @apply md:col-span-1 md:row-span-10 flex items-center md:items-start justify-center;
+}
+
+.body-left {
+  @apply flex flex-col gap-2 p-2;
+}

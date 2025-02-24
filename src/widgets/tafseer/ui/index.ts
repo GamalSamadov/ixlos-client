@@ -1,1 +1,1 @@
-export * from './search-tafseer/SearchTafseer'
+export * from './main-tafseer'

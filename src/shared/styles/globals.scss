@@ -13,6 +13,7 @@
   --blue-light: #0b145c;
   --sky-blue: #33c3ca;
   --sky-blue-light: #47b4d8;
+  --sky-blue-dark: #328ba8eb;
   --sky-blue-light-border: #65d6fc67;
   --sky-blue-gradient: #65d6fc27;
   --purple: #5e17eb;
@@ -59,6 +60,14 @@ main::before {
 
   .bg_gray_custom {
     @apply rounded-lg border border-sky_blue-light_border bg-gradient-to-r from-slate-900/90 to-slate-900/60;
+  }
+
+  .bg_light_blue_gradient {
+    background: linear-gradient(
+      120deg,
+      var(--sky-blue) 0%,
+      var(--sky-blue-dark) 100%
+    );
   }
 }
 

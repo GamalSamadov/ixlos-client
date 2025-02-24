@@ -234,6 +234,17 @@
       "removing": "O'chirilmoqda..."
     }
   },
+  "tafseer": {
+    "search": {
+      "placeholder": "Oyatning arabcha matni ila qidiring...",
+      "resultDefault": "Barcha suralar",
+      "result": "Qidiruv natijalari"
+    },
+    "tafseersCard": {
+      "title": "Qur'oni karim",
+      "description": "tafsir va tarjimalari"
+    }
+  },
   "errors": {
     "dataNotFound": "Ma'lumot topilmadi.",
     "required": "Bu joy majburiy",

@@ -13,6 +13,7 @@ interface IButtonProps {
     | 'link'
     | 'link-active'
     | 'danger'
+    | 'dark-blue'
   size?: 'standard' | 'full'
   type?: 'button' | 'submit' | 'reset' | undefined
   disabled?: boolean
@@ -40,6 +41,7 @@ export const Button = ({
         variant === 'transparent' && styles.transparent,
         variant === 'link' && styles.link,
         variant === 'danger' && styles.danger,
+        variant === 'dark-blue' && styles['dark-blue'],
         size === 'standard' && styles.standard,
         size === 'full' && styles.full,
         isActive && styles.active,

@@ -233,6 +233,17 @@
       "removing": "Removing..."
     }
   },
+  "tafseer": {
+    "search": {
+      "placeholder": "Search by ayah...",
+      "resultDefault": "All surahs",
+      "result": "Result"
+    },
+    "tafseersCard": {
+      "title": "Holy Quran",
+      "description": "Tafseers and translations"
+    }
+  },
   "errors": {
     "dataNotFound": "Data not found.",
     "required": "This field is required",
