@@ -156,6 +156,21 @@
       "skip": "O'tkazib yuborish",
       "confirm": "Yuklash",
       "loading": "Yuklanmoqda..."
+    },
+
+    "tafseers": {
+      "addButton": "Tafsir qo'shish",
+      "table": {
+        "name": "Nom",
+        "arabicName": "Arabcha nom",
+        "action": "Ochish"
+      },
+      "search": {
+        "title": "Barcha tafsirlar",
+        "placeholder": "Nom yoki arabcha nom ila qidiring..."
+      },
+      "loadMore": "Yana ko'rsatish",
+      "collapse": "Yopish"
     }
   },
   "profile": {
@@ -243,6 +258,9 @@
     "tafseersCard": {
       "title": "Qur'oni karim",
       "description": "tafsir va tarjimalari"
+    },
+    "admin": {
+      "edit": "Tahrirlash"
     }
   },
   "errors": {
@@ -270,5 +288,8 @@
       "message": "Serverda xatolik yuz berdi. Iltimos, qayta urunib ko'ring.",
       "subtitle": "Iltimos, birozdan keyin qayta urunib ko'ring."
     }
+  },
+  "shared": {
+    "back": "Ortga"
   }
 }

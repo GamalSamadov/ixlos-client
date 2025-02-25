@@ -6,7 +6,11 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-import { CustomInput, FormTitle, SubmitButton } from '@/entities/form/ui'
+import {
+  CustomInput,
+  FormTitle,
+  SubmitButton,
+} from '@/entities/shared/ui/form/ui'
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
 import {
   EMAIL_PATTERN,

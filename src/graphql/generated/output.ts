@@ -293,7 +293,7 @@ export type Query = {
   getAllAuthors: AuthorsPaginatedModel;
   getAllAyahs: Array<AyahModel>;
   getAllSurahs: Array<SurahModel>;
-  getAllTafseers: Array<TafseerModel>;
+  getAllTafseers: TafseersPaginatedModel;
   getAuthorById: AuthorModel;
   getAyahById: AyahModel;
   getBioByUserId: Scalars['String']['output'];
@@ -324,6 +324,12 @@ export type QueryGetAllAyahsArgs = {
 
 export type QueryGetAllSurahsArgs = {
   pagination: PaginationInput;
+};
+
+
+export type QueryGetAllTafseersArgs = {
+  pagination: PaginationInput;
+  searchTerm: Scalars['String']['input'];
 };
 
 
@@ -444,6 +450,12 @@ export type TafseerModel = {
   updatedAt: Scalars['DateTime']['output'];
 };
 
+export type TafseersPaginatedModel = {
+  __typename?: 'TafseersPaginatedModel';
+  hasMore: Scalars['Boolean']['output'];
+  tafseers: Array<TafseerModel>;
+};
+
 export type UpdateAuthorInput = {
   bio?: InputMaybe<Scalars['String']['input']>;
   country?: InputMaybe<Scalars['String']['input']>;
@@ -512,14 +524,6 @@ export type CreateAuthorMutationVariables = Exact<{
 
 export type CreateAuthorMutation = { __typename?: 'Mutation', createAuthor: string };
 
-export type UpdateBioByUserIdMutationVariables = Exact<{
-  userId: Scalars['String']['input'];
-  bio: Scalars['String']['input'];
-}>;
-
-
-export type UpdateBioByUserIdMutation = { __typename?: 'Mutation', updateBioByUserId: boolean };
-
 export type CreateUserMutationVariables = Exact<{
   data: CreateUserInput;
 }>;
@@ -532,7 +536,7 @@ export type LoginUserMutationVariables = Exact<{
 }>;
 
 
-export type LoginUserMutation = { __typename?: 'Mutation', loginUser: { __typename?: 'UserModel', email: string } };
+export type LoginUserMutation = { __typename?: 'Mutation', loginUser: { __typename?: 'UserModel', email: string, rights: Array<Role> } };
 
 export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -544,7 +548,7 @@ export type RegisterUserMutationVariables = Exact<{
 }>;
 
 
-export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'UserModel', id: string, email: string } };
+export type RegisterUserMutation = { __typename?: 'Mutation', registerUser: { __typename?: 'UserModel', id: string, email: string, rights: Array<Role> } };
 
 export type ChangeProfileAvatarMutationVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -572,6 +576,14 @@ export type RemoveProfileAvatarByUserIdMutationVariables = Exact<{
 
 
 export type RemoveProfileAvatarByUserIdMutation = { __typename?: 'Mutation', removeProfileAvatarByUserId: boolean };
+
+export type UpdateBioByUserIdMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  bio: Scalars['String']['input'];
+}>;
+
+
+export type UpdateBioByUserIdMutation = { __typename?: 'Mutation', updateBioByUserId: boolean };
 
 export type UpdatePasswordByUserIdMutationVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -608,6 +620,14 @@ export type GetBioByUserIdQueryVariables = Exact<{
 
 
 export type GetBioByUserIdQuery = { __typename?: 'Query', getBioByUserId: string };
+
+export type GetAllTafseersQueryVariables = Exact<{
+  searchTerm: Scalars['String']['input'];
+  pagination: PaginationInput;
+}>;
+
+
+export type GetAllTafseersQuery = { __typename?: 'Query', getAllTafseers: { __typename?: 'TafseersPaginatedModel', hasMore: boolean, tafseers: Array<{ __typename?: 'TafseerModel', id: string, name: string, arabicName: string, language: TafseerLanguage }> } };
 
 export type GetEmailByEmailQueryVariables = Exact<{
   email: Scalars['String']['input'];
@@ -667,38 +687,6 @@ export function useCreateAuthorMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateAuthorMutationHookResult = ReturnType<typeof useCreateAuthorMutation>;
 export type CreateAuthorMutationResult = Apollo.MutationResult<CreateAuthorMutation>;
 export type CreateAuthorMutationOptions = Apollo.BaseMutationOptions<CreateAuthorMutation, CreateAuthorMutationVariables>;
-export const UpdateBioByUserIdDocument = gql`
-    mutation updateBioByUserId($userId: String!, $bio: String!) {
-  updateBioByUserId(userId: $userId, bio: $bio)
-}
-    `;
-export type UpdateBioByUserIdMutationFn = Apollo.MutationFunction<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>;
-
-/**
- * __useUpdateBioByUserIdMutation__
- *
- * To run a mutation, you first call `useUpdateBioByUserIdMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateBioByUserIdMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateBioByUserIdMutation, { data, loading, error }] = useUpdateBioByUserIdMutation({
- *   variables: {
- *      userId: // value for 'userId'
- *      bio: // value for 'bio'
- *   },
- * });
- */
-export function useUpdateBioByUserIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>(UpdateBioByUserIdDocument, options);
-      }
-export type UpdateBioByUserIdMutationHookResult = ReturnType<typeof useUpdateBioByUserIdMutation>;
-export type UpdateBioByUserIdMutationResult = Apollo.MutationResult<UpdateBioByUserIdMutation>;
-export type UpdateBioByUserIdMutationOptions = Apollo.BaseMutationOptions<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>;
 export const CreateUserDocument = gql`
     mutation CreateUser($data: CreateUserInput!) {
   createUser(data: $data)
@@ -734,6 +722,7 @@ export const LoginUserDocument = gql`
     mutation LoginUser($data: LoginInput!) {
   loginUser(data: $data) {
     email
+    rights
   }
 }
     `;
@@ -798,6 +787,7 @@ export const RegisterUserDocument = gql`
   registerUser(data: $data) {
     id
     email
+    rights
   }
 }
     `;
@@ -954,6 +944,38 @@ export function useRemoveProfileAvatarByUserIdMutation(baseOptions?: Apollo.Muta
 export type RemoveProfileAvatarByUserIdMutationHookResult = ReturnType<typeof useRemoveProfileAvatarByUserIdMutation>;
 export type RemoveProfileAvatarByUserIdMutationResult = Apollo.MutationResult<RemoveProfileAvatarByUserIdMutation>;
 export type RemoveProfileAvatarByUserIdMutationOptions = Apollo.BaseMutationOptions<RemoveProfileAvatarByUserIdMutation, RemoveProfileAvatarByUserIdMutationVariables>;
+export const UpdateBioByUserIdDocument = gql`
+    mutation updateBioByUserId($userId: String!, $bio: String!) {
+  updateBioByUserId(userId: $userId, bio: $bio)
+}
+    `;
+export type UpdateBioByUserIdMutationFn = Apollo.MutationFunction<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>;
+
+/**
+ * __useUpdateBioByUserIdMutation__
+ *
+ * To run a mutation, you first call `useUpdateBioByUserIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateBioByUserIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateBioByUserIdMutation, { data, loading, error }] = useUpdateBioByUserIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      bio: // value for 'bio'
+ *   },
+ * });
+ */
+export function useUpdateBioByUserIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>(UpdateBioByUserIdDocument, options);
+      }
+export type UpdateBioByUserIdMutationHookResult = ReturnType<typeof useUpdateBioByUserIdMutation>;
+export type UpdateBioByUserIdMutationResult = Apollo.MutationResult<UpdateBioByUserIdMutation>;
+export type UpdateBioByUserIdMutationOptions = Apollo.BaseMutationOptions<UpdateBioByUserIdMutation, UpdateBioByUserIdMutationVariables>;
 export const UpdatePasswordByUserIdDocument = gql`
     mutation updatePasswordByUserId($userId: String!, $data: UpdatePasswordInput!) {
   updatePasswordByUserId(userId: $userId, data: $data)
@@ -1146,6 +1168,53 @@ export type GetBioByUserIdQueryHookResult = ReturnType<typeof useGetBioByUserIdQ
 export type GetBioByUserIdLazyQueryHookResult = ReturnType<typeof useGetBioByUserIdLazyQuery>;
 export type GetBioByUserIdSuspenseQueryHookResult = ReturnType<typeof useGetBioByUserIdSuspenseQuery>;
 export type GetBioByUserIdQueryResult = Apollo.QueryResult<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>;
+export const GetAllTafseersDocument = gql`
+    query GetAllTafseers($searchTerm: String!, $pagination: PaginationInput!) {
+  getAllTafseers(searchTerm: $searchTerm, pagination: $pagination) {
+    tafseers {
+      id
+      name
+      arabicName
+      language
+    }
+    hasMore
+  }
+}
+    `;
+
+/**
+ * __useGetAllTafseersQuery__
+ *
+ * To run a query within a React component, call `useGetAllTafseersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllTafseersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllTafseersQuery({
+ *   variables: {
+ *      searchTerm: // value for 'searchTerm'
+ *      pagination: // value for 'pagination'
+ *   },
+ * });
+ */
+export function useGetAllTafseersQuery(baseOptions: Apollo.QueryHookOptions<GetAllTafseersQuery, GetAllTafseersQueryVariables> & ({ variables: GetAllTafseersQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllTafseersQuery, GetAllTafseersQueryVariables>(GetAllTafseersDocument, options);
+      }
+export function useGetAllTafseersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllTafseersQuery, GetAllTafseersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllTafseersQuery, GetAllTafseersQueryVariables>(GetAllTafseersDocument, options);
+        }
+export function useGetAllTafseersSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAllTafseersQuery, GetAllTafseersQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAllTafseersQuery, GetAllTafseersQueryVariables>(GetAllTafseersDocument, options);
+        }
+export type GetAllTafseersQueryHookResult = ReturnType<typeof useGetAllTafseersQuery>;
+export type GetAllTafseersLazyQueryHookResult = ReturnType<typeof useGetAllTafseersLazyQuery>;
+export type GetAllTafseersSuspenseQueryHookResult = ReturnType<typeof useGetAllTafseersSuspenseQuery>;
+export type GetAllTafseersQueryResult = Apollo.QueryResult<GetAllTafseersQuery, GetAllTafseersQueryVariables>;
 export const GetEmailByEmailDocument = gql`
     query getEmailByEmail($email: String!) {
   getEmailByEmail(email: $email)

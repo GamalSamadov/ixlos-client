@@ -8,9 +8,9 @@ import styles from './Avatar.module.scss'
 
 interface Props {
   size: number
-  avatar: string | null | undefined
-  username: string | undefined
-  displayName: string | undefined
+  avatar?: string | null | undefined
+  username?: string | undefined
+  displayName?: string | undefined
 }
 
 export const Avatar = ({ size, avatar, username, displayName }: Props) => {
@@ -32,10 +32,11 @@ export const Avatar = ({ size, avatar, username, displayName }: Props) => {
       ) : (
         <Image
           src="/assets/icons/person.svg"
-          width={size && size - 25}
-          height={size && size - 25}
+          width={size && size - 80}
+          height={size && size - 80}
           alt="User"
           className={styles.person_icon}
+          draggable={false}
         />
       )}
     </div>

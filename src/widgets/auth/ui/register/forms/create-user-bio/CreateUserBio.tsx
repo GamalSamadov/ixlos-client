@@ -1,19 +1,22 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { Button } from '@/shared/ui/buttons'
 import { TextEditor } from '@/shared/ui/text-editor'
 import { useUserBioAdd } from '@/widgets/auth/hooks'
 import styles from '@/widgets/shared/styles/Bio.module.scss'
 
 export const CreateUserBio = () => {
-  const { setContent, content, handleSubmit, register, onSubmit, isLoading } =
-    useUserBioAdd()
-
-  const router = useRouter()
+  const {
+    setContent,
+    content,
+    handleSubmit,
+    register,
+    onSubmit,
+    isLoading,
+    resetStatesAndPush,
+  } = useUserBioAdd()
 
   const t = useTranslations('auth.register.addBio')
 
@@ -35,7 +38,7 @@ export const CreateUserBio = () => {
         />
 
         <div className={styles.buttons}>
-          <Button variant="link" onClick={() => router.push(PUBLIC_PAGES.HOME)}>
+          <Button variant="link" onClick={resetStatesAndPush}>
             {t('skip')}
           </Button>
           <Button type="submit" disabled={isLoading}>

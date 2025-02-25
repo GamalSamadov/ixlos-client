@@ -1,7 +1,6 @@
-import { BookText, SignatureIcon, Users2 } from 'lucide-react'
+import { BookText, SignatureIcon } from 'lucide-react'
 
-import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
-import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
+import { ADMIN_PAGES, PUBLIC_PAGES } from '@/shared/config/pages'
 import { CustomIcon } from '@/shared/ui'
 
 export const ADMIN_LINKS = [
@@ -11,12 +10,12 @@ export const ADMIN_LINKS = [
     href: ADMIN_PAGES.AUTHORS,
     icon: <SignatureIcon size={30} />,
   },
-  {
-    id: 1,
-    label: 'leftside.links.users',
-    href: ADMIN_PAGES.USERS,
-    icon: <Users2 size={30} />,
-  },
+  // {
+  //   id: 1,
+  //   label: 'leftside.links.users',
+  //   href: ADMIN_PAGES.USERS,
+  //   icon: <Users2 size={30} />,
+  // },
   {
     id: 2,
     label: 'leftside.links.tafseer',
@@ -28,12 +27,6 @@ export const ADMIN_LINKS = [
     label: 'leftside.links.books',
     href: PUBLIC_PAGES.BOOKS,
     icon: <CustomIcon variant="book-open-gray" size={30} />,
-  },
-  {
-    id: 4,
-    label: 'leftside.links.settings',
-    href: PUBLIC_PAGES.SETTINGS,
-    icon: <CustomIcon variant="settings" size={30} />,
   },
 ]
 

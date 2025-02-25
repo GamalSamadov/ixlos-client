@@ -6,7 +6,11 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-import { SubmitButton, FormTitle, CustomInput } from '@/entities/form/ui'
+import {
+  SubmitButton,
+  FormTitle,
+  CustomInput,
+} from '@/entities/shared/ui/form/ui'
 import { GetProfileByIdQuery } from '@/graphql/generated/output'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
 import {

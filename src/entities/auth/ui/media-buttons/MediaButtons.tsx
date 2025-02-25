@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import styles from './MediaButtons.module.scss'
-import { HrWithTitle } from '../../../form/ui/hr-with-title/HrWithTitle'
+import { HrWithTitle } from '../../../shared/ui/form/ui/hr-with-title/HrWithTitle'
 import { GoogleButton } from '../google-button/GoogleButton'
 
 interface Props {

@@ -1,0 +1,11 @@
+query GetAllTafseers($searchTerm: String!, $pagination: PaginationInput!) {
+  getAllTafseers(searchTerm: $searchTerm, pagination: $pagination) {
+    tafseers {
+      id
+      name
+      arabicName
+      language
+    }
+    hasMore
+  }
+}

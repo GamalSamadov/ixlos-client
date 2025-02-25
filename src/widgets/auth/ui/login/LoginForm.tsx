@@ -2,11 +2,14 @@
 
 import { useTranslations } from 'next-intl'
 
-import { ContinueWithoutSignin } from '@/entities/auth/ui'
-import { AuthToggle } from '@/entities/auth/ui/auth-toggle/AuthToggle'
-import { FormTitle, CustomInput, SubmitButton } from '@/entities/form/ui'
+import { ContinueWithoutSignin, AuthToggle } from '@/entities/auth/ui'
+import {
+  FormTitle,
+  CustomInput,
+  SubmitButton,
+} from '@/entities/shared/ui/form/ui'
 import { CustomIcon } from '@/shared/ui'
-import { useLogin } from '@/widgets/auth/hooks/useLogin'
+import { useLogin } from '@/widgets/auth/hooks'
 import styles from '@/widgets/shared/styles/Form.module.scss'
 
 export const LoginForm = () => {

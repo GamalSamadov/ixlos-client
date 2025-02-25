@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { HrWithTitle } from '@/entities/form/ui'
+import { HrWithTitle } from '@/entities/shared/ui/form/ui'
 import { Dialog } from '@/entities/shared/ui'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { Button } from '@/shared/ui'

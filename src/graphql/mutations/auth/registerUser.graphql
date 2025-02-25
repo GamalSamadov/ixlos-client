@@ -2,5 +2,6 @@ mutation RegisterUser($data: CreateUserInput!) {
   registerUser(data: $data) {
     id
     email
+    rights
   }
 }

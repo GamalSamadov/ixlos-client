@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
 
-import { FormTitle } from '@/entities/form/ui/form-title/FormTitle'
+import { FormTitle } from '@/entities/shared/ui/form/ui/form-title/FormTitle'
 import { GetProfileByIdQuery } from '@/graphql/generated/output'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
 import { Avatar, Button, Skeleton } from '@/shared/ui'

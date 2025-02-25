@@ -1,6 +1,6 @@
 class AdminPages {
   HOME = '/admin'
-  USER_HOME = '/tafseer'
+  EDIT_TAFSEER = '/tafseer/edit'
   USERS = '/admin/users'
   AUTHORS = '/admin/authors'
   ADD_AUTHORS = '/admin/authors/add'

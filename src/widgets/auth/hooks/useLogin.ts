@@ -5,7 +5,8 @@ import { useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useLoginUserMutation } from '@/graphql/generated/output'
+import { Role, useLoginUserMutation } from '@/graphql/generated/output'
+import { ADMIN_PAGES } from '@/shared/config/pages'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 
 import { ILoginFormData } from '../types/auth.types'
@@ -23,10 +24,15 @@ export const useLogin = () => {
   const [isPending, startTransition] = useTransition()
 
   const [login, { loading }] = useLoginUserMutation({
-    onCompleted() {
+    onCompleted(data) {
+      const isAdmin = data.loginUser?.rights.includes(Role.Admin)
       startTransition(() => {
         reset()
-        router.push(PUBLIC_PAGES.HOME)
+        if (isAdmin) {
+          router.push(ADMIN_PAGES.HOME)
+        } else {
+          router.push(PUBLIC_PAGES.HOME)
+        }
       })
     },
     onError(err) {

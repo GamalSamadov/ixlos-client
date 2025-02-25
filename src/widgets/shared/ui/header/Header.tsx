@@ -1,6 +1,6 @@
 import { UserLogo } from '@/entities/shared/ui'
 import { Aside } from '@/features/aside'
-import LogoutTop from '@/features/logout-top/ui/LogoutTop'
+import { LogoutTop } from '@/features/logout-top/ui'
 import { MEMBER_LINKS, USER_LINKS, ADMIN_LINKS } from '@/shared/data'
 import { getAuth } from '@/shared/utils/auth/get-auth'
 

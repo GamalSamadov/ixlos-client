@@ -4,7 +4,7 @@ import { Upload } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
 
-import { FormTitle } from '@/entities/form/ui/form-title/FormTitle'
+import { FormTitle } from '@/entities/shared/ui/form/ui/form-title/FormTitle'
 import { createUserCurrentPageAtom } from '@/shared/atoms/create-user-current-page.atom'
 import { Button, Skeleton, Avatar } from '@/shared/ui'
 import { useUserAvatarAdd } from '@/widgets/auth/hooks'

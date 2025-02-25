@@ -16,12 +16,6 @@ export const USER_LINKS = [
     href: PUBLIC_PAGES.BOOKS,
     icon: <CustomIcon variant="book-open-gray" size={30} />,
   },
-  {
-    id: 2,
-    label: 'leftside.links.settings',
-    href: PUBLIC_PAGES.SETTINGS,
-    icon: <CustomIcon variant="settings" size={30} />,
-  },
 ]
 
 export type TUserLinks = typeof USER_LINKS

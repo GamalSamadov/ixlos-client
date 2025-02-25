@@ -155,6 +155,20 @@
       "skip": "Skip",
       "confirm": "Upload",
       "loading": "Uploading..."
+    },
+    "tafseers": {
+      "addButton": "Add Tafseer",
+      "table": {
+        "name": "Name",
+        "arabicName": "Arabic Name",
+        "action": "Go"
+      },
+      "search": {
+        "title": "All Tafseers",
+        "placeholder": "Search by name or arabic name..."
+      },
+      "loadMore": "Show More",
+      "collapse": "Collapse"
     }
   },
   "profile": {
@@ -242,6 +256,9 @@
     "tafseersCard": {
       "title": "Holy Quran",
       "description": "Tafseers and translations"
+    },
+    "admin": {
+      "edit": "Edit"
     }
   },
   "errors": {
@@ -269,5 +286,8 @@
       "message": "Internal server error",
       "subtitle": "Please try again later."
     }
+  },
+  "shared": {
+    "back": "Back"
   }
 }

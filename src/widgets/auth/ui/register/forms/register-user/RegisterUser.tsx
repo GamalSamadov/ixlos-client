@@ -6,7 +6,11 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { ContinueWithoutSignin, AuthToggle } from '@/entities/auth/ui'
-import { FormTitle, CustomInput, SubmitButton } from '@/entities/form/ui'
+import {
+  FormTitle,
+  CustomInput,
+  SubmitButton,
+} from '@/entities/shared/ui/form/ui'
 import { createUserCurrentPageAtom } from '@/shared/atoms/create-user-current-page.atom'
 import {
   EMAIL_PATTERN,
