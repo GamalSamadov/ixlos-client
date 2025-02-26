@@ -7,16 +7,30 @@
 }
 
 .icon {
+  transform: translate(-10%, 35%);
+}
+
+.icon_full {
+  transform: translate(-10%, 75%);
+}
+
+.icon,
+.icon_full {
   @apply absolute left-4 top-0 text-gray text-[0.7rem];
-  transform: translate(-10%, 40%);
   z-index: 1;
 }
 
 .input {
-  @apply border-[0.7px] border-sky_blue-light_border rounded-xl pl-12 pr-4 py-2 w-full bg-gray-900/70;
+  @apply py-2;
+}
 
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+.input_full {
+  @apply py-4 text-lg;
+}
+
+.input,
+.input_full {
+  @apply border-[0.7px] border-sky_blue-light_border rounded-xl pl-12 pr-4  w-full bg-gray-900/70;
 
   color: var(--white);
 
@@ -38,4 +52,8 @@
   &:focus {
     @apply outline-none border-sky_blue-light transition duration-300 ease-in-out;
   }
+}
+
+.error {
+  @apply text-red-400 font-josefin_sans text-sm mt-2;
 }

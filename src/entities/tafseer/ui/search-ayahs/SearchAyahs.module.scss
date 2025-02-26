@@ -1,0 +1,52 @@
+.ayah-container {
+  @apply flex gap-4 items-center justify-between w-full py-4 px-2;
+
+  .ayah-content {
+    @apply flex items-center justify-start gap-3;
+  }
+}
+
+.ayah-details {
+  @apply flex flex-col items-end w-full;
+}
+
+.ayah-name {
+  @apply flex gap-1 items-center justify-start;
+
+  .name {
+    @apply font-naskh text-3xl text-sky-400 w-[180px] md:w-[190px] lg:w-[450px];
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: rtl;
+  }
+}
+
+.ayah-detail {
+  @apply flex gap-3 items-center;
+
+  .surah-name {
+    @apply text-gray-400;
+
+    .name {
+      @apply text-base font-josefin_sans;
+    }
+
+    .arabic-name {
+      @apply text-lg font-naskh-bold;
+    }
+  }
+
+  .revelation {
+    @apply flex items-center gap-1 bg-sky-600 rounded-lg px-[4px] py-[1px];
+  }
+
+  .revelation-title {
+    @apply text-gray-100 text-base;
+  }
+}
+
+.no-data {
+  @apply p-6;
+}

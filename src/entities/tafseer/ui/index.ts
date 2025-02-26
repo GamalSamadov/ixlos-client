@@ -1,3 +1,4 @@
 export * from './search-tafseer'
 export * from './tafseers-list'
-export * from './result-tafseer'
+export * from './surahs'
+export * from './search-ayahs'

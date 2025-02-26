@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { Poppins, Josefin_Sans as JosefinSans } from 'next/font/google'
+import localFont from 'next/font/local'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
@@ -18,6 +19,18 @@ const josefinSans = JosefinSans({
   variable: '--josefin-sans',
   subsets: ['latin'],
   weight: ['300', '400'],
+})
+
+const naskh = localFont({
+  src: './fonts/naskh.otf',
+  variable: '--naskh',
+  weight: '500',
+})
+
+const naskhBold = localFont({
+  src: './fonts/naskh-bold.otf',
+  variable: '--naskh-bold',
+  weight: '500',
 })
 
 export const metadata: Metadata = {
@@ -55,7 +68,7 @@ const RootLayout = async ({
   return (
     <html lang={locale}>
       <body
-        className={`${poppins.variable} ${josefinSans.variable} antialiased`}
+        className={`${poppins.variable} ${josefinSans.variable} ${naskh.variable} ${naskhBold.variable} antialiased`}
         suppressHydrationWarning
       >
         <BackgroundEllipsis />

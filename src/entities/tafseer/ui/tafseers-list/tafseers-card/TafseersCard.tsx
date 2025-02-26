@@ -10,7 +10,7 @@ export const TafseersCard = async () => {
   return (
     <div className={styles['card-container']}>
       <div className={styles['card-image']}>
-        <Vector size={227} variant="quran-stars" />
+        <Vector size={275} variant="quran-stars" />
       </div>
       <div className={clsx(styles.card, 'bg_light_blue_gradient')}>
         <div className={styles['card-content']}>

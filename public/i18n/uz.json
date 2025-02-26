@@ -114,9 +114,7 @@
       "search": {
         "title": "Barcha aftorlar",
         "placeholder": "Ism yoki e-pochta ila qidiring..."
-      },
-      "loadMore": "Yana ko'rsatish",
-      "collapse": "Yopish"
+      }
     },
     "addAuthor": {
       "back": "Ortga",
@@ -259,8 +257,10 @@
       "title": "Qur'oni karim",
       "description": "tafsir va tarjimalari"
     },
-    "admin": {
-      "edit": "Tahrirlash"
+    "surahs": {
+      "meccan": "Makkiy",
+      "medinan": "Madaniy",
+      "totalAyahs": "Ayatlar soni"
     }
   },
   "errors": {
@@ -277,6 +277,8 @@
 
     "errorAvatarFileSize": "Rasm hajmi 10 MB dan kam bo'lishi kerak",
 
+    "lessThen5": "Kamida 5 harf bo'lishi kerak",
+
     "404": {
       "title": "404",
       "message": "Sahifa topilmadi.",
@@ -290,6 +292,9 @@
     }
   },
   "shared": {
-    "back": "Ortga"
+    "back": "Ortga",
+    "loadMore": "Yana ko'rsatish",
+    "collapse": "Yopish",
+    "noData": "Ma'lumot topilmadi"
   }
 }

@@ -1,5 +1,4 @@
-import { getProfileById } from '@/app/shared/actions'
-import { EditAvatarForm } from '@/widgets/shared/ui'
+import { EditAvatar } from '@/widgets/shared/ui/profile/edit-avatar'
 
 const ProfileEditAvatarPage = async ({
   params,
@@ -7,10 +6,9 @@ const ProfileEditAvatarPage = async ({
   params: Promise<{ id: string }>
 }) => {
   const { id } = await params
-  const { profile } = await getProfileById(id)
   return (
     <>
-      <EditAvatarForm profile={profile} />
+      <EditAvatar id={id} />
     </>
   )
 }

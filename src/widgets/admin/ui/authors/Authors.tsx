@@ -28,6 +28,7 @@ interface Props {
 
 export const Authors: FC<Props> = ({ authors, hasMore, loading }) => {
   const t = useTranslations('admin.authors')
+  const tShared = useTranslations('shared')
   const { handleTake, resetTake } = useTake(ADMIN_PAGES.AUTHORS)
 
   return (
@@ -96,14 +97,14 @@ export const Authors: FC<Props> = ({ authors, hasMore, loading }) => {
         {hasMore ? (
           <ShowMore
             onClick={handleTake}
-            title={t('loadMore')}
+            title={tShared('loadMore')}
             loading={loading}
           />
         ) : (
           authors.length > 10 && (
             <Collapse
               onClick={resetTake}
-              title={t('collapse')}
+              title={tShared('collapse')}
               loading={loading}
             />
           )

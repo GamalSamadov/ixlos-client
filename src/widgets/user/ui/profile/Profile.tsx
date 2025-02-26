@@ -3,20 +3,16 @@ import { CaseSensitive, Edit2, Plus, Upload, User2 } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 
-import { GetProfileByIdQuery } from '@/graphql/generated/output'
 import { USER_PAGES } from '@/shared/config/pages/user.config'
 import { Avatar, Button, CustomIcon } from '@/shared/ui'
 import { getAuth } from '@/shared/utils/auth/get-auth'
+import { getProfileById } from '@/widgets/shared/actions'
 
 import { DeleteAccountButton } from './DeleteAccountButton'
 import styles from './Profile.module.scss'
 
-interface Props {
-  profile: GetProfileByIdQuery['getProfileById']
-  loading: boolean
-}
-
-export const Profile = async ({ profile }: Props) => {
+export const Profile = async ({ id }: { id: string }) => {
+  const { profile } = await getProfileById(id)
   const currentUser = await getAuth()
   const t = await getTranslations('profile')
   const hasAccess = profile.id === currentUser?.userId || currentUser?.isAdmin

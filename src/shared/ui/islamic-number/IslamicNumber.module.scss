@@ -1,0 +1,15 @@
+.container {
+  @apply relative w-[60px];
+
+  .number {
+    @apply absolute top-1/2 -translate-y-1/2 text-lg text-sky-300 font-josefin_sans font-bold w-full;
+  }
+
+  .number_position {
+    @apply translate-x-[42%];
+  }
+
+  .ayah_position {
+    @apply translate-x-[40%];
+  }
+}

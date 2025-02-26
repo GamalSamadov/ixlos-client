@@ -1,6 +1,5 @@
 'use client'
 
-import clsx from 'clsx'
 import { SearchIcon } from 'lucide-react'
 import React from 'react'
 
@@ -21,24 +20,25 @@ export const SearchInput = ({
   placeholder,
   isFullWidth = false,
 }: Props) => {
-  const { value, handleSearch } = useSearchTerm(route)
+  const { value, handleSearch, error } = useSearchTerm(route)
   return (
     <div
-      className={clsx(
+      className={
         isFullWidth ? styles.input_container_full_width : styles.input_container
-      )}
+      }
     >
-      <span className={styles.icon}>
+      <span className={isFullWidth ? styles.icon_full : styles.icon}>
         <SearchIcon />
       </span>
       <input
-        className={styles.input}
+        className={isFullWidth ? styles.input_full : styles.input}
         name={name}
         type="text"
         value={value}
         placeholder={placeholder}
         onChange={handleSearch}
       />
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   )
 }

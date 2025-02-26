@@ -1,0 +1,13 @@
+query GetAllSurahs($pagination: PaginationInput!) {
+  getAllSurahs(pagination: $pagination) {
+    surahs {
+      id
+      number
+      name
+      arabicName
+      revelationType
+      totalAyahs
+    }
+    hasMore
+  }
+}

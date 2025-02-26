@@ -1,0 +1,24 @@
+query SearchAyahByText($searchTerm: String!, $pagination: PaginationInput!) {
+  searchAyahByText(searchTerm: $searchTerm, pagination: $pagination) {
+    ayahs {
+      id
+      number
+      arabicText
+      uzbekText
+
+      tafseers {
+        text
+        tafseer {
+          name
+          arabicName
+        }
+      }
+
+      surah {
+        name
+        arabicName
+      }
+    }
+    hasMore
+  }
+}

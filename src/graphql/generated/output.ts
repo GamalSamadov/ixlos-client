@@ -48,6 +48,12 @@ export type AyahModel = {
   uzbekText: Scalars['String']['output'];
 };
 
+export type AyahsPaginatedModel = {
+  __typename?: 'AyahsPaginatedModel';
+  ayahs?: Maybe<Array<AyahModel>>;
+  hasMore?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type CreateAuthorInput = {
   country?: InputMaybe<Scalars['String']['input']>;
   displayName?: InputMaybe<Scalars['String']['input']>;
@@ -292,7 +298,7 @@ export type Query = {
   __typename?: 'Query';
   getAllAuthors: AuthorsPaginatedModel;
   getAllAyahs: Array<AyahModel>;
-  getAllSurahs: Array<SurahModel>;
+  getAllSurahs: SurahsPaginatedModel;
   getAllTafseers: TafseersPaginatedModel;
   getAuthorById: AuthorModel;
   getAyahById: AyahModel;
@@ -306,7 +312,7 @@ export type Query = {
   getTafseerAyahById: TafseerAyahModel;
   getTafseerById: TafseerModel;
   getUsernameByUsername: Scalars['String']['output'];
-  searchAyahByText: Array<AyahModel>;
+  searchAyahByText: AyahsPaginatedModel;
 };
 
 
@@ -417,6 +423,12 @@ export enum SurahRevelationType {
   Meccan = 'MECCAN',
   Medinan = 'MEDINAN'
 }
+
+export type SurahsPaginatedModel = {
+  __typename?: 'SurahsPaginatedModel';
+  hasMore: Scalars['Boolean']['output'];
+  surahs: Array<SurahModel>;
+};
 
 export type TafseerAyahModel = {
   __typename?: 'TafseerAyahModel';
@@ -621,6 +633,13 @@ export type GetBioByUserIdQueryVariables = Exact<{
 
 export type GetBioByUserIdQuery = { __typename?: 'Query', getBioByUserId: string };
 
+export type GetAllSurahsQueryVariables = Exact<{
+  pagination: PaginationInput;
+}>;
+
+
+export type GetAllSurahsQuery = { __typename?: 'Query', getAllSurahs: { __typename?: 'SurahsPaginatedModel', hasMore: boolean, surahs: Array<{ __typename?: 'SurahModel', id: string, number: number, name: string, arabicName: string, revelationType: SurahRevelationType, totalAyahs: number }> } };
+
 export type GetAllTafseersQueryVariables = Exact<{
   searchTerm: Scalars['String']['input'];
   pagination: PaginationInput;
@@ -628,6 +647,14 @@ export type GetAllTafseersQueryVariables = Exact<{
 
 
 export type GetAllTafseersQuery = { __typename?: 'Query', getAllTafseers: { __typename?: 'TafseersPaginatedModel', hasMore: boolean, tafseers: Array<{ __typename?: 'TafseerModel', id: string, name: string, arabicName: string, language: TafseerLanguage }> } };
+
+export type SearchAyahByTextQueryVariables = Exact<{
+  searchTerm: Scalars['String']['input'];
+  pagination: PaginationInput;
+}>;
+
+
+export type SearchAyahByTextQuery = { __typename?: 'Query', searchAyahByText: { __typename?: 'AyahsPaginatedModel', hasMore?: boolean | null, ayahs?: Array<{ __typename?: 'AyahModel', id: string, number: number, arabicText: string, uzbekText: string, tafseers: Array<{ __typename?: 'TafseerAyahModel', text: string, tafseer: { __typename?: 'TafseerModel', name: string, arabicName: string } }>, surah: { __typename?: 'SurahModel', name: string, arabicName: string } }> | null } };
 
 export type GetEmailByEmailQueryVariables = Exact<{
   email: Scalars['String']['input'];
@@ -1168,6 +1195,54 @@ export type GetBioByUserIdQueryHookResult = ReturnType<typeof useGetBioByUserIdQ
 export type GetBioByUserIdLazyQueryHookResult = ReturnType<typeof useGetBioByUserIdLazyQuery>;
 export type GetBioByUserIdSuspenseQueryHookResult = ReturnType<typeof useGetBioByUserIdSuspenseQuery>;
 export type GetBioByUserIdQueryResult = Apollo.QueryResult<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>;
+export const GetAllSurahsDocument = gql`
+    query GetAllSurahs($pagination: PaginationInput!) {
+  getAllSurahs(pagination: $pagination) {
+    surahs {
+      id
+      number
+      name
+      arabicName
+      revelationType
+      totalAyahs
+    }
+    hasMore
+  }
+}
+    `;
+
+/**
+ * __useGetAllSurahsQuery__
+ *
+ * To run a query within a React component, call `useGetAllSurahsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllSurahsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllSurahsQuery({
+ *   variables: {
+ *      pagination: // value for 'pagination'
+ *   },
+ * });
+ */
+export function useGetAllSurahsQuery(baseOptions: Apollo.QueryHookOptions<GetAllSurahsQuery, GetAllSurahsQueryVariables> & ({ variables: GetAllSurahsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllSurahsQuery, GetAllSurahsQueryVariables>(GetAllSurahsDocument, options);
+      }
+export function useGetAllSurahsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllSurahsQuery, GetAllSurahsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllSurahsQuery, GetAllSurahsQueryVariables>(GetAllSurahsDocument, options);
+        }
+export function useGetAllSurahsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAllSurahsQuery, GetAllSurahsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAllSurahsQuery, GetAllSurahsQueryVariables>(GetAllSurahsDocument, options);
+        }
+export type GetAllSurahsQueryHookResult = ReturnType<typeof useGetAllSurahsQuery>;
+export type GetAllSurahsLazyQueryHookResult = ReturnType<typeof useGetAllSurahsLazyQuery>;
+export type GetAllSurahsSuspenseQueryHookResult = ReturnType<typeof useGetAllSurahsSuspenseQuery>;
+export type GetAllSurahsQueryResult = Apollo.QueryResult<GetAllSurahsQuery, GetAllSurahsQueryVariables>;
 export const GetAllTafseersDocument = gql`
     query GetAllTafseers($searchTerm: String!, $pagination: PaginationInput!) {
   getAllTafseers(searchTerm: $searchTerm, pagination: $pagination) {
@@ -1215,6 +1290,64 @@ export type GetAllTafseersQueryHookResult = ReturnType<typeof useGetAllTafseersQ
 export type GetAllTafseersLazyQueryHookResult = ReturnType<typeof useGetAllTafseersLazyQuery>;
 export type GetAllTafseersSuspenseQueryHookResult = ReturnType<typeof useGetAllTafseersSuspenseQuery>;
 export type GetAllTafseersQueryResult = Apollo.QueryResult<GetAllTafseersQuery, GetAllTafseersQueryVariables>;
+export const SearchAyahByTextDocument = gql`
+    query SearchAyahByText($searchTerm: String!, $pagination: PaginationInput!) {
+  searchAyahByText(searchTerm: $searchTerm, pagination: $pagination) {
+    ayahs {
+      id
+      number
+      arabicText
+      uzbekText
+      tafseers {
+        text
+        tafseer {
+          name
+          arabicName
+        }
+      }
+      surah {
+        name
+        arabicName
+      }
+    }
+    hasMore
+  }
+}
+    `;
+
+/**
+ * __useSearchAyahByTextQuery__
+ *
+ * To run a query within a React component, call `useSearchAyahByTextQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchAyahByTextQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchAyahByTextQuery({
+ *   variables: {
+ *      searchTerm: // value for 'searchTerm'
+ *      pagination: // value for 'pagination'
+ *   },
+ * });
+ */
+export function useSearchAyahByTextQuery(baseOptions: Apollo.QueryHookOptions<SearchAyahByTextQuery, SearchAyahByTextQueryVariables> & ({ variables: SearchAyahByTextQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchAyahByTextQuery, SearchAyahByTextQueryVariables>(SearchAyahByTextDocument, options);
+      }
+export function useSearchAyahByTextLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchAyahByTextQuery, SearchAyahByTextQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchAyahByTextQuery, SearchAyahByTextQueryVariables>(SearchAyahByTextDocument, options);
+        }
+export function useSearchAyahByTextSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SearchAyahByTextQuery, SearchAyahByTextQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SearchAyahByTextQuery, SearchAyahByTextQueryVariables>(SearchAyahByTextDocument, options);
+        }
+export type SearchAyahByTextQueryHookResult = ReturnType<typeof useSearchAyahByTextQuery>;
+export type SearchAyahByTextLazyQueryHookResult = ReturnType<typeof useSearchAyahByTextLazyQuery>;
+export type SearchAyahByTextSuspenseQueryHookResult = ReturnType<typeof useSearchAyahByTextSuspenseQuery>;
+export type SearchAyahByTextQueryResult = Apollo.QueryResult<SearchAyahByTextQuery, SearchAyahByTextQueryVariables>;
 export const GetEmailByEmailDocument = gql`
     query getEmailByEmail($email: String!) {
   getEmailByEmail(email: $email)

@@ -32,6 +32,8 @@ export default {
       fontFamily: {
         poppins: ['var(--poppins)', 'sans-serif'],
         josefin_sans: ['var(--josefin-sans)', 'sans-serif'],
+        naskh: ['var(--naskh)', 'sans-serif'],
+        'naskh-bold': ['var(--naskh-bold)', 'sans-serif'],
       },
     },
   },

@@ -114,9 +114,7 @@
       "search": {
         "title": "All Authors",
         "placeholder": "Search by name or email..."
-      },
-      "loadMore": "Show More",
-      "collapse": "Collapse"
+      }
     },
     "addAuthor": {
       "back": "Back",
@@ -257,8 +255,11 @@
       "title": "Holy Quran",
       "description": "Tafseers and translations"
     },
-    "admin": {
-      "edit": "Edit"
+
+    "surahs": {
+      "meccan": "Meccan",
+      "medinan": "Medinan",
+      "totalAyahs": "Total ayahs"
     }
   },
   "errors": {
@@ -275,6 +276,8 @@
 
     "errorAvatarFileSize": "Avatar size must be less than 10 MB",
 
+    "lessThen5": "Must be at least 5 characters",
+
     "404": {
       "title": "404",
       "message": "Page not found.",
@@ -288,6 +291,9 @@
     }
   },
   "shared": {
-    "back": "Back"
+    "back": "Back",
+    "loadMore": "Show More",
+    "collapse": "Collapse",
+    "noData": "No data"
   }
 }
