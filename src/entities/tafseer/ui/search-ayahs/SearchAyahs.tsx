@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { PenSquare } from 'lucide-react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -13,6 +14,7 @@ import { useTake } from '@/shared/hooks/useTake'
 import { Button, IslamicNumber } from '@/shared/ui'
 
 import styles from './SearchAyahs.module.scss'
+import '@/shared/styles/ayahs.scss'
 
 export const SearchAyahs = ({
   ayahs,
@@ -45,11 +47,21 @@ export const SearchAyahs = ({
                 >
                   <div className={styles['ayah-details']}>
                     <div className={styles['ayah-name']}>
-                      <h3 className={styles.name}>{ayah.arabicText}</h3>
+                      <h3
+                        className={clsx(
+                          styles.name,
+                          `font-quran-page-${ayah.pageNumber}`
+                        )}
+                      >
+                        {ayah.qcfText}
+                      </h3>
                     </div>
                     <div className={styles['ayah-detail']}>
                       <p className={styles['surah-name']}>
-                        <span className={styles.name}>{ayah.surah.name}</span> -{' '}
+                        <span className={styles.name}>
+                          {ayah.surah.uzbekName}
+                        </span>{' '}
+                        -{' '}
                         <span className={styles['arabic-name']}>
                           {ayah.surah.arabicName}
                         </span>

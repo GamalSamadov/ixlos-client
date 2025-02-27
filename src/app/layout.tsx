@@ -9,6 +9,8 @@ import { BackgroundEllipsis } from '@/shared/ui'
 import '@/shared/styles/globals.scss'
 import { Providers } from './providers'
 
+// TODO: refactor custom fonts
+
 const poppins = Poppins({
   variable: '--poppins',
   subsets: ['latin'],
@@ -68,7 +70,9 @@ const RootLayout = async ({
   return (
     <html lang={locale}>
       <body
-        className={`${poppins.variable} ${josefinSans.variable} ${naskh.variable} ${naskhBold.variable} antialiased`}
+        className={`${poppins.variable} ${josefinSans.variable} ${naskh.variable} ${naskhBold.variable} 
+        
+        antialiased`}
         suppressHydrationWarning
       >
         <BackgroundEllipsis />

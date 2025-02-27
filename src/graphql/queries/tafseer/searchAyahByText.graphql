@@ -3,8 +3,8 @@ query SearchAyahByText($searchTerm: String!, $pagination: PaginationInput!) {
     ayahs {
       id
       number
-      arabicText
-      uzbekText
+      qcfText
+      pageNumber
 
       tafseers {
         text
@@ -15,7 +15,8 @@ query SearchAyahByText($searchTerm: String!, $pagination: PaginationInput!) {
       }
 
       surah {
-        name
+        number
+        uzbekName
         arabicName
       }
     }

@@ -1,13 +1,13 @@
 .surah-container {
   @apply flex gap-4 items-center justify-between w-full py-4 px-2;
 
-  .surah-link {
-    @apply flex items-center gap-3;
+  .surah-content {
+    @apply flex items-center justify-start gap-3;
   }
 }
 
 .surah-details {
-  @apply flex flex-col items-center justify-end w-full;
+  @apply flex flex-col items-end justify-end w-full;
 }
 
 .surah-name {
@@ -23,7 +23,7 @@
   }
 
   .arabic-name {
-    @apply font-naskh-bold text-3xl;
+    @apply text-4xl -ml-3;
   }
 }
 

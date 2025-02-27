@@ -14,7 +14,7 @@
   @apply flex gap-1 items-center justify-start;
 
   .name {
-    @apply font-naskh text-3xl text-sky-400 w-[180px] md:w-[190px] lg:w-[450px];
+    @apply flex items-center text-3xl text-sky-400 w-[180px] md:w-[190px] lg:w-[450px] h-[65px];
     text-align: right;
     white-space: nowrap;
     overflow: hidden;

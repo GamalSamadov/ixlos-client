@@ -41,11 +41,14 @@ export type AyahModel = {
   createdAt: Scalars['DateTime']['output'];
   id: Scalars['ID']['output'];
   number: Scalars['Float']['output'];
+  pageNumber: Scalars['Float']['output'];
+  qcfText: Scalars['String']['output'];
   surah: SurahModel;
   surahId: Scalars['String']['output'];
   tafseers: Array<TafseerAyahModel>;
   updatedAt: Scalars['DateTime']['output'];
-  uzbekText: Scalars['String']['output'];
+  uzbekTextInCyrillic: Scalars['String']['output'];
+  uzbekTextInLatin: Scalars['String']['output'];
 };
 
 export type AyahsPaginatedModel = {
@@ -65,15 +68,20 @@ export type CreateAuthorInput = {
 export type CreateAyahInput = {
   arabicText: Scalars['String']['input'];
   number: Scalars['Float']['input'];
-  uzbekText: Scalars['String']['input'];
+  qcfText: Scalars['String']['input'];
+  uzbekTextInCyrillic: Scalars['String']['input'];
+  uzbekTextInLatin: Scalars['String']['input'];
 };
 
 export type CreateSurahInput = {
   arabicName: Scalars['String']['input'];
   name: Scalars['String']['input'];
   number: Scalars['Float']['input'];
+  qfcName: Scalars['String']['input'];
   revelationType: SurahRevelationType;
   totalAyahs: Scalars['Float']['input'];
+  uzbekName: Scalars['String']['input'];
+  uzbekNameTranslation: Scalars['String']['input'];
 };
 
 export type CreateTafseerAyahInput = {
@@ -414,9 +422,12 @@ export type SurahModel = {
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   number: Scalars['Float']['output'];
+  qfcName: Scalars['String']['output'];
   revelationType: SurahRevelationType;
   totalAyahs: Scalars['Float']['output'];
   updatedAt: Scalars['DateTime']['output'];
+  uzbekName: Scalars['String']['output'];
+  uzbekNameTranslation: Scalars['String']['output'];
 };
 
 export enum SurahRevelationType {
@@ -638,7 +649,7 @@ export type GetAllSurahsQueryVariables = Exact<{
 }>;
 
 
-export type GetAllSurahsQuery = { __typename?: 'Query', getAllSurahs: { __typename?: 'SurahsPaginatedModel', hasMore: boolean, surahs: Array<{ __typename?: 'SurahModel', id: string, number: number, name: string, arabicName: string, revelationType: SurahRevelationType, totalAyahs: number }> } };
+export type GetAllSurahsQuery = { __typename?: 'Query', getAllSurahs: { __typename?: 'SurahsPaginatedModel', hasMore: boolean, surahs: Array<{ __typename?: 'SurahModel', id: string, number: number, uzbekName: string, uzbekNameTranslation: string, qfcName: string, revelationType: SurahRevelationType, totalAyahs: number }> } };
 
 export type GetAllTafseersQueryVariables = Exact<{
   searchTerm: Scalars['String']['input'];
@@ -654,7 +665,7 @@ export type SearchAyahByTextQueryVariables = Exact<{
 }>;
 
 
-export type SearchAyahByTextQuery = { __typename?: 'Query', searchAyahByText: { __typename?: 'AyahsPaginatedModel', hasMore?: boolean | null, ayahs?: Array<{ __typename?: 'AyahModel', id: string, number: number, arabicText: string, uzbekText: string, tafseers: Array<{ __typename?: 'TafseerAyahModel', text: string, tafseer: { __typename?: 'TafseerModel', name: string, arabicName: string } }>, surah: { __typename?: 'SurahModel', name: string, arabicName: string } }> | null } };
+export type SearchAyahByTextQuery = { __typename?: 'Query', searchAyahByText: { __typename?: 'AyahsPaginatedModel', hasMore?: boolean | null, ayahs?: Array<{ __typename?: 'AyahModel', id: string, number: number, qcfText: string, pageNumber: number, tafseers: Array<{ __typename?: 'TafseerAyahModel', text: string, tafseer: { __typename?: 'TafseerModel', name: string, arabicName: string } }>, surah: { __typename?: 'SurahModel', number: number, uzbekName: string, arabicName: string } }> | null } };
 
 export type GetEmailByEmailQueryVariables = Exact<{
   email: Scalars['String']['input'];
@@ -1201,8 +1212,9 @@ export const GetAllSurahsDocument = gql`
     surahs {
       id
       number
-      name
-      arabicName
+      uzbekName
+      uzbekNameTranslation
+      qfcName
       revelationType
       totalAyahs
     }
@@ -1296,8 +1308,8 @@ export const SearchAyahByTextDocument = gql`
     ayahs {
       id
       number
-      arabicText
-      uzbekText
+      qcfText
+      pageNumber
       tafseers {
         text
         tafseer {
@@ -1306,7 +1318,8 @@ export const SearchAyahByTextDocument = gql`
         }
       }
       surah {
-        name
+        number
+        uzbekName
         arabicName
       }
     }

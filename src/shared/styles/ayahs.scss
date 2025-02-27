@@ -1,0 +1,12 @@
+$base-font: 'naskh-page';
+
+@for $i from 1 through 604 {
+  @font-face {
+    font-family: '#{$base-font}-#{$i}';
+    src: url('/fonts/quran/QCF2#{$i}.ttf');
+  }
+
+  .font-quran-page-#{$i} {
+    font-family: '#{$base-font}-#{$i}';
+  }
+}

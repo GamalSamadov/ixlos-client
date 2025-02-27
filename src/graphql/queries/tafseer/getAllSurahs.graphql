@@ -3,8 +3,9 @@ query GetAllSurahs($pagination: PaginationInput!) {
     surahs {
       id
       number
-      name
-      arabicName
+      uzbekName
+      uzbekNameTranslation
+      qfcName
       revelationType
       totalAyahs
     }

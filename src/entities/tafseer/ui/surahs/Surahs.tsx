@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { PenSquare } from 'lucide-react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -16,6 +17,8 @@ import { useTake } from '@/shared/hooks/useTake'
 import { Button, CustomIcon, IslamicNumber } from '@/shared/ui'
 
 import styles from './Surahs.module.scss'
+
+import '@/shared/styles/surahs.scss'
 
 export const Surahs = ({
   surahs,
@@ -36,82 +39,91 @@ export const Surahs = ({
       {surahs.map((surah) => (
         <Fragment key={surah.id}>
           <div className={styles['surah-container']}>
-            {isAdmin && (
-              <Button variant="link">
-                <PenSquare size={23} />
-              </Button>
-            )}
-            <Link
-              href={PUBLIC_PAGES.SURAH_DETAILS(surah.id)}
-              className={styles['surah-link']}
-            >
-              <div className={styles['surah-details']}>
-                <div className={styles['surah-name']}>
-                  <h3 className={styles.name}>{surah.name}</h3>
-                  <p className={styles['arabic-name']}>{surah.arabicName}</p>
-                </div>
-                <div className={styles['surah-detail']}>
-                  <p className={styles['revelation-type']}>
-                    {surah.revelationType === SurahRevelationType.Meccan ? (
-                      <span className={styles.revelation}>
-                        <span className={styles.icon}>
-                          <CustomIcon size={15} variant="kaaba" />
-                        </span>
-                        <span className={styles['revelation-title']}>
-                          {t('meccan')}
-                        </span>
-                      </span>
-                    ) : (
-                      surah.revelationType === SurahRevelationType.Medinan && (
+            <div>
+              {isAdmin && (
+                <Button variant="link">
+                  <PenSquare size={23} />
+                </Button>
+              )}
+            </div>
+
+            <div className={styles['surah-content']}>
+              <Link
+                href={PUBLIC_PAGES.SURAH_DETAILS(surah.id)}
+                className={styles['surah-link']}
+              >
+                <div className={styles['surah-details']}>
+                  <div className={styles['surah-name']}>
+                    <h3 className={styles.name}>{surah.uzbekName}</h3>
+                    <p className={clsx(styles['arabic-name'], 'surah-font')}>
+                      {surah.qfcName}
+                    </p>
+                  </div>
+                  <div className={styles['surah-detail']}>
+                    <p className={styles['revelation-type']}>
+                      {surah.revelationType === SurahRevelationType.Meccan ? (
                         <span className={styles.revelation}>
                           <span className={styles.icon}>
-                            <CustomIcon
-                              size={18}
-                              variant="mosque-svgrepo-com"
-                            />
+                            <CustomIcon size={15} variant="kaaba" />
                           </span>
                           <span className={styles['revelation-title']}>
-                            {t('medinan')}
+                            {t('meccan')}
                           </span>
                         </span>
-                      )
-                    )}
-                  </p>
-                  <p className={styles['total-ayahs']}>
-                    {t('totalAyahs')}: {surah.totalAyahs}
-                  </p>
+                      ) : (
+                        surah.revelationType ===
+                          SurahRevelationType.Medinan && (
+                          <span className={styles.revelation}>
+                            <span className={styles.icon}>
+                              <CustomIcon
+                                size={18}
+                                variant="mosque-svgrepo-com"
+                              />
+                            </span>
+                            <span className={styles['revelation-title']}>
+                              {t('medinan')}
+                            </span>
+                          </span>
+                        )
+                      )}
+                    </p>
+                    <p className={styles['total-ayahs']}>
+                      {t('totalAyahs')}: {surah.totalAyahs}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
 
               <div className={styles['surah-number']}>
                 <IslamicNumber number={surah.number} />
               </div>
-            </Link>
+            </div>
           </div>
-
-          {hasMore ? (
-            <>
-              <hr />
-              <ShowMore
-                onClick={handleTake}
-                title={tShared('loadMore')}
-                loading={loading}
-              />
-            </>
-          ) : (
-            surahs.length > 10 && (
-              <>
-                <hr />
-                <Collapse
-                  onClick={resetTake}
-                  title={tShared('collapse')}
-                  loading={loading}
-                />
-              </>
-            )
-          )}
+          <hr />
         </Fragment>
       ))}
+
+      {hasMore ? (
+        <>
+          <hr />
+          <ShowMore
+            onClick={handleTake}
+            title={tShared('loadMore')}
+            loading={loading}
+          />
+        </>
+      ) : (
+        surahs.length > 10 && (
+          <>
+            <hr />
+            <Collapse
+              onClick={resetTake}
+              title={tShared('collapse')}
+              loading={loading}
+            />
+          </>
+        )
+      )}
     </>
   )
 }

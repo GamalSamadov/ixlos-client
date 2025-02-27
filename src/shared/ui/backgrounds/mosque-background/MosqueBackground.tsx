@@ -9,8 +9,8 @@ export const MosqueBackground = ({ children }: PropsWithChildren) => {
       <div className={styles['bg-mosque']}>
         <Image
           src="/assets/vectors/mosque-3.svg"
-          width={1500}
-          height={1500}
+          width={1800}
+          height={1800}
           alt="mosque"
         />
       </div>
