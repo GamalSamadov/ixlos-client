@@ -1,14 +1,14 @@
-![Nxlos Logo](./public/logo.png)
+![Ixlos Logo](./public/assets/logo/logo.png)
 
-# Nxlos Web App 🚀
+# Ixlos Web App 🚀
 
-**Discover. Learn. Elevate.** Nxlos is a modern, lightning-fast web application delivering a vast library of Islamic educational e-books and comprehensive Holy Quran interpretations.
+**Discover. Learn. Elevate.** Ixlos is a modern, lightning-fast web application delivering a vast library of Islamic educational e-books and comprehensive Holy Quran interpretations.
 
-[![Stars](https://img.shields.io/github/stars/gamalsamadov/portfolio?style=social)](https://github.com/gamalsamadov/portfolio/stargazers) [![License](https://img.shields.io/github/license/gamalsamadov/portfolio)](https://github.com/gamalsamadov/portfolio/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/gamalsamadov/portfolio?style=social)](https://github.com/gamalsamadov/ixlos-client/stargazers) [![License](https://img.shields.io/github/license/gamalsamadov/ixlos-client)](https://github.com/gamalsamadov/ixlos-client/blob/main/LICENSE)
 
 ---
 
-## 🔥 Why Nxlos?
+## 🔥 Why Ixlos?
 
 - **Comprehensive Knowledge**: Access a curated collection of classical and contemporary Islamic texts.
 - **In-depth Tafsir**: Explore verse-by-verse interpretations from renowned scholars.
