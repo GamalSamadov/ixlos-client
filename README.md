@@ -21,15 +21,20 @@
 
 ## ✨ Key Features
 
-| Feature                         | Description                                                      |
-|---------------------------------|------------------------------------------------------------------|
-| 🚀 Blazing Fast Performance     | Built on **Next.js 15**, optimized for instant page loads.        |
-| 🎨 Elegant Design               | Crafted with **Tailwind CSS** and **SASS** for a sleek look.      |
-| 🎞️ Seamless Animations           | Powered by **Framer Motion** for smooth transitions.              |
-| 📚 Extensive e-Book Library      | Electron-friendly e-books with easy navigation and bookmarking.  |
-| 📖 Expert Quran Tafsir           | Verse-by-verse explanations from multiple classical sources.     |
-| 🔒 Secure Authentication         | Robust login/signup powered by modern best practices.             |
-| 🛠️ Feature-Sliced Architecture | Scalable codebase using **FSD** for maintainability.              |
+| Feature                         | Description                                                                                       |
+|---------------------------------|---------------------------------------------------------------------------------------------------|
+| 🚀 GraphQL-Powered Data         | Client-side data fetching with **@apollo/client** and auto-generated hooks via GraphQL Codegen    |
+| ✍️ Rich Text Editing            | Built-in editor using **@tiptap/react** (starter-kit + heading, highlight, text-align extensions)|
+| 🛡️ Type Safety                  | Entire codebase in **TypeScript** with generated types from `@graphql-codegen/typescript`         |
+| 🌐 Internationalization         | Locale-aware content and routing powered by **next-intl**                                         |
+| 🎨 Utility-First Styling        | Styled with **Tailwind CSS** (incl. typography + animate plugins) and **SASS** for custom tweaks  |
+| 🌓 Dark/Light Themes            | Automatic theme switching with **next-themes**                                                    |
+| ⚡ Top-Loading Progress         | Slim progress bar on route changes via **nextjs-toploader**                                       |
+| 🧠 State Management             | Atomic state with **jotai** for predictable, minimal re-renders                                   |
+| 🔔 Toast Notifications          | Delightful user feedback using **sonner**                                                          |
+| 🛠️ Forms & Validation           | Flexible forms powered by **react-hook-form**                                                     |
+| 🖋️ Iconography                  | Crisp, customizable icons from **lucide-react**                                                   |
+| 🔍 Code Quality                  | Enforced with **ESLint** (standard, import, Prettier, TailwindCSS plugins)                        |
 
 ---
 
