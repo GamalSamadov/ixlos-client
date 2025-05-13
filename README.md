@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Nxlos Logo](./public/logo.png)
 
-## Getting Started
+# Nxlos Web App 🚀
 
-First, run the development server:
+**Discover. Learn. Elevate.** Nxlos is a modern, lightning-fast web application delivering a vast library of Islamic educational e-books and comprehensive Holy Quran interpretations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[![Stars](https://img.shields.io/github/stars/gamalsamadov/portfolio?style=social)](https://github.com/gamalsamadov/portfolio/stargazers) [![License](https://img.shields.io/github/license/gamalsamadov/portfolio)](https://github.com/gamalsamadov/portfolio/blob/main/LICENSE)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔥 Why Nxlos?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Comprehensive Knowledge**: Access a curated collection of classical and contemporary Islamic texts.
+- **In-depth Tafsir**: Explore verse-by-verse interpretations from renowned scholars.
+- **Offline e-Books**: Download and read anywhere, anytime with built-in offline support.
+- **Interactive Learning**: Engage with smooth animations and intuitive UI for an immersive experience.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Key Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Feature                         | Description                                                      |
+|---------------------------------|------------------------------------------------------------------|
+| 🚀 Blazing Fast Performance     | Built on **Next.js 15**, optimized for instant page loads.        |
+| 🎨 Elegant Design               | Crafted with **Tailwind CSS** and **SASS** for a sleek look.      |
+| 🎞️ Seamless Animations           | Powered by **Framer Motion** for smooth transitions.              |
+| 📚 Extensive e-Book Library      | Electron-friendly e-books with easy navigation and bookmarking.  |
+| 📖 Expert Quran Tafsir           | Verse-by-verse explanations from multiple classical sources.     |
+| 🔒 Secure Authentication         | Robust login/signup powered by modern best practices.             |
+| 🛠️ Feature-Sliced Architecture | Scalable codebase using **FSD** for maintainability.              |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🎨 Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<p align="center">
+  <img src="./screenshots/auth-page.png" alt="Auth Page" width="260" />
+  <img src="./screenshots/quran-tafsir.png" alt="Quran Tafsir" width="260" />
+  <img src="./screenshots/sidebar.png" alt="Sidebar" width="260" />
+</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/gamalsamadov/ixlos-client.git
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   cd ixlos-client
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+
+   Navigate to `http://localhost:3000` to view the project.
+
+## 💡 Customization
+
+You can customize this portfolio to make it your own! Modify components, update animations, or add new 3D models to make it unique.
+
+## 🤝 Contributing
+
+You can fix the repo and submit a pull request if you'd like to contribute. Let's make this project even better together! 🌟
+
+## 📫 Contact
+
+Feel free to reach out to me if you have any questions or feedback!
+
+- Email: info@samadov.dev
+- Instagram: [@samadov.dev](https://www.instagram.com/janob.dev/)
+- LinkedIn: [En. Samadov J.](https://linkedin.com/in/gamalsamadov)
