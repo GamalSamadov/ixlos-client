@@ -1,4 +1,6 @@
-![Ixlos Logo](./public/assets/logo/logo.png)
+<p align="center">
+  <img src="./public/assets/logo/logo.png" alt="Logo" width="260" />
+</p>
 
 # Ixlos Web App 🚀
 
