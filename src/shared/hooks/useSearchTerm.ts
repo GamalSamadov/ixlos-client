@@ -1,5 +1,6 @@
-import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { useSearchParams, usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'nextjs-toploader/app'
 import { useState, useEffect } from 'react'
 
 import { useDebounce } from '@/shared/hooks/useDebounce'

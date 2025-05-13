@@ -19,7 +19,7 @@ export const TafseerCard = ({
           <div className={styles['card-description']}>{authorName}</div>
           <div className={styles['card-button']}>
             <Button variant="dark-blue">
-              <CustomIcon size={20} variant="arrow-right" />
+              <CustomIcon size={15} variant="arrow-right" />
             </Button>
           </div>
         </div>

@@ -1,10 +1,10 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'nextjs-toploader/app'
 
-import { HrWithTitle } from '@/entities/shared/ui/form/ui'
 import { Dialog } from '@/entities/shared/ui'
+import { HrWithTitle } from '@/entities/shared/ui/form/ui'
 import { PUBLIC_PAGES } from '@/shared/config/pages/public.config'
 import { Button } from '@/shared/ui'
 

@@ -1,5 +1,6 @@
 .container {
-  @apply relative w-[60px];
+  @apply relative;
+  @apply w-[60px];
 
   .number {
     @apply absolute top-1/2 -translate-y-1/2 text-lg text-sky-300 font-josefin_sans font-bold w-full;

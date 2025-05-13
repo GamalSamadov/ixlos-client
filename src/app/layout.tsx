@@ -5,11 +5,11 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
 import { BackgroundEllipsis } from '@/shared/ui'
+import { TopLoader } from '@/widgets/shared/ui/top-loader'
 
-import '@/shared/styles/globals.scss'
 import { Providers } from './providers'
 
-// TODO: refactor custom fonts
+import '@/shared/styles/globals.scss'
 
 const poppins = Poppins({
   variable: '--poppins',
@@ -75,6 +75,7 @@ const RootLayout = async ({
         antialiased`}
         suppressHydrationWarning
       >
+        <TopLoader />
         <BackgroundEllipsis />
         <NextIntlClientProvider messages={messages}>
           <Providers>

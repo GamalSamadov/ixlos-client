@@ -1,8 +1,9 @@
 'use client'
 
 import { AnimatePresence, m } from 'framer-motion'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'nextjs-toploader/app'
 import { useState } from 'react'
 
 import { TAdminLinks } from '@/shared/data/leftside/admin-links.data'

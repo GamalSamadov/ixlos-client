@@ -21,10 +21,9 @@ export const getAllSurahs = async ({ searchParams }: ISearchParams) => {
       },
     })
 
-    const surahs = data.getAllSurahs.surahs
-    const hasMore = data.getAllSurahs.hasMore
+    const surahs = data.getAllSurahs
 
-    return { surahs, hasMore, loading }
+    return { surahs, loading }
   } catch {
     return notFound()
   }

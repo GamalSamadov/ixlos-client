@@ -22,11 +22,10 @@ export const getAllSearchAyahs = async ({ searchParams }: ISearchParams) => {
 
     const ayahs = data.searchAyahByText.ayahs
     const hasMore = data.searchAyahByText.hasMore
+    const total = data.searchAyahByText.total
 
-    return { ayahs, hasMore, loading }
-  } catch (err) {
-    console.error(err)
-
-    return { ayahs: null, hasMore: false, loading: false }
+    return { ayahs, hasMore, loading, total }
+  } catch {
+    return { ayahs: null, hasMore: false, loading: false, total: 0 }
   }
 }

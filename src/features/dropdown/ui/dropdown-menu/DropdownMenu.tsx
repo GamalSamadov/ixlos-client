@@ -1,8 +1,9 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'nextjs-toploader/app'
 import { useState, useRef, useEffect, ReactNode } from 'react'
 
 import { VARIANTS, MENUS } from '@/features/dropdown/constants'

@@ -1,42 +1,23 @@
-'use client'
-
 import clsx from 'clsx'
 import { PenSquare } from 'lucide-react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Fragment } from 'react'
 
-import { Collapse } from '@/entities/shared/ui'
-import { ShowMore } from '@/features/show-more'
-import {
-  GetAllSurahsQuery,
-  SurahRevelationType,
-} from '@/graphql/generated/output'
+import { SurahRevelationType } from '@/graphql/generated/output'
 import { PUBLIC_PAGES } from '@/shared/config/pages'
-import { useTake } from '@/shared/hooks/useTake'
 import { Button, CustomIcon, IslamicNumber } from '@/shared/ui'
+import { ISurahs } from '@/widgets/tafseer/types/main-tafseer.type'
 
 import styles from './Surahs.module.scss'
 
 import '@/shared/styles/surahs.scss'
 
-export const Surahs = ({
-  surahs,
-  hasMore,
-  loading,
-  isAdmin,
-}: {
-  surahs: GetAllSurahsQuery['getAllSurahs']['surahs']
-  hasMore: GetAllSurahsQuery['getAllSurahs']['hasMore']
-  loading: boolean
-  isAdmin: boolean | undefined
-}) => {
-  const { handleTake, resetTake } = useTake(PUBLIC_PAGES.HOME)
+export const Surahs = ({ surahs, isAdmin }: ISurahs) => {
   const t = useTranslations('tafseer.surahs')
-  const tShared = useTranslations('shared')
   return (
     <>
-      {surahs.map((surah) => (
+      {surahs.map((surah, index) => (
         <Fragment key={surah.id}>
           <div className={styles['surah-container']}>
             <div>
@@ -49,7 +30,7 @@ export const Surahs = ({
 
             <div className={styles['surah-content']}>
               <Link
-                href={PUBLIC_PAGES.SURAH_DETAILS(surah.id)}
+                href={PUBLIC_PAGES.QURAN_PAGE_DETAILS(surah.pageNumber)}
                 className={styles['surah-link']}
               >
                 <div className={styles['surah-details']}>
@@ -99,31 +80,11 @@ export const Surahs = ({
               </div>
             </div>
           </div>
-          <hr />
+          <hr
+            className={index + 1 === surahs.length ? 'hr-last-hidden' : 'hr'}
+          />
         </Fragment>
       ))}
-
-      {hasMore ? (
-        <>
-          <hr />
-          <ShowMore
-            onClick={handleTake}
-            title={tShared('loadMore')}
-            loading={loading}
-          />
-        </>
-      ) : (
-        surahs.length > 10 && (
-          <>
-            <hr />
-            <Collapse
-              onClick={resetTake}
-              title={tShared('collapse')}
-              loading={loading}
-            />
-          </>
-        )
-      )}
     </>
   )
 }

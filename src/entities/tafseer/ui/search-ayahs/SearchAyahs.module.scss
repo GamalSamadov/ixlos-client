@@ -10,16 +10,18 @@
   @apply flex flex-col items-end w-full;
 }
 
-.ayah-name {
+.ayah-qfc {
   @apply flex gap-1 items-center justify-start;
 
-  .name {
-    @apply flex items-center text-3xl text-sky-400 w-[180px] md:w-[190px] lg:w-[450px] h-[65px];
+  .ayah {
+    @apply flex flex-col items-stretch py-2 px-1 text-3xl text-sky-200;
     text-align: right;
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
     direction: rtl;
+    line-height: 3rem;
+    word-spacing: -5px;
   }
 }
 

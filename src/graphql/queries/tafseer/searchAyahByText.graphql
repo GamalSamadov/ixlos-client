@@ -21,5 +21,6 @@ query SearchAyahByText($searchTerm: String!, $pagination: PaginationInput!) {
       }
     }
     hasMore
+    total
   }
 }

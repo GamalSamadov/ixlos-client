@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'nextjs-toploader/app'
 import { useTranslations } from 'next-intl'
 import { ChangeEvent, useTransition } from 'react'
 import { useForm } from 'react-hook-form'

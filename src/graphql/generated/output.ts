@@ -55,6 +55,7 @@ export type AyahsPaginatedModel = {
   __typename?: 'AyahsPaginatedModel';
   ayahs?: Maybe<Array<AyahModel>>;
   hasMore?: Maybe<Scalars['Boolean']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
 };
 
 export type CreateAuthorInput = {
@@ -108,6 +109,10 @@ export type DeviceModel = {
   browser: Scalars['String']['output'];
   os: Scalars['String']['output'];
   type: Scalars['String']['output'];
+};
+
+export type GetPageAyahsInput = {
+  pageNumber?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LocationModel = {
@@ -298,6 +303,12 @@ export type MutationUpdateTafseerAyahArgs = {
   tafseerId: Scalars['String']['input'];
 };
 
+export type PageAyahsModel = {
+  __typename?: 'PageAyahsModel';
+  ayahs?: Maybe<Array<AyahModel>>;
+  surah?: Maybe<SurahModel>;
+};
+
 export type PaginationInput = {
   take?: InputMaybe<Scalars['Float']['input']>;
 };
@@ -306,10 +317,11 @@ export type Query = {
   __typename?: 'Query';
   getAllAuthors: AuthorsPaginatedModel;
   getAllAyahs: Array<AyahModel>;
-  getAllSurahs: SurahsPaginatedModel;
+  getAllSurahs: Array<SurahModel>;
   getAllTafseers: TafseersPaginatedModel;
   getAuthorById: AuthorModel;
   getAyahById: AyahModel;
+  getAyahsByPageNumber: Array<PageAyahsModel>;
   getBioByUserId: Scalars['String']['output'];
   getCurrentSession: SessionModel;
   getEmailByEmail: Scalars['String']['output'];
@@ -336,11 +348,6 @@ export type QueryGetAllAyahsArgs = {
 };
 
 
-export type QueryGetAllSurahsArgs = {
-  pagination: PaginationInput;
-};
-
-
 export type QueryGetAllTafseersArgs = {
   pagination: PaginationInput;
   searchTerm: Scalars['String']['input'];
@@ -354,6 +361,11 @@ export type QueryGetAuthorByIdArgs = {
 
 export type QueryGetAyahByIdArgs = {
   id: Scalars['String']['input'];
+};
+
+
+export type QueryGetAyahsByPageNumberArgs = {
+  data: GetPageAyahsInput;
 };
 
 
@@ -422,6 +434,7 @@ export type SurahModel = {
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   number: Scalars['Float']['output'];
+  pageNumber: Scalars['Float']['output'];
   qfcName: Scalars['String']['output'];
   revelationType: SurahRevelationType;
   totalAyahs: Scalars['Float']['output'];
@@ -434,12 +447,6 @@ export enum SurahRevelationType {
   Meccan = 'MECCAN',
   Medinan = 'MEDINAN'
 }
-
-export type SurahsPaginatedModel = {
-  __typename?: 'SurahsPaginatedModel';
-  hasMore: Scalars['Boolean']['output'];
-  surahs: Array<SurahModel>;
-};
 
 export type TafseerAyahModel = {
   __typename?: 'TafseerAyahModel';
@@ -644,12 +651,10 @@ export type GetBioByUserIdQueryVariables = Exact<{
 
 export type GetBioByUserIdQuery = { __typename?: 'Query', getBioByUserId: string };
 
-export type GetAllSurahsQueryVariables = Exact<{
-  pagination: PaginationInput;
-}>;
+export type GetAllSurahsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllSurahsQuery = { __typename?: 'Query', getAllSurahs: { __typename?: 'SurahsPaginatedModel', hasMore: boolean, surahs: Array<{ __typename?: 'SurahModel', id: string, number: number, uzbekName: string, uzbekNameTranslation: string, qfcName: string, revelationType: SurahRevelationType, totalAyahs: number }> } };
+export type GetAllSurahsQuery = { __typename?: 'Query', getAllSurahs: Array<{ __typename?: 'SurahModel', id: string, number: number, uzbekName: string, uzbekNameTranslation: string, qfcName: string, revelationType: SurahRevelationType, totalAyahs: number, pageNumber: number }> };
 
 export type GetAllTafseersQueryVariables = Exact<{
   searchTerm: Scalars['String']['input'];
@@ -659,13 +664,20 @@ export type GetAllTafseersQueryVariables = Exact<{
 
 export type GetAllTafseersQuery = { __typename?: 'Query', getAllTafseers: { __typename?: 'TafseersPaginatedModel', hasMore: boolean, tafseers: Array<{ __typename?: 'TafseerModel', id: string, name: string, arabicName: string, language: TafseerLanguage }> } };
 
+export type GetAyahsByPageNumberQueryVariables = Exact<{
+  data: GetPageAyahsInput;
+}>;
+
+
+export type GetAyahsByPageNumberQuery = { __typename?: 'Query', getAyahsByPageNumber: Array<{ __typename?: 'PageAyahsModel', surah?: { __typename?: 'SurahModel', id: string, qfcName: string } | null, ayahs?: Array<{ __typename?: 'AyahModel', id: string, qcfText: string, pageNumber: number, number: number }> | null }> };
+
 export type SearchAyahByTextQueryVariables = Exact<{
   searchTerm: Scalars['String']['input'];
   pagination: PaginationInput;
 }>;
 
 
-export type SearchAyahByTextQuery = { __typename?: 'Query', searchAyahByText: { __typename?: 'AyahsPaginatedModel', hasMore?: boolean | null, ayahs?: Array<{ __typename?: 'AyahModel', id: string, number: number, qcfText: string, pageNumber: number, tafseers: Array<{ __typename?: 'TafseerAyahModel', text: string, tafseer: { __typename?: 'TafseerModel', name: string, arabicName: string } }>, surah: { __typename?: 'SurahModel', number: number, uzbekName: string, arabicName: string } }> | null } };
+export type SearchAyahByTextQuery = { __typename?: 'Query', searchAyahByText: { __typename?: 'AyahsPaginatedModel', hasMore?: boolean | null, total?: number | null, ayahs?: Array<{ __typename?: 'AyahModel', id: string, number: number, qcfText: string, pageNumber: number, tafseers: Array<{ __typename?: 'TafseerAyahModel', text: string, tafseer: { __typename?: 'TafseerModel', name: string, arabicName: string } }>, surah: { __typename?: 'SurahModel', number: number, uzbekName: string, arabicName: string } }> | null } };
 
 export type GetEmailByEmailQueryVariables = Exact<{
   email: Scalars['String']['input'];
@@ -1207,18 +1219,16 @@ export type GetBioByUserIdLazyQueryHookResult = ReturnType<typeof useGetBioByUse
 export type GetBioByUserIdSuspenseQueryHookResult = ReturnType<typeof useGetBioByUserIdSuspenseQuery>;
 export type GetBioByUserIdQueryResult = Apollo.QueryResult<GetBioByUserIdQuery, GetBioByUserIdQueryVariables>;
 export const GetAllSurahsDocument = gql`
-    query GetAllSurahs($pagination: PaginationInput!) {
-  getAllSurahs(pagination: $pagination) {
-    surahs {
-      id
-      number
-      uzbekName
-      uzbekNameTranslation
-      qfcName
-      revelationType
-      totalAyahs
-    }
-    hasMore
+    query GetAllSurahs {
+  getAllSurahs {
+    id
+    number
+    uzbekName
+    uzbekNameTranslation
+    qfcName
+    revelationType
+    totalAyahs
+    pageNumber
   }
 }
     `;
@@ -1235,11 +1245,10 @@ export const GetAllSurahsDocument = gql`
  * @example
  * const { data, loading, error } = useGetAllSurahsQuery({
  *   variables: {
- *      pagination: // value for 'pagination'
  *   },
  * });
  */
-export function useGetAllSurahsQuery(baseOptions: Apollo.QueryHookOptions<GetAllSurahsQuery, GetAllSurahsQueryVariables> & ({ variables: GetAllSurahsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetAllSurahsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllSurahsQuery, GetAllSurahsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetAllSurahsQuery, GetAllSurahsQueryVariables>(GetAllSurahsDocument, options);
       }
@@ -1302,6 +1311,55 @@ export type GetAllTafseersQueryHookResult = ReturnType<typeof useGetAllTafseersQ
 export type GetAllTafseersLazyQueryHookResult = ReturnType<typeof useGetAllTafseersLazyQuery>;
 export type GetAllTafseersSuspenseQueryHookResult = ReturnType<typeof useGetAllTafseersSuspenseQuery>;
 export type GetAllTafseersQueryResult = Apollo.QueryResult<GetAllTafseersQuery, GetAllTafseersQueryVariables>;
+export const GetAyahsByPageNumberDocument = gql`
+    query GetAyahsByPageNumber($data: GetPageAyahsInput!) {
+  getAyahsByPageNumber(data: $data) {
+    surah {
+      id
+      qfcName
+    }
+    ayahs {
+      id
+      qcfText
+      pageNumber
+      number
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAyahsByPageNumberQuery__
+ *
+ * To run a query within a React component, call `useGetAyahsByPageNumberQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAyahsByPageNumberQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAyahsByPageNumberQuery({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useGetAyahsByPageNumberQuery(baseOptions: Apollo.QueryHookOptions<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables> & ({ variables: GetAyahsByPageNumberQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables>(GetAyahsByPageNumberDocument, options);
+      }
+export function useGetAyahsByPageNumberLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables>(GetAyahsByPageNumberDocument, options);
+        }
+export function useGetAyahsByPageNumberSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables>(GetAyahsByPageNumberDocument, options);
+        }
+export type GetAyahsByPageNumberQueryHookResult = ReturnType<typeof useGetAyahsByPageNumberQuery>;
+export type GetAyahsByPageNumberLazyQueryHookResult = ReturnType<typeof useGetAyahsByPageNumberLazyQuery>;
+export type GetAyahsByPageNumberSuspenseQueryHookResult = ReturnType<typeof useGetAyahsByPageNumberSuspenseQuery>;
+export type GetAyahsByPageNumberQueryResult = Apollo.QueryResult<GetAyahsByPageNumberQuery, GetAyahsByPageNumberQueryVariables>;
 export const SearchAyahByTextDocument = gql`
     query SearchAyahByText($searchTerm: String!, $pagination: PaginationInput!) {
   searchAyahByText(searchTerm: $searchTerm, pagination: $pagination) {
@@ -1324,6 +1382,7 @@ export const SearchAyahByTextDocument = gql`
       }
     }
     hasMore
+    total
   }
 }
     `;

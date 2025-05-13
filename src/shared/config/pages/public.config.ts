@@ -9,8 +9,8 @@ class PublicPages {
 
   HOME = '/tafseer'
 
-  SURAH_DETAILS(surahId: string) {
-    return `/tafseer/surah/${surahId}`
+  QURAN_PAGE_DETAILS(pageNumber: number) {
+    return `/tafseer/page/${pageNumber}`
   }
 
   AYAH_DETAILS(ayahId: string) {

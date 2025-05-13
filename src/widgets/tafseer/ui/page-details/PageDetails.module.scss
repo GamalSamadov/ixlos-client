@@ -1,0 +1,36 @@
+.container {
+  @apply py-2;
+
+  .back {
+    @apply w-40;
+  }
+
+  .details {
+    @apply flex items-center justify-center py-2;
+
+    .details-container {
+      @apply py-2 w-[573px];
+      text-align: justify;
+      direction: rtl;
+      white-space: wrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 3rem;
+      .ayah {
+        @apply text-3xl ml-2 cursor-pointer;
+
+        &:hover {
+          @apply bg-sky-700/30 text-sky-200;
+        }
+      }
+
+      .surah {
+        @apply text-4xl text-center my-4 bg-slate-700 py-2;
+      }
+
+      .basmalah {
+        @apply flex justify-center items-center my-4;
+      }
+    }
+  }
+}

@@ -249,7 +249,7 @@
   },
   "tafseer": {
     "search": {
-      "placeholder": "Oyatning arabcha matni ila qidiring...",
+      "placeholder": "Oyatning matni ila qidiring...",
       "resultDefault": "Barcha suralar",
       "result": "Qidiruv natijalari"
     },
@@ -260,7 +260,7 @@
     "surahs": {
       "meccan": "Makkiy",
       "medinan": "Madaniy",
-      "totalAyahs": "Ayatlar soni"
+      "totalAyahs": "Ayatlar"
     }
   },
   "errors": {

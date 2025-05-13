@@ -1,4 +1,5 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useRouter } from 'nextjs-toploader/app'
 import { useEffect, useState } from 'react'
 
 import { formUrlQuery, removeKeysFromUrlQuey } from '@/shared/utils/url'
@@ -28,7 +29,7 @@ export const useTake = (route: string) => {
           keysToRemove: ['searchTerm'],
         })
 
-        router.push(newUrl, { scroll: false })
+        router.push(newUrl)
       }
     }
   }, [take, searchParams, router, pathname, route])

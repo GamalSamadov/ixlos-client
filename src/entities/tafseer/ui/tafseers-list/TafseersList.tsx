@@ -2,7 +2,7 @@ import { TafseerCard } from './tafseer-card'
 import { TafseersCard } from './tafseers-card'
 import styles from './TafseersList.module.scss'
 
-export const TafseersList = async () => {
+export const TafseersList = () => {
   return (
     <div className={styles['tafseers-list']}>
       <TafseersCard />

@@ -1,0 +1,14 @@
+query GetAyahsByPageNumber($data: GetPageAyahsInput!) {
+  getAyahsByPageNumber(data: $data) {
+    surah {
+      id
+      qfcName
+    }
+    ayahs {
+      id
+      qcfText
+      pageNumber
+      number
+    }
+  }
+}

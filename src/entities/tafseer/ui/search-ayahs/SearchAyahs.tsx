@@ -1,33 +1,26 @@
-'use client'
-
 import clsx from 'clsx'
 import { PenSquare } from 'lucide-react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Fragment } from 'react'
 
-import { Collapse } from '@/entities/shared/ui'
 import { ShowMore } from '@/features/show-more'
-import { SearchAyahByTextQuery } from '@/graphql/generated/output'
 import { PUBLIC_PAGES } from '@/shared/config/pages'
 import { useTake } from '@/shared/hooks/useTake'
-import { Button, IslamicNumber } from '@/shared/ui'
+import { Button } from '@/shared/ui'
+import { IAyahs } from '@/widgets/tafseer/types/main-tafseer.type'
 
 import styles from './SearchAyahs.module.scss'
+
 import '@/shared/styles/ayahs.scss'
 
 export const SearchAyahs = ({
   ayahs,
-  hasMore,
-  loading,
+  hasMoreAyahs,
+  loadingAyahs,
   isAdmin,
-}: {
-  ayahs: SearchAyahByTextQuery['searchAyahByText']['ayahs']
-  hasMore: SearchAyahByTextQuery['searchAyahByText']['hasMore']
-  loading: boolean
-  isAdmin: boolean | undefined
-}) => {
-  const { handleTake, resetTake } = useTake(PUBLIC_PAGES.HOME)
+}: IAyahs) => {
+  const { handleTake } = useTake(PUBLIC_PAGES.HOME)
   const tShared = useTranslations('shared')
   return (
     <>
@@ -35,21 +28,23 @@ export const SearchAyahs = ({
         ayahs.map((ayah) => (
           <Fragment key={ayah.id}>
             <div className={styles['ayah-container']}>
-              {isAdmin && (
-                <Button variant="link">
-                  <PenSquare size={23} />
-                </Button>
-              )}
+              <div>
+                {isAdmin && (
+                  <Button variant="link">
+                    <PenSquare size={23} />
+                  </Button>
+                )}
+              </div>
               <div className={styles['ayah-content']}>
                 <Link
                   className={styles['ayah-link']}
                   href={PUBLIC_PAGES.AYAH_DETAILS(ayah.id)}
                 >
                   <div className={styles['ayah-details']}>
-                    <div className={styles['ayah-name']}>
+                    <div className={styles['ayah-qfc']}>
                       <h3
                         className={clsx(
-                          styles.name,
+                          styles.ayah,
                           `font-quran-page-${ayah.pageNumber}`
                         )}
                       >
@@ -69,39 +64,25 @@ export const SearchAyahs = ({
                     </div>
                   </div>
                 </Link>
-                <div className={styles['ayah-number']}>
-                  <IslamicNumber number={ayah.number} isAyah />
-                </div>
               </div>
             </div>
-
-            {hasMore ? (
-              <>
-                <hr />
-                <ShowMore
-                  onClick={handleTake}
-                  title={tShared('loadMore')}
-                  loading={loading}
-                />
-              </>
-            ) : (
-              ayahs.length > 10 && (
-                <>
-                  <hr />
-                  <Collapse
-                    onClick={resetTake}
-                    title={tShared('collapse')}
-                    loading={loading}
-                  />
-                </>
-              )
-            )}
+            <hr className={hasMoreAyahs ? 'hr' : 'hr-last-hidden'} />
           </Fragment>
         ))
       ) : (
         <div className={styles['no-data']}>
           <h2>{tShared('noData')} :(</h2>
         </div>
+      )}
+
+      {hasMoreAyahs && (
+        <>
+          <ShowMore
+            onClick={handleTake}
+            title={tShared('loadMore')}
+            loading={loadingAyahs}
+          />
+        </>
       )}
     </>
   )

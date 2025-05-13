@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
-  return children
+  return <>{children}</>
 }
 
 export default DashboardLayout

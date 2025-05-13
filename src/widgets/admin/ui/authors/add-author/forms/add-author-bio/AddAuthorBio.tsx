@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'nextjs-toploader/app'
 import { useTranslations } from 'next-intl'
 
 import { ADMIN_PAGES } from '@/shared/config/pages/admin.config'
