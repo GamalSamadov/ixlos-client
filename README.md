@@ -48,9 +48,29 @@
 
 ---
 
+## 🛠️ Technologies Used
+
+- **TypeScript**
+- **Next.js 15**
+- **React 19**
+- **Tailwind CSS** (with typography & animate plugins)
+- **SASS**
+- **Framer Motion**
+- **Apollo Client & GraphQL Codegen**
+- **Tiptap**
+- **Jotai**
+- **Lucide React** (icons)
+- **Sonner**
+- **React Hook Form**
+- **next-intl**
+- **next-themes**
+- **nextjs-toploader**
+
+---
+
 ## 🚀 Getting Started
 
-Follow these steps to run the project locally:
+Lounch the server-side application and then follow these steps to run the project locally:
 
 1. **Clone the repository**
 
@@ -65,23 +85,22 @@ Follow these steps to run the project locally:
    npm install
    ```
 
-3. **Run the development server**
+3. **Create env file**
+```
+NEXT_PUBLIC_APP_URL='http://localhost:3000'
+NEXT_PUBLIC_GRAPHQL_URL="http://localhost:4200/graphql"
+NEXT_PUBLIC_MEDIA_URL="https://ixlos-nashriyoti.s3.eu-north-1.amazonaws.com"
+```
+
+4. **Run the development server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
 
    Navigate to `http://localhost:3000` to view the project.
-
-## 💡 Customization
-
-You can customize this portfolio to make it your own! Modify components, update animations, or add new 3D models to make it unique.
-
-## 🤝 Contributing
-
-You can fix the repo and submit a pull request if you'd like to contribute. Let's make this project even better together! 🌟
 
 ## 📫 Contact
 
