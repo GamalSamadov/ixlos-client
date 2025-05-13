@@ -70,7 +70,8 @@
 
 ## 🚀 Getting Started
 
-Lounch the server-side application and then follow these steps to run the project locally:
+Lounch the server-side application: [server-app](https://github.com/GamalSamadov/ixlos-server)
+Then follow these steps to run the project locally:
 
 1. **Clone the repository**
 
